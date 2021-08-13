@@ -10,7 +10,6 @@ cache:
 script:
     - npm test
     - npm run build
-    - istanbul cover _mocha
     
 #if the build is successful, send the generated reports to codecov
 after_success:
