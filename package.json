@@ -44,6 +44,5 @@
   },
   "devDependencies": {
     "codecov": "^3.8.3"
-  },
-  "test": "nyc mocha app.test.js --exit"
+  }
 }
