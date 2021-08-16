@@ -11,6 +11,5 @@ script:
     - npm test
     - npm run build
     
-#if the build is successful, send the generated reports to codecov
-# after_success:
-#    - bash <(curl -s https://codecov.io/bash)
+notifications:
+  email: false
