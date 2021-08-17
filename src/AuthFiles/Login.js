@@ -11,6 +11,7 @@ function Login() {
     const [incorrectDetails, setIncorrectDetails] = useState(false);
     const [error, setError] = useState(false);
     const incorrectDetailsString = "Incorrect username or password";
+    const unknownError = "Oops, something went wrong. Please try again later";
 
     const loginUser = async (values) => {
         // validate user input
@@ -71,7 +72,7 @@ function Login() {
                                     style={globalStyles.errorText}>
                                     {props.touched.password && props.errors.password}
                                     {incorrectDetails && incorrectDetailsString}
-                                    {error && "Oops, something went wrong. Please try again later"}
+                                    {error && unknownError}
                                 </p>
                                 <Link to="/feed" style={globalStyles.button} onClick={props.handleSubmit} >Login</Link>
                                 <Link to="/signup" >register</Link>
