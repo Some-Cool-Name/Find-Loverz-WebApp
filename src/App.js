@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import Login from './AuthFiles/Login';
@@ -7,6 +7,8 @@ import Feed from './HomePageFiles/Feed';
 
 // Component to hold and control all the apps pages
 function App() {
+  const [user, setUser] = useState(null);
+
   return (
     <Router>
       <div className="App">
