@@ -6,23 +6,35 @@ import { globalStyles } from '../globalStyles';
 import { loginValidate } from './UserValidation';
 import { loginRequest } from '../BackendRequests/Authentication';
 
-function Login() {
+function Login(props) {
+    const setUsers = props.setUsers;
+    const users = props.users;
     let history = useHistory();
     const [incorrectDetails, setIncorrectDetails] = useState(false);
     const [error, setError] = useState(false);
     const incorrectDetailsString = "Incorrect username or password";
     const unknownError = "Oops, something went wrong. Please try again later";
 
+    
+
     const loginUser = async (values) => {
         // validate user input
         try {
-            const result = await loginRequest(values);
+            const result = await loginRequest(values); 
             if(result.message === "success"){
                 history.push("/feed");
+                const objArray = [];
+                Object.keys(result).forEach(key => objArray.push({
+                    name: key,
+                    rating: result[key]
+                }));
+                setUsers([objArray[0].rating[0]]);
+                console.log(users[0]);  
             }
             else if(result.message === "Wrong Password"){
                 // incorrect details
                 setIncorrectDetails(true);
+                setUsers(false)   
             } 
         } catch (error) {
             // something went wrong
@@ -30,7 +42,7 @@ function Login() {
         }
         
     }
-
+    
     return (
         <div>
             
