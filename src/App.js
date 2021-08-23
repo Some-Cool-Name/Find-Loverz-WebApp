@@ -15,7 +15,7 @@ function App() {
 
         {/* Login page */}
         <Route exact path="/" render={props => (
-            <Login />
+            <Login  />
         )} />
 
         {/* Registration page */}
