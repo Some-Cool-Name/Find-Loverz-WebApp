@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
@@ -45,6 +45,12 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+    "/node_modules/"
+    ],
+    "coverageReporters": ["json", "html"]
+    },
   "devDependencies": {
     "codecov": "^3.8.3",
     "coveralls": "^3.1.1",

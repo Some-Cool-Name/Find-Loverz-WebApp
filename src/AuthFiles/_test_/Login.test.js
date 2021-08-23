@@ -11,5 +11,7 @@ test('Renders without error', () => {
         </BrowserRouter>
     );
     const btn = screen.getByText(/Login/i);
+    const register = screen.getByText(/Register/i);
     expect(btn).toBeTruthy();
+    expect(register).toBeTruthy();
 });
