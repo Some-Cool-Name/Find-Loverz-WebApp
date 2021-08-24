@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime';
+import './Login.css';
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
@@ -14,9 +14,7 @@ function Login(props) {
     const [error, setError] = useState(false);
     const incorrectDetailsString = "Incorrect username or password";
     const unknownError = "Oops, something went wrong. Please try again later";
-
     
-
     const loginUser = async (values) => {
         // validate user input
         try {
@@ -28,80 +26,93 @@ function Login(props) {
                     name: key,
                     rating: result[key]
                 }));
-                setUsers([objArray[0].rating[0]]);
-                console.log(users[0]);  
+                setUsers([objArray[0].rating[0]]);  
+                console.log(users);
             }
             else if(result.message === "Wrong Password"){
                 // incorrect details
                 setIncorrectDetails(true);
-                setUsers(false)   
+                setUsers(false)
+                 
             } 
         } catch (error) {
             // something went wrong
             setError(true);
-        }
-        
-    }
-    
+        }   
+    } 
     return (
-        <div>
-            
-            <Formik
+        
+        <div className='container'>
+            <div className='header'>
+                <h3 className='appName'>find loverz</h3>
+             </div>
+            <div  className='form'>
+                
+                <Formik    
                     initialValues={{
-                        email: '', 
-                        password: '',
+                    email: '', 
+                    password: '',
                     }}
                     validationSchema={loginValidate}
                     onSubmit={(values, actions) => {
-                        actions.resetForm();
-                        loginUser(values);
+                    actions.resetForm();
+                    loginUser(values);
                     }}
                 >
                     {
                         props => (
-                            <div style={inputDivStyle} >
-                                <input 
-                                    type="text" 
-                                    placeholder="Email..." 
-                                    style={globalStyles.inputStyle}
-                                    onChange={props.handleChange('email')}
-                                    onBlur={props.handleBlur('email')}
-                                    value={props.values.email}
-                                />
+                            <div style={inputDivStyle}  >
+                                <h1>Log in</h1>
+                                <hr width="60px;"  size="8"></hr>
+                                <label className='fieldDescription'><b>Email</b></label>
+                                    
+                                    <input
+                                        className='inputBox'
+                                        required
+                                        type="text" 
+                                        placeholder="Email..." 
+                                        style={globalStyles.inputStyle}
+                                        onChange={props.handleChange('email')}
+                                        onBlur={props.handleBlur('email')}
+                                        value={props.values.email}                                                                  
+                                    />
                                 <p
                                     style={globalStyles.errorText}>
                                     {props.touched.email && props.errors.email}
                                 </p>
-                                <input 
-                                    type="password" 
-                                    placeholder="Password..." 
-                                    style={globalStyles.inputStyle}
-                                    onChange={props.handleChange('password')} 
-                                    onBlur={props.handleBlur('password')}
-                                    value={props.values.password}
-                                />
+                                 <br />
+                                    <label className='fieldDescription'><b>Password</b></label>
+                                    <input 
+                                        type="password"
+                                        required 
+                                        placeholder="Password..." 
+                                        style={globalStyles.inputStyle}
+                                        onChange={props.handleChange('password')} 
+                                        onBlur={props.handleBlur('password')}
+                                        value={props.values.password}
+                                        alt='Placeholder'
+                                    />
                                 <p
                                     style={globalStyles.errorText}>
                                     {props.touched.password && props.errors.password}
                                     {incorrectDetails && incorrectDetailsString}
                                     {error && unknownError}
                                 </p>
-                                <Link to="/feed" style={globalStyles.button} onClick={props.handleSubmit} >Login</Link>
+                                 <br /> 
+                                <Link className='button' to="/feed" style={globalStyles.button} onClick={props.handleSubmit} ><b>Login</b> </Link>
                                 <Link to="/signup" >register</Link>
                             </div>
                         )
                     }
                 </Formik>
-        </div>
+            </div>
+        </div> 
     )
 }
-
 const inputDivStyle = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
 }
-
-
 export default Login
