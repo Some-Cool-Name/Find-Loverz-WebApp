@@ -19,7 +19,10 @@ function Login() {
         try {
             const result = await loginRequest(values);
             if(result.message === "success"){
-                history.push("/feed");
+                history.push({
+                    pathname: '/feed',
+                    state: values.email,
+                })
             }
             else if(result.message === "Wrong Password"){
                 // incorrect details
