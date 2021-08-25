@@ -12,6 +12,7 @@ function Login() {
     const [error, setError] = useState(false);
     const incorrectDetailsString = "Incorrect username or password";
     const unknownError = "Oops, something went wrong. Please try again later";
+    const [user, setUser] = useState('');
 
     const loginUser = async (values) => {
         // validate user input
@@ -32,6 +33,12 @@ function Login() {
             setError(true);
         }
         
+    }
+
+    const onChangeEmail = (text) => { 
+        
+        setUser( text );
+    
     }
 
     return (
@@ -55,7 +62,7 @@ function Login() {
                                     type="text" 
                                     placeholder="Email..." 
                                     style={globalStyles.inputStyle}
-                                    onChange={props.handleChange('email')}
+                                    onChange={props.handleChange('email')} 
                                     onBlur={props.handleBlur('email')}
                                     value={props.values.email}
                                 />
@@ -77,8 +84,13 @@ function Login() {
                                     {incorrectDetails && incorrectDetailsString}
                                     {error && unknownError}
                                 </p>
-                                <Link to="/feed" style={globalStyles.button} onClick={props.handleSubmit} >Login</Link>
-                                <Link to="/signup" >register</Link>
+                                <Link to={{
+                                    pathname: "/feed",
+                                    aboutProps:{
+                                        name: 'Information was clicked from about page'
+                                    }
+                                }} style={globalStyles.button} onClick={props.handleSubmit} >Login</Link>
+                                <Link to="/signup" >register {props.values.email}</Link>
                             </div>
                         )
                     }

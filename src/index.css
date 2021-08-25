@@ -1,3 +1,7 @@
+*{
+  margin: 0;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -42,5 +46,95 @@ code {
   width: auto;
   margin: 5px 20px;
 }
-
 /* Registration Form */
+
+/* Interests Interface */
+#interests-background{
+  width: 100%;
+  height: 100%;
+
+  display: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+#interests-interface{
+  width: 40%;
+  max-height: 65%;
+
+  margin-bottom: 15px;
+  padding: 10px 50px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: block;
+  background-color: white;
+}
+
+#interests-interface h1{
+ padding: 2px 5px;
+ margin-bottom: 15px;
+
+ font-size: 25px;
+ font-weight: 500;
+}
+
+.interests-container{
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  margin-bottom: 15px;
+}
+
+.interest-element{
+  width: fit-content;
+  height: fit-content;
+  
+  position: relative;
+  display: flex;
+
+  margin: 5px;
+  padding: 2px 8px;
+  padding-bottom: 3px;
+  border-radius: 10px;
+
+  background-color: #ddd;
+  color: black;
+  
+  font-size: 15px;
+  text-align: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
+
+.interest-element:hover,
+#interests-interface button:hover{
+  background-color: #bbb;
+}
+
+.interests-button-container{
+  display: flex;
+}
+
+#interests-interface button{
+  border-style: none;
+  margin: 0 5px;
+  padding: 10px 50px;
+  border-radius: 15px;
+
+  cursor: pointer;
+  transition: ease-in-out 0.5s;
+}
+/* Interests Interface */

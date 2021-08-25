@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Link, useLocation } from 'react-router-dom';
 import { globalStyles } from '../globalStyles';
 
@@ -17,12 +18,6 @@ function Feed() {
             </div>
         )
     }
-    return (
-        <div>
-            <h1>Feed</h1>
-            <Link to="/" style={globalStyles.button} >Logout</Link>
-        </div>
-    )
 }
 
 export default Feed
