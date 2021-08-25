@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Email..."
+      style={
+        Object {
+          "marginTop": "10px",
+        }
+      }
+      type="text"
+      value=""
+    />
+    <p
+      style={
+        Object {
+          "color": "crimson",
+          "fontWeight": "bold",
+          "marginBottom": 10,
+          "marginTop": 6,
+          "textAlign": "center",
+        }
+      }
+    />
+    <input
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder="Password..."
+      style={
+        Object {
+          "marginTop": "10px",
+        }
+      }
+      type="password"
+      value=""
+    />
+    <p
+      style={
+        Object {
+          "color": "crimson",
+          "fontWeight": "bold",
+          "marginBottom": 10,
+          "marginTop": 6,
+          "textAlign": "center",
+        }
+      }
+    />
+    <a
+      href="/feed"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "grey",
+          "color": "black",
+          "marginTop": 10,
+          "padding": 5,
+          "textDecoration": "none",
+        }
+      }
+    >
+      Login
+    </a>
+    <a
+      href="/signup"
+      onClick={[Function]}
+    >
+      register 
+      
+    </a>
+  </div>
+</div>
+`;

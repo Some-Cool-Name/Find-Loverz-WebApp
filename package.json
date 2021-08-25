@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scrpits test --coverage",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
