@@ -1,17 +1,30 @@
 import 'regenerator-runtime/runtime';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import { globalStyles } from '../globalStyles';
 import { loginValidate } from './UserValidation';
 import { loginRequest } from '../BackendRequests/Authentication';
+import { saveToStorage, getFromStorage } from '../HelperClasses/StorageHandler';
 
-function Login() {
+function Login({ setUser }) {
     let history = useHistory();
     const [incorrectDetails, setIncorrectDetails] = useState(false);
     const [error, setError] = useState(false);
     const incorrectDetailsString = "Incorrect username or password";
     const unknownError = "Oops, something went wrong. Please try again later";
+
+    useEffect(() => {
+        try {
+           const user = getFromStorage('user');
+           if(user){
+                setUser(user);
+                history.push('/feed');
+           } 
+        } catch (error) {
+            console.log(error);
+        }
+    }, []);
 
     const loginUser = async (values) => {
         // validate user input
@@ -21,7 +34,8 @@ function Login() {
                 history.push({
                     pathname: '/feed',
                     state: values.email,
-                })
+                });
+                saveToStorage('user', result);
             }
             else if(result.message === "Wrong Password"){
                 // incorrect details
