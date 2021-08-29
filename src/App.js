@@ -7,7 +7,7 @@ import Feed from './HomePageFiles/Feed';
 
 // Component to hold and control all the apps pages
 function App() {
-  const [users, setUsers] = useState(null);
+  const [user, setUser] = useState(null);
 
   return (
     <Router>
@@ -15,7 +15,7 @@ function App() {
 
         {/* Login page */}
         <Route exact path="/" render={props => (
-            <Login setUser={setUsers} />
+            <Login setUser={setUser} />
         )} />
 
         {/* Registration page */}
@@ -23,7 +23,7 @@ function App() {
 
         {/* Feed page */}
         <Route path="/feed" render={props => (
-            <Feed setUser={setUsers} />
+            <Feed setUser={setUser} user={user} />
         )} />
 
       </div>

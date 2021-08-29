@@ -1,29 +1,24 @@
 import React from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
+import './Feed.css';
+import { Link } from 'react-router-dom';
 import { globalStyles } from '../globalStyles';
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
 
-function Feed({ setUser }) {
-    const location = useLocation();
-    let history = useHistory();
-
-    const handleLogout = () => {
-        deleteFromStorage('user');
-        setUser(null);
-        history.push('/');
-    }
-
-    if(location.state === undefined){
-        return null;
-    }
-    else{
-        return(
-            <div>
-                <h1> Hello {location.state}</h1>
-                <Link to="/" style={globalStyles.button} onClick={handleLogout} >Logout</Link>
-            </div>
-        )
-    }
+function Feed({ user }) {
+    return (
+        <div>
+            <div className='User-Info'> 
+                <h1>User-Info</h1>
+                <p>username  : {user[0].username} </p>
+                <p>name  : {user[0].name}</p>
+                <p>DOB   : {user[0].Birthday} </p>
+                <p>gender    :  {user[0].gender} </p>
+                <p>attracted to  :{user[0].Sexuality}</p>
+            </div>  
+            <Link className="button" to="/" style={globalStyles.button} > <b>Logout</b> </Link>
+        </div>
+    )
 }
 
 export default Feed
