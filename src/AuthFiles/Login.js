@@ -15,6 +15,7 @@ function Login({ setUser, user }) {
     const [error, setError] = useState(false);
     const incorrectDetailsString = "Incorrect username or password";
     const unknownError = "Oops, something went wrong. Please try again later";
+    const [user, setUser] = useState('');
 
     useEffect(() => {
         try {
@@ -82,7 +83,6 @@ function Login({ setUser, user }) {
                                     
                                     <input
                                         className='inputBox'
-                                        required
                                         type="text" 
                                         placeholder="Email..." 
                                         style={globalStyles.inputStyle}

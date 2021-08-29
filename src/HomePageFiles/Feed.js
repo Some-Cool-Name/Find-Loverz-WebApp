@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
-import './Feed.css';
 import { Link } from 'react-router-dom';
 import { globalStyles } from '../globalStyles';
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
