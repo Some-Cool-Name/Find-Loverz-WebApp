@@ -34,7 +34,7 @@ function Login({ setUser, user }) {
                 setUser(loggedInUser);
                 history.push("/feed"); 
             }
-            else if(result.message === "Wrong Password"){
+            else if(result.message === "Wrong Password" || result.message === "error"){
                 // incorrect details
                 setIncorrectDetails(true);
                 setUser(false)
