@@ -63,10 +63,11 @@ function Registration() {
       getAge(date);
       
       console.log(aged)
+      getDateString(date);
+        console.log(birthday)
       if( aged>=18){
         setAgeError(" ")
-        getDateString(date);
-        console.log(birthday)
+        
         if (password && confirm && username && password === confirm && name) {
           console.log("equal");
           const result = await fetch(
