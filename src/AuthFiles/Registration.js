@@ -1,8 +1,11 @@
 import { React, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../index.css";
+import DatePicker from "./DatePicker";
 
 function Registration() {
+  const [aged,setAged] = useState();
+  
   let history = useHistory();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -11,6 +14,23 @@ function Registration() {
   const [gender, setGender] = useState();
   const [birthday, setBirthday] = useState();
   const [sexuality, setSexuality] = useState();
+  
+  const [date, setDate] = useState();
+  const [ageError,setAgeError] = useState("");
+
+  function getAge(dateString){
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    setAged(age);
+    //age
+    
+}
 
   function interestsDisplay() {
     document.getElementById("interests-background").style.display = "block";
@@ -30,24 +50,49 @@ function Registration() {
     console.log('"hello');
   }
   
+  function getDateString(Date){
+    
+    let dated=Date.getDate() + "-"+ parseInt(Date.getMonth()+1) +"-"+Date.getFullYear();
+    setBirthday(dated);
+    
+  }
+
   const registerUser = async (e) => {
     try {
       e.preventDefault();
-      if (password && confirm && username && password === confirm && name) {
-        console.log("equal");
-        const result = await fetch(
-          "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
-            `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${"2000-02-20"}&sexuality=${sexuality}&location=${"braam"}`
-        ).then((res) => res.json());
-        console.log(result);
-        if (result === "success") {
-          history.push("/feed");
-        } else {
-          //this user already exists
+      getAge(date);
+      
+      console.log(aged)
+      getDateString(date);
+        console.log(birthday)
+      if( aged>=18){
+        setAgeError(" ")
+        
+        if (password && confirm && username && password === confirm && name) {
+          console.log("equal");
+          const result = await fetch(
+            "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
+              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${birthday}&sexuality=${sexuality}&location=${"braam"}`
+          ).then((res) => res.json());
+          console.log(result);
+          if (result === "success") {
+            history.push("/feed");
+          } else {
+            //this user already exists
+          }
+        } 
+  
+        else {
+          // display appropriate error
         }
-      } else {
-        // display appropriate error
+
+
       }
+      else {
+        //display less than  18
+        setAgeError("You have to be 18 years or older")
+      }
+       
     } catch (error) {}
   };
 
@@ -62,6 +107,8 @@ function Registration() {
             onChange={(e) => setUsername(e.target.value)}
           ></input>
         </div>
+
+        
 
         <div className="form-element">
           <label htmlFor="password"> Password</label>
@@ -98,11 +145,9 @@ function Registration() {
 
         <div className="form-element">
           <label htmlFor="birthday"> Birthday</label>
-          <input
-            id="birthday"
-            onChange={(e) => setBirthday(e.target.value)}
-          ></input>
+          <DatePicker id="birthday" date={date} setDate={setDate}></DatePicker>
         </div>
+        <div className= "form-element">{ageError}</div>
 
         <div className="form-element">
           <label htmlFor="sexuality"> Sexuality</label>
@@ -129,6 +174,7 @@ function Registration() {
         </div>
 
         <input id="register-button" type="submit" value="Register" />
+        
       </form>
 
       <div id="interests-background">
