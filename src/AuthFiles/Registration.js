@@ -4,15 +4,12 @@ import "../index.css";
 import DatePicker from "./DatePicker";
 
 function Registration() {
-  const [aged,setAged] = useState();
-  
   let history = useHistory();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [confirm, setConfirm] = useState();
   const [name, setName] = useState();
   const [gender, setGender] = useState();
-  const [birthday, setBirthday] = useState();
   const [sexuality, setSexuality] = useState();
   
   const [date, setDate] = useState();
@@ -65,14 +62,14 @@ function Registration() {
       console.log(userAge);
       const userBirthday = getDateString(date);
       console.log(userBirthday);
-      if( aged>=18){
+      if( userAge>=18){
         setAgeError(" ")
         
         if (password && confirm && username && password === confirm && name) {
           console.log("equal");
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
-              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${birthday}&sexuality=${sexuality}&location=${"braam"}`
+              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}`
           ).then((res) => res.json());
           console.log(result);
           if (result === "success") {
