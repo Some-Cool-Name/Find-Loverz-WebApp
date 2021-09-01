@@ -27,7 +27,7 @@ function Registration() {
     {
         age--;
     }
-    setAged(age);
+    return age;
     //age
     
 }
@@ -53,18 +53,18 @@ function Registration() {
   function getDateString(Date){
     
     let dated=Date.getDate() + "-"+ parseInt(Date.getMonth()+1) +"-"+Date.getFullYear();
-    setBirthday(dated);
+    return dated;
     
   }
 
   const registerUser = async (e) => {
     try {
       e.preventDefault();
-      getAge(date);
+      const userAge = getAge(date);
       
-      console.log(aged)
-      getDateString(date);
-        console.log(birthday)
+      console.log(userAge);
+      const userBirthday = getDateString(date);
+      console.log(userBirthday);
       if( aged>=18){
         setAgeError(" ")
         
