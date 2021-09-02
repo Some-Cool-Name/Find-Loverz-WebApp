@@ -5,7 +5,6 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
     "chai": "^4.3.4",
     "formik": "^2.2.9",
@@ -23,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
@@ -45,9 +44,21 @@
       "last 1 safari version"
     ]
   },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "coverageReporters": [
+      "json",
+      "html"
+    ]
+  },
   "devDependencies": {
+    "@testing-library/dom": "^8.1.0",
+    "@testing-library/user-event": "^12.8.3",
     "codecov": "^3.8.3",
     "coveralls": "^3.1.1",
-    "jest": "^26.6.0"
+    "jest": "^26.6.0",
+    "msw": "^0.35.0"
   }
 }

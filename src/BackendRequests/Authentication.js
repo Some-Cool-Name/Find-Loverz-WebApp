@@ -6,12 +6,10 @@ export const loginRequest = async (user) => {
     });
     if(resp.status === 200){
         const data = await resp.json();
-        console.log(data);
         return data;
     }
     if(resp.status === 400){
         const data = await resp.json();
-        console.log(data);
         return data;
     }
     console.log("error");
