@@ -12,24 +12,50 @@ function Registration() {
   const [birthday, setBirthday] = useState();
   const [sexuality, setSexuality] = useState();
 
+  var listen = true;
+  var interestsArray = [];
+  var interestsStrings = [];
+
   function interestsDisplay() {
     document.getElementById("interests-background").style.display = "block";
+    var clickedId;
+
+    if (listen){
+      document.querySelectorAll('.interest-element').forEach(item => {
+        item.addEventListener('click', event => {
+          clickedId = event.target.id;
+ 
+          // If element is already highlighted, remove element
+          if (interestsArray.includes(clickedId)){
+            document.getElementById(clickedId).style.color = "#000";
+            document.getElementById(clickedId).style.background = "#ddd";
+
+            var removeIndex = interestsArray.indexOf(clickedId);
+            interestsArray.splice(removeIndex, 1);
+            interestsStrings.splice(removeIndex, 1);
+          }
+
+          // Add element to list if list < 5
+          else if (interestsArray.length < 5){
+            interestsArray.push(clickedId);
+            interestsStrings.push(document.getElementById(clickedId).textContent);
+            document.getElementById(clickedId).style.color = "#fff";
+            document.getElementById(clickedId).style.background = "#000";
+          }
+          
+          console.log(interestsArray);
+          console.log(interestsStrings);
+        })
+      });
+
+      listen = false;
+    }
   }
 
   function interestsClose() {
     document.getElementById("interests-background").style.display = "none";
   }
 
-  function interestsConfirm() {
-    document.getElementById("interests-background").style.display = "none";
-  }
-
-  function interestClick() {
-    //var element = document.getElementById("myDIV");
-    //element.classList.toggle("mystyle");
-    console.log('"hello');
-  }
-  
   const registerUser = async (e) => {
     try {
       e.preventDefault();
@@ -136,124 +162,120 @@ function Registration() {
           <h1>Choose Five Interests</h1>
 
           <div className="interests-container">
-            <div onClick={interestClick} className="interest-element" id="i1">
+            <div className="interest-element" id="i1">
               Art
             </div>
-            <div onClick={interestClick} className="interest-element" id="i2">
+            <div className="interest-element" id="i2">
               Baking
             </div>
-            <div onClick={interestClick} className="interest-element" id="i3">
+            <div className="interest-element" id="i3">
               Board Games
             </div>
-            <div onClick={interestClick} className="interest-element" id="i4">
+            <div className="interest-element" id="i4">
               Comedy
             </div>
-            <div onClick={interestClick} className="interest-element" id="i5">
+            <div className="interest-element" id="i5">
               Cooking
             </div>
-            <div onClick={interestClick} className="interest-element" id="i6">
+            <div className="interest-element" id="i6">
               Cycling
             </div>
-            <div onClick={interestClick} className="interest-element" id="i7">
+            <div className="interest-element" id="i7">
               Dancing
             </div>
-            <div onClick={interestClick} className="interest-element" id="i8">
+            <div className="interest-element" id="i8">
               Fashion
             </div>
-            <div onClick={interestClick} className="interest-element" id="i9">
+            <div className="interest-element" id="i9">
               Fishing
             </div>
-            <div onClick={interestClick} className="interest-element" id="i10">
+            <div className="interest-element" id="i10">
               Foodie
             </div>
-            <div onClick={interestClick} className="interest-element" id="i11">
+            <div className="interest-element" id="i11">
               Football
             </div>
-            <div onClick={interestClick} className="interest-element" id="i12">
+            <div className="interest-element" id="i12">
               Gamer
             </div>
-            <div onClick={interestClick} className="interest-element" id="i13">
+            <div className="interest-element" id="i13">
               Gardening
             </div>
-            <div onClick={interestClick} className="interest-element" id="i14">
+            <div className="interest-element" id="i14">
               Golf
             </div>
-            <div onClick={interestClick} className="interest-element" id="i15">
+            <div className="interest-element" id="i15">
               Gym
             </div>
-            <div onClick={interestClick} className="interest-element" id="i16">
+            <div className="interest-element" id="i16">
               Hiking
             </div>
-            <div onClick={interestClick} className="interest-element" id="i17">
+            <div className="interest-element" id="i17">
               Karaoke
             </div>
-            <div onClick={interestClick} className="interest-element" id="i18">
+            <div className="interest-element" id="i18">
               Movies
             </div>
-            <div onClick={interestClick} className="interest-element" id="i19">
+            <div className="interest-element" id="i19">
               Music
             </div>
-            <div onClick={interestClick} className="interest-element" id="i20">
+            <div className="interest-element" id="i20">
               Netflix
             </div>
-            <div onClick={interestClick} className="interest-element" id="i21">
+            <div className="interest-element" id="i21">
               Pet Lover
             </div>
-            <div onClick={interestClick} className="interest-element" id="i22">
+            <div className="interest-element" id="i22">
               Photography
             </div>
-            <div onClick={interestClick} className="interest-element" id="i23">
+            <div className="interest-element" id="i23">
               Picnicking
             </div>
-            <div onClick={interestClick} className="interest-element" id="i24">
+            <div className="interest-element" id="i24">
               Politics
             </div>
-            <div onClick={interestClick} className="interest-element" id="i25">
+            <div className="interest-element" id="i25">
               Reading
             </div>
-            <div onClick={interestClick} className="interest-element" id="i26">
+            <div className="interest-element" id="i26">
               Shopping
             </div>
-            <div onClick={interestClick} className="interest-element" id="i27">
+            <div className="interest-element" id="i27">
               Spirituality
             </div>
-            <div onClick={interestClick} className="interest-element" id="i28">
+            <div className="interest-element" id="i28">
               Social Media
             </div>
-            <div onClick={interestClick} className="interest-element" id="i29">
+            <div className="interest-element" id="i29">
               Sport
             </div>
-            <div onClick={interestClick} className="interest-element" id="i30">
+            <div className="interest-element" id="i30">
               Surfing
             </div>
-            <div onClick={interestClick} className="interest-element" id="i31">
+            <div className="interest-element" id="i31">
               Swimming
             </div>
-            <div onClick={interestClick} className="interest-element" id="i32">
+            <div className="interest-element" id="i32">
               Travel
             </div>
-            <div onClick={interestClick} className="interest-element" id="i33">
+            <div className="interest-element" id="i33">
               Vlogging
             </div>
-            <div onClick={interestClick} className="interest-element" id="i34">
+            <div className="interest-element" id="i34">
               Wine
             </div>
-            <div onClick={interestClick} className="interest-element" id="i35">
+            <div className="interest-element" id="i35">
               Writing
             </div>
-            <div onClick={interestClick} className="interest-element" id="i36">
+            <div className="interest-element" id="i36">
               Yoga
             </div>
           </div>
 
-          <div id="interests-button-container">
-            <button onClick={interestsClose} id="interests-cancel">
-              Cancel
-            </button>
-            <button onClick={interestsConfirm} id="interests-confirm">
-              Confirm
-            </button>
-          </div>
+          <button onClick={interestsClose} id="interests-close">
+            Close
+          </button>
+
         </div>
       </div>
     </div>
