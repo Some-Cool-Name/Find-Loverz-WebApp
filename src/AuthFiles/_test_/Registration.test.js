@@ -134,7 +134,7 @@ it('Registration Inputs : Field Filled correctly, but user already exists , Shou
     );
     // ACCESS THE USERNAME FIELD ON THE REGISTRATION PAGE
     const userNameLabel = screen.getByLabelText('Username'); 
-    fireEvent.change(userNameLabel, {target: {value: 'demo'}}) // type an empty string
+    fireEvent.change(userNameLabel, {target: {value: 'demo'}}) // type username
     await waitFor(() => { 
         expect(userNameLabel).toHaveValue('demo');
     });
