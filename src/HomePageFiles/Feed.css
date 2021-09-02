@@ -1,0 +1,41 @@
+div.User-Info {
+    width: 300px;
+    border: 15px solid;
+    border-color:  #b621fe;
+    /* box-shadow: 10px #1fd1f9; */
+    box-shadow: 5px 10px 18px #1fd1f9;
+    padding: 30px;
+    margin: 20px;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+button.logout{
+    color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: linear-gradient(to right, #b621fe, #1fd1f9) !important;
+	padding: 20px;
+	border-radius: 50px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+}
+.button{
+    color: #fff !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: linear-gradient(to right, #b621fe, #1fd1f9) !important;
+	padding: 5px;
+	border-radius: 50px;
+	display: inline-block;
+	border: none;
+	transition: all 0.4s ease 0s;
+    height: max-content;
+    text-align: center;
+    width: 100px;
+}
+
