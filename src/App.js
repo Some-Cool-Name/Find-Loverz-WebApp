@@ -1,16 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import Login from './AuthFiles/Login';
 import Registration from './AuthFiles/Registration';
 import Feed from './HomePageFiles/Feed';
+import { getFromStorage } from './HelperClasses/StorageHandler';
 
 // Component to hold and control all the apps pages
 function App() {
-   
-  
-  const [users, setUsers] = useState(null);
-   
+  const [user, setUser] = useState(null);
+
+  const resetStateAfterReload = () => {
+    try {
+      const toBeUser = getFromStorage('user');
+      if(toBeUser){
+        setUser(toBeUser);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    resetStateAfterReload();
+  }, [])
 
 
   return (
@@ -19,7 +32,7 @@ function App() {
 
         {/* Login page */}
         <Route exact path="/" render={props => (
-            <Login users={users} setUsers={setUsers}/>
+            <Login setUser={setUser} user={user} />
         )} />
 
         {/* Registration page */}
@@ -27,9 +40,8 @@ function App() {
 
         {/* Feed page */}
         <Route path="/feed" render={props => (
-            <Feed users={users} />
+            <Feed setUser={setUser} user={user} />
         )} />
-
 
       </div>
     </Router>

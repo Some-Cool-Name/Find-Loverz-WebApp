@@ -1,45 +1,55 @@
-import './Login.css';
 import React, { useState } from 'react';
+import 'regenerator-runtime/runtime';
+import './Login.css';
 import { Link, useHistory } from 'react-router-dom';
 import { Formik } from 'formik';
 import { globalStyles } from '../globalStyles';
 import { loginValidate } from './UserValidation';
 import { loginRequest } from '../BackendRequests/Authentication';
+import { saveToStorage } from '../HelperClasses/StorageHandler';
+import isLoggedIn from '../HelperClasses/LoginChecker';
 
-function Login(props) {
-    const setUsers = props.setUsers;
-    const users = props.users;
+function Login({ setUser, user }) {
     let history = useHistory();
     const [incorrectDetails, setIncorrectDetails] = useState(false);
     const [error, setError] = useState(false);
     const incorrectDetailsString = "Incorrect username or password";
     const unknownError = "Oops, something went wrong. Please try again later";
-    
+
+
     const loginUser = async (values) => {
         // validate user input
         try {
             const result = await loginRequest(values); 
             if(result.message === "success"){
-                history.push("/feed");
+                // extract user info from result
                 const objArray = [];
                 Object.keys(result).forEach(key => objArray.push({
                     name: key,
                     rating: result[key]
                 }));
-                setUsers([objArray[0].rating[0]]);  
-                console.log(users);
+                const loggedInUser = [objArray[0].rating[0]];
+                // login logistics
+                saveToStorage('user', loggedInUser);
+                setUser(loggedInUser);
+                history.push("/feed"); 
             }
-            else if(result.message === "Wrong Password"){
+            else if(result.message === "Wrong Password" || result.message === "error"){
                 // incorrect details
                 setIncorrectDetails(true);
-                setUsers(false)
+                setUser(false)
                  
             } 
         } catch (error) {
             // something went wrong
             setError(true);
         }   
-    } 
+    }
+
+
+    // checks if user is logged and moves user to feed if logged in.
+    if(isLoggedIn()) history.push('/feed');
+    
     return (
         
         <div className='container'>
@@ -68,7 +78,6 @@ function Login(props) {
                                     
                                     <input
                                         className='inputBox'
-                                        required
                                         type="text" 
                                         placeholder="Email..." 
                                         style={globalStyles.inputStyle}
@@ -108,6 +117,7 @@ function Login(props) {
             </div>
         </div> 
     )
+
 }
 const inputDivStyle = {
     display: 'flex',
