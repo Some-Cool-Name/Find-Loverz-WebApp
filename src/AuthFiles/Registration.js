@@ -212,8 +212,8 @@ function Registration() {
 
         <div className="form-element">
           
-          <label htmlFor="interests"> Interests</label>
-          <button onClick={interestsDisplay} id="interests-button">
+          <label className= 'intrestDescription' htmlFor="interests"> Interests</label>
+          <button className='intrestbutton' onClick={interestsDisplay} id="interests-button">
             Choose Interests
           </button>
         </div>
@@ -230,8 +230,9 @@ function Registration() {
             onChange={(e) => setLocation(e.target.value)}
           ></input>
         </div>
-
-        <input className = "button" id="register-button" style = {globalStyles.button} type="submit" value="Register" />
+        <div className = "form-element">
+        <input className = "button" id="register-button" type="submit" value="Register" />
+        </div>
       
       </form>
     </div>
