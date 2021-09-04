@@ -103,7 +103,7 @@ function Registration() {
         } 
   
         else {
-          // display appropriate error
+          // display to the user what needs to be filled
         }
 
 
