@@ -1,6 +1,9 @@
 import { React, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { globalStyles } from "../globalStyles";
+import "./Registration.css";
 import "../index.css";
+import DatePicker from "./DatePicker";
 
 function Registration() {
   let history = useHistory();
@@ -9,12 +12,28 @@ function Registration() {
   const [confirm, setConfirm] = useState();
   const [name, setName] = useState();
   const [gender, setGender] = useState();
-  const [birthday, setBirthday] = useState();
   const [sexuality, setSexuality] = useState();
-
+  const [birthday,setBirthday] = useState();
+  const [location,setLocation] = useState();
+  
+  const [date, setDate] = useState();
+  const [ageError,setAgeError] = useState("");
   var listen = true;
   var interestsArray = [];
   var interestsStrings = [];
+  function getAge(dateString){
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+    //age
+    
+}
 
   function interestsDisplay() {
     document.getElementById("interests-background").style.display = "block";
@@ -55,65 +74,116 @@ function Registration() {
   function interestsClose() {
     document.getElementById("interests-background").style.display = "none";
   }
+  function getDateString(Date){
+    
+    let dated=Date.getDate() + "-"+ parseInt(Date.getMonth()+1) +"-"+Date.getFullYear();
+    return dated;
+    
+  }
 
   const registerUser = async (e) => {
     try {
       e.preventDefault();
-      if (password && confirm && username && password === confirm && name) {
-        console.log("equal");
-        const result = await fetch(
-          "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
-            `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${"2000-02-20"}&sexuality=${sexuality}&location=${"braam"}`
-        ).then((res) => res.json());
-        console.log(result);
-        if (result === "success") {
-          history.push("/feed");
-        } else {
-          //this user already exists
+      const userAge = getAge(date);
+      
+      console.log(userAge);
+      const userBirthday = getDateString(date);
+      console.log(userBirthday);
+      if( userAge>=18){
+        setAgeError(" ")
+        
+        if (password && confirm && username && password === confirm && name) {
+          console.log("equal");
+          const result = await fetch(
+            "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
+              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}`
+          ).then((res) => res.json());
+          console.log(result);
+          if (result === "success") {
+            history.push("/feed");
+          } else {
+            //this user already exists
+          }
+        } 
+  
+        else {
+          // display to the user what needs to be filled
         }
-      } else {
-        // display appropriate error
+
+
       }
+      else {
+        //display less than  18
+        setAgeError("You have to be 18 years or older")
+      }
+       
     } catch (error) {}
   };
 
   return (
-    <div className="registration">
-      <h1>Register</h1>
+    <div className = "container">
+       <div className='header'>
+                <h3 className='appName'>find loverz</h3>
+             </div>
+      <div className="registration">
       <form className="form" onSubmit={registerUser}>
+      <h1>Register</h1>
+      <hr width="100px;"  size="8"></hr>
         <div className="form-element">
-          <label htmlFor="username"> Username</label>
+          <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input
+          className = 'inputBox'
             id="username"
+            required
+            type ="text"
+            placeholder = "Username..."
+            style = {globalStyles.inputStyle}
             onChange={(e) => setUsername(e.target.value)}
           ></input>
         </div>
 
+        
+
         <div className="form-element">
-          <label htmlFor="password"> Password</label>
+          <label className = "fieldDescription" htmlFor="password"> Password</label>
           <input
+          className = 'inputBox'
             id="password"
+            required
             type="password"
+            placeholder = "Password..."
+            style = {globalStyles.inputStyle}
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
 
         <div className="form-element">
-          <label htmlFor="confirmPassword"> Confirm password</label>
+          <label className = "fieldDescription" htmlFor="confirmPassword"> Confirm password</label>
           <input
+          className = 'inputBox'
             id="confirmPassword"
+            required
+            placeholder = "Confirm Password"
+            style = {globalStyles.inputStyle}
             type="password"
             onChange={(e) => setConfirm(e.target.value)}
           ></input>
         </div>
 
         <div className="form-element">
-          <label htmlFor="name"> Name</label>
-          <input id="name" onChange={(e) => setName(e.target.value)}></input>
+          <label className = "fieldDescription" htmlFor="name"> Name</label>
+          <input className = 'inputBox' 
+          id="name" 
+          required
+          type = "text"
+          placeholder ="Name"
+          style = {globalStyles.inputStyle}
+          onChange={(e) => setName(e.target.value)}
+          ></input>
         </div>
 
         <div className="form-element">
-          <label htmlFor="gender"> Gender</label>
+          <label className = "fieldDescription" htmlFor="gender"> Gender</label>
           <select id="gender" onChange={(e) => setGender(e.target.value)}>
             <option>Select an Option</option>
             <option>Male</option>
@@ -123,15 +193,15 @@ function Registration() {
         </div>
 
         <div className="form-element">
-          <label htmlFor="birthday"> Birthday</label>
-          <input
-            id="birthday"
-            onChange={(e) => setBirthday(e.target.value)}
-          ></input>
+          <label className = "fieldDescription" htmlFor="birthday"> Birthday</label>
+          
+        
+          <DatePicker id="birthday" date={date} setDate={setDate}></DatePicker>
         </div>
+        <div className= "form-element">{ageError}</div>
 
         <div className="form-element">
-          <label htmlFor="sexuality"> Sexuality</label>
+          <label className = "fieldDescription" htmlFor="sexuality"> Sexuality</label>
           <select id="sexuality" onChange={(e) => setSexuality(e.target.value)}>
             <option>Select an Option</option>
             <option>Male</option>
@@ -141,21 +211,31 @@ function Registration() {
         </div>
 
         <div className="form-element">
-          <label htmlFor="interests"> Interests</label>
-          <button onClick={interestsDisplay} id="interests-button">
+          
+          <label className= 'intrestDescription' htmlFor="interests"> Interests</label>
+          <button className='intrestbutton' onClick={interestsDisplay} id="interests-button">
             Choose Interests
           </button>
         </div>
 
         <div className="form-element">
-          <label htmlFor="location"> Location</label>
+        <label className = "fieldDescription" htmlFor="location"> Location</label>
           <input
+          className = 'inputBox'
             id="location"
+            required
+            type = "text"
+            placeholder = "Location"
+            style = {globalStyles.inputStyle}
+            onChange={(e) => setLocation(e.target.value)}
           ></input>
         </div>
-
-        <input id="register-button" type="submit" value="Register" />
+        <div className = "form-element">
+        <input className = "button" id="register-button" type="submit" value="Register" />
+        </div>
+      
       </form>
+    </div>
 
       <div id="interests-background">
         <div id="interests-interface">
@@ -279,8 +359,9 @@ function Registration() {
         </div>
       </div>
     </div>
+    
   );
+
 }
-// link =https://lamp.ms.wits.ac.za/home/s1851427/webb.php?username=br4&password=brbr&name=vhugala&gender=male&birthday=2000-02-20&sexuality=female&location=braam
 
 export default Registration;
