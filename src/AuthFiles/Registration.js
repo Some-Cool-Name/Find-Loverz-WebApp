@@ -113,7 +113,7 @@ function Registration() {
              const loggedInUser = [objArray[0].rating[0]];
              // login logistics
              saveToStorage('details', loggedInUser);
-             setUser(loggedInUser);
+            // setUser(loggedInUser);
 
             history.push("/feed");
           } else {
