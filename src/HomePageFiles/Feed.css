@@ -13,17 +13,7 @@ div.User-Info {
 }
 
 
-button.logout{
-    color: #fff !important;
-	text-transform: uppercase;
-	text-decoration: none;
-	background: linear-gradient(to right, #b621fe, #1fd1f9) !important;
-	padding: 20px;
-	border-radius: 50px;
-	display: inline-block;
-	border: none;
-	transition: all 0.4s ease 0s;
-}
+
 .button{
     color: #fff !important;
 	text-transform: uppercase;
