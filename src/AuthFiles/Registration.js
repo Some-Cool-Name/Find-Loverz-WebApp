@@ -4,6 +4,8 @@ import { globalStyles } from "../globalStyles";
 import "./Registration.css";
 import "../index.css";
 import DatePicker from "./DatePicker";
+import { saveToStorage } from '../HelperClasses/StorageHandler';
+import isLoggedIn from '../HelperClasses/LoginChecker';
 
 function Registration() {
   let history = useHistory();
@@ -100,6 +102,19 @@ function Registration() {
           ).then((res) => res.json());
           console.log(result);
           if (result === "success") {
+
+            //const details = [username, password,name]
+             // extract user info from result
+             const objArray = [];
+             Object.keys(result).forEach(key => objArray.push({
+                 name: key,
+                 rating: result[key]
+             }));
+             const loggedInUser = [objArray[0].rating[0]];
+             // login logistics
+             saveToStorage('details', loggedInUser);
+             setUser(loggedInUser);
+
             history.push("/feed");
           } else {
             //this user already exists
