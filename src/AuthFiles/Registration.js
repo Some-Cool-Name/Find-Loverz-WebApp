@@ -6,6 +6,7 @@ import "../index.css";
 import DatePicker from "./DatePicker";
 import { saveToStorage } from '../HelperClasses/StorageHandler';
 import { loginRequest } from "../BackendRequests/Authentication";
+import ReactJsAlert from "reactjs-alert"
 
 function Registration({ setUser }) {
   let history = useHistory();
@@ -16,6 +17,17 @@ function Registration({ setUser }) {
   const [gender, setGender] = useState();
   const [sexuality, setSexuality] = useState();
   const [location,setLocation] = useState();
+  const [interest1,setInterest1] = useState();
+  const [interest2,setInterest2] = useState();
+  const [interest3,setInterest3] = useState();
+  const [interest4,setInterest4] = useState();
+  const [interest5,setInterest5] = useState();
+  
+  const [alerts, setAlerts] = useState({
+    type: "error",
+    status: false,
+    title: "",
+  })
   
   const [date, setDate] = useState();
   const [ageError,setAgeError] = useState("");
@@ -64,7 +76,13 @@ function Registration({ setUser }) {
           }
           
           console.log(interestsArray);
+      
           console.log(interestsStrings);
+          setInterest1(interestsStrings[0])
+          setInterest2(interestsStrings[1])
+          setInterest3(interestsStrings[2])
+          setInterest4(interestsStrings[3])
+          setInterest5(interestsStrings[4])
         })
       });
 
@@ -90,16 +108,32 @@ function Registration({ setUser }) {
       console.log(userAge);
       const userBirthday = getDateString(date);
       console.log(userBirthday);
+      console.log(interest1);
       if( userAge>=18){
         setAgeError(" ")
-        
-        if (password && confirm && username && password === confirm && name) {
-          console.log("equal");
+       
+        if(password === confirm ){
+        if (password && confirm && username &&  name) {
+          
+          
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
               `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}`
           ).then(async (res) =>{
+            const temp = await res.json()
+            console.log(temp)
+            if(temp === "error"){
+              setAlerts({
+                type: "error",
+                status: true,
+                title: "This user already exists",
+              })
+              return
+            }
+            // send interests to database
+           
             const resp = await loginRequest({email: username, password: password});
+            const inr = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAInterest.php?"+ `username=${username}&interest_1=${interest1}&interest_2=${interest2}&interest_3=${interest3}&interest_4=${interest4}&interest_5=${interest5}`)
             if (resp.message === "success") {
               console.log("line 105 register");
               const objArray = [];
@@ -115,17 +149,25 @@ function Registration({ setUser }) {
             }
           });
 
-        } 
+        } }
   
         else {
-          // display to the user what needs to be filled
+          setAlerts({
+            type: "error",
+            status: true,
+            title: "Please make sure your passwords match",
+          })
         }
 
 
       }
       else {
         //display less than  18
-        setAgeError("You have to be 18 years or older")
+        setAlerts({
+          type: "error",
+          status: true,
+          title: "You should be 18 or above",
+        })
       }
        
     } catch (error) {}
@@ -133,6 +175,21 @@ function Registration({ setUser }) {
 
   return (
     <div className = "container">
+        <ReactJsAlert
+      status={alerts.status}   // true or false
+    type={alerts.type}   // success, warning, error, info
+    title={alerts.title}   // title you want to display
+    color ="blue"
+    Close={() => setAlerts({
+      type: "error",
+      status: false,
+      
+      title: "",
+      
+    }
+  
+    )}   // callback method for hide
+/>
        <div className='header'>
                 <h3 className='appName'>find loverz</h3>
              </div>
