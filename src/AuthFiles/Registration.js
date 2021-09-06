@@ -5,9 +5,9 @@ import "./Registration.css";
 import "../index.css";
 import DatePicker from "./DatePicker";
 import { saveToStorage } from '../HelperClasses/StorageHandler';
-import isLoggedIn from '../HelperClasses/LoginChecker';
+import { loginRequest } from "../BackendRequests/Authentication";
 
-function Registration() {
+function Registration({ setUser }) {
   let history = useHistory();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -15,7 +15,6 @@ function Registration() {
   const [name, setName] = useState();
   const [gender, setGender] = useState();
   const [sexuality, setSexuality] = useState();
-  const [birthday,setBirthday] = useState();
   const [location,setLocation] = useState();
   
   const [date, setDate] = useState();
@@ -99,26 +98,23 @@ function Registration() {
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
               `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}`
-          ).then((res) => res.json());
-          console.log(result);
-          if (result === "success") {
+          ).then(async (res) =>{
+            const resp = await loginRequest({email: username, password: password});
+            if (resp.message === "success") {
+              console.log("line 105 register");
+              const objArray = [];
+              Object.keys(resp).forEach(key => objArray.push({
+                  name: key,
+                  rating: resp[key]
+              }));
+              const loggedInUser = [objArray[0].rating[0]];
+              // login logistics
+              saveToStorage('user', loggedInUser);
+              setUser(loggedInUser);
+              history.push("/feed");
+            }
+          });
 
-            //const details = [username, password,name]
-             // extract user info from result
-             const objArray = [];
-             Object.keys(result).forEach(key => objArray.push({
-                 name: key,
-                 rating: result[key]
-             }));
-             const loggedInUser = [objArray[0].rating[0]];
-             // login logistics
-             saveToStorage('details', loggedInUser);
-            // setUser(loggedInUser);
-
-            history.push("/feed");
-          } else {
-            //this user already exists
-          }
         } 
   
         else {

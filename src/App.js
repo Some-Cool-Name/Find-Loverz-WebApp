@@ -36,7 +36,9 @@ function App() {
         )} />
 
         {/* Registration page */}
-        <Route path="/signup" component={Registration} />
+        <Route path="/signup" render={props => (
+            <Registration setUser={setUser} user={user} />
+        )} />
 
         {/* Feed page */}
         <Route path="/feed" render={props => (

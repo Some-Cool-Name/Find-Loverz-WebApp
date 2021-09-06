@@ -27,7 +27,7 @@ function Feed({ setUser, user }) {
     else {
 
         return (
-            <div>
+            <div style={{height: 400}}>
                 <div className='User-Info'> 
                     <h1>User-Info</h1>
                     <p>username  : {user[0].username} </p>
