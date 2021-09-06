@@ -143,7 +143,7 @@ function Registration({ setUser }) {
         <div className="form-element">
           <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input
-          className = 'inputBox'
+            className = 'inputBox'
             id="username"
             required
             type ="text"
