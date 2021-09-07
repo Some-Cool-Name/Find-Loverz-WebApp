@@ -17,7 +17,7 @@ exports[`renders correctly 1`] = `
       </h3>
     </div>
     <div
-      className="form"
+      className="formLogin"
     >
       <div
         style={
@@ -32,10 +32,12 @@ exports[`renders correctly 1`] = `
         <h1>
           Log in
         </h1>
+        <br />
         <hr
           size="8"
           width="60px;"
         />
+        <br />
         <label
           className="fieldDescription"
         >
