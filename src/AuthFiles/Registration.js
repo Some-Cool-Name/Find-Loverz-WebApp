@@ -196,6 +196,7 @@ function Registration({ setUser }) {
       <div className="registration">
       <form className="form" onSubmit={registerUser}>
       <h1>Register</h1>
+      <br />
       <hr width="100px;"  size="8"></hr>
         <div className="form-element">
           <label className = "fieldDescription" htmlFor="username"> Username</label>
@@ -280,7 +281,7 @@ function Registration({ setUser }) {
 
         <div className="form-element">
           
-          <label className= 'intrestDescription' htmlFor="interests"> Interests</label>
+          
           <button className='intrestbutton' onClick={interestsDisplay} id="interests-button">
             Choose Interests
           </button>
@@ -298,6 +299,7 @@ function Registration({ setUser }) {
             onChange={(e) => setLocation(e.target.value)}
           ></input>
         </div>
+        <br />
         <div className = "form-element">
         <input className = "button" id="register-button" type="submit" value="Register" />
         </div>

@@ -56,7 +56,7 @@ function Login({ setUser, user }) {
             <div className='header'>
                 <h3 className='appName'>find loverz</h3>
              </div>
-            <div  className='form'>
+            <div  className='formLogin'>
                 
                 <Formik    
                     initialValues={{
@@ -73,7 +73,9 @@ function Login({ setUser, user }) {
                         props => (
                             <div style={inputDivStyle}  >
                                 <h1>Log in</h1>
+                                <br />
                                 <hr width="60px;"  size="8"></hr>
+                                <br />
                                 <label className='fieldDescription'><b>Email</b></label>
                                     
                                     <input
