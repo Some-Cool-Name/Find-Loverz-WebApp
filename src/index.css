@@ -27,14 +27,15 @@ code {
 .registration .form-element{
   width: fit-content;
   display: block;
-  margin: 5px 20px;
+  margin: auto;
+  margin-bottom: 25px;
 }
 
 .registration label,
 .registration input,
 .registration select{
-  width: 250px;
-  height: 22px;
+  width: 320px;
+  height: 35px;
 
   padding: 0 5px;
   margin: 0;
@@ -43,8 +44,9 @@ code {
 }
 
 #register-button{
-  width: auto;
+  width: 150px;
   margin: 5px 20px;
+  height: 30px;
 }
 /* Registration Form */
 

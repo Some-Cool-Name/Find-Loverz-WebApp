@@ -4,6 +4,7 @@ import { globalStyles } from '../globalStyles';
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
 import isLoggedIn from '../HelperClasses/LoginChecker';
 import Login from '../AuthFiles/Login';
+import './Feed.css'
 
 function Feed({ setUser, user }) {
     let history = useHistory();
