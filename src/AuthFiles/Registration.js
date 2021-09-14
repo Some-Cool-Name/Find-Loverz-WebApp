@@ -6,7 +6,7 @@ import "../index.css";
 import DatePicker from "./DatePicker";
 import { saveToStorage } from '../HelperClasses/StorageHandler';
 import { loginRequest } from "../BackendRequests/Authentication";
-import ReactJsAlert from "reactjs-alert"
+import ReactJsAlert from "reactjs-alert";
 
 function Registration({ setUser }) {
   let history = useHistory();

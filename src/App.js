@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route  } from 'react-router-dom';
 import Login from './AuthFiles/Login';
 import Registration from './AuthFiles/Registration';
 import Feed from './HomePageFiles/Feed';
+import Matches from './HomePageFiles/Matches';
 import { getFromStorage } from './HelperClasses/StorageHandler';
 
 // Component to hold and control all the apps pages
@@ -43,6 +44,11 @@ function App() {
         {/* Feed page */}
         <Route path="/feed" render={props => (
             <Feed setUser={setUser} user={user} />
+        )} />
+
+        {/* Matches page */}
+        <Route path="/matches" render={props => (
+            <Matches setUser={setUser} />
         )} />
 
       </div>
