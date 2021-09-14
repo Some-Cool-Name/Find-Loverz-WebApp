@@ -4,9 +4,10 @@ import { globalStyles } from "../globalStyles";
 import "./Registration.css";
 import "../index.css";
 import DatePicker from "./DatePicker";
-import { saveToStorage } from '../HelperClasses/StorageHandler';
+import { getFromStorage, saveToStorage } from '../HelperClasses/StorageHandler';
 import { loginRequest } from "../BackendRequests/Authentication";
 import ReactJsAlert from "reactjs-alert";
+import ImagePicker from "../HelperClasses/ImagePicker";
 
 function Registration({ setUser }) {
   let history = useHistory();
@@ -118,7 +119,7 @@ function Registration({ setUser }) {
           
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
-              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}`
+              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${getFromStorage('image_url')}`
           ).then(async (res) =>{
             const temp = await res.json()
             console.log(temp)
@@ -199,6 +200,7 @@ function Registration({ setUser }) {
       <br />
       <hr width="100px;"  size="8"></hr>
         <div className="form-element">
+          <ImagePicker />
           <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input
             className = 'inputBox'
