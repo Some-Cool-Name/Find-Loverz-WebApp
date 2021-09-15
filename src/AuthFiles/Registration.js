@@ -7,10 +7,10 @@ import DatePicker from "./DatePicker";
 import { getFromStorage, saveToStorage } from '../HelperClasses/StorageHandler';
 import { loginRequest } from "../BackendRequests/Authentication";
 import ReactJsAlert from "reactjs-alert";
-import ImagePicker from "../HelperClasses/ImagePicker";
 
 function Registration({ setUser }) {
   let history = useHistory();
+  const cloudinary = 'https://api.cloudinary.com/v1_1/dkctv74ue/image/upload';
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [confirm, setConfirm] = useState();
@@ -23,6 +23,7 @@ function Registration({ setUser }) {
   const [interest3,setInterest3] = useState();
   const [interest4,setInterest4] = useState();
   const [interest5,setInterest5] = useState();
+  const [file, setFile] = useState(null);
   
   const [alerts, setAlerts] = useState({
     type: "error",
@@ -101,7 +102,23 @@ function Registration({ setUser }) {
     
   }
 
-  const registerUser = async (e) => {
+  const handleImage = async (images) => {
+    for (let image of images) {
+        const formData = new FormData();
+        formData.append("file", image);
+        formData.append("upload_preset", "gbu8evn2");
+
+        const resp = await fetch(cloudinary, {
+            body: formData,
+            method: 'POST'
+        })
+        await resp.json().then((respJSON) => {
+            saveToStorage('image_url', respJSON.secure_url);
+        });
+  }
+}
+
+  const registerUser = async (e, images) => {
     try {
       e.preventDefault();
       const userAge = getAge(date);
@@ -116,7 +133,7 @@ function Registration({ setUser }) {
         if(password === confirm ){
         if (password && confirm && username &&  name) {
           
-          
+          await handleImage(images);
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
               `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${getFromStorage('image_url')}`
@@ -195,12 +212,18 @@ function Registration({ setUser }) {
                 <h3 className='appName'>find loverz</h3>
              </div>
       <div className="registration">
-      <form className="form" onSubmit={registerUser}>
+      <form className="form" onSubmit={(e) => registerUser(e, file.files)}>
       <h1>Register</h1>
       <br />
       <hr width="100px;"  size="8"></hr>
         <div className="form-element">
-          <ImagePicker />
+          <input
+            type="file"
+            id="fileupload"
+            accept="image/*"
+            ref={fileInputEl => setFile(fileInputEl)}
+            onChange={() => handleImage(file.files) }
+          />
           <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input
             className = 'inputBox'
