@@ -49,6 +49,26 @@ function Registration({ setUser }) {
     
 }
 
+  //  Generate colour between range
+  const randomBetween = (a, b) => {
+    const max = Math.max(a, b);
+    const min = Math.min(a, b);
+    return Math.floor(Math.random() * (max - min) + min);
+  };
+
+  const randomColor = (firstColor, secondColor) => {
+    var first = firstColor.toUpperCase().substring(1, secondColor.length);
+    var second = secondColor.toUpperCase().substring(1, firstColor.length);
+    const scale = '0123456789ABCDEF';
+    let color = '#';
+    for(let i = 0; i < first.length && i < second.length; i++ ){
+       const random = randomBetween(scale.indexOf(first[i]),
+       scale.indexOf(second[i]));
+       color += scale[random];
+    };
+    return color;
+  };
+
   function interestsDisplay() {
     document.getElementById("interests-background").style.display = "block";
     var clickedId;
@@ -57,6 +77,7 @@ function Registration({ setUser }) {
       document.querySelectorAll('.interest-element').forEach(item => {
         item.addEventListener('click', event => {
           clickedId = event.target.id;
+          var colour = randomColor('#c471ed' , '#12c2e9');
  
           // If element is already highlighted, remove element
           if (interestsArray.includes(clickedId)){
@@ -73,7 +94,7 @@ function Registration({ setUser }) {
             interestsArray.push(clickedId);
             interestsStrings.push(document.getElementById(clickedId).textContent);
             document.getElementById(clickedId).style.color = "#fff";
-            document.getElementById(clickedId).style.background = "#000";
+            document.getElementById(clickedId).style.background = colour;
           }
           
           console.log(interestsArray);
@@ -200,6 +221,7 @@ function Registration({ setUser }) {
       <br />
       <hr width="100px;"  size="8"></hr>
         <div className="form-element">
+          <label className = "fieldDescription" htmlFor="ImagePicker"> Profile Picture</label>
           <ImagePicker />
           <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input

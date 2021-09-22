@@ -4,6 +4,8 @@ import isLoggedIn from '../HelperClasses/LoginChecker';
 import Login from '../AuthFiles/Login';
 import Users from './Users';
 import NavBar from './NavBar';
+import FeedLeft from './FeedLeft';
+import FeedRight from './FeedRight';
 import './Feed.css';
 
 function Feed({ setUser, user }) {
@@ -21,9 +23,9 @@ function Feed({ setUser, user }) {
     else {
 
         return (
-            <div>
-                <Users />
-                <NavBar setUser={setUser} />
+            <div className="feed">
+                <FeedLeft></FeedLeft>
+                <FeedRight></FeedRight>
             </div>
         )
     }
