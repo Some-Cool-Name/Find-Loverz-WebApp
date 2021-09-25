@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
+import { matchRequest } from '../BackendRequests/Matches';
+import { useEffect, useState } from 'react';
 
-export default function FeedLeft({ setUser }) {
+export default function FeedLeft({ setUser, user }) {
     let history = useHistory();
+    const [fetchedMatches, setFechedMatches] = useState([]);
 
     // handles user logout
     const handleLogout = () => {
@@ -11,6 +14,35 @@ export default function FeedLeft({ setUser }) {
         setUser(null);
         history.push('/');
     }
+
+    useEffect(()=>{
+        const userMatches = async() =>{
+            const data =  await matchRequest(user[0].username);
+            setFechedMatches(data);
+        };
+        userMatches();
+    }, [user]);
+
+    const numberofMatches = fetchedMatches.count;
+    const matches = fetchedMatches.matchedWith;
+    console.log(matches); 
+
+    function showMatches(){
+        var list = []
+        for(var i = 0; i<numberofMatches;i++){
+            var picture = matches[i].Profile_Picture;
+               list.push(
+                   <div className = "userTab">
+                        <div className = "profilepicture"><img src = {picture} alt="pp" /> </div>
+                        <div className = "userName">{matches[i].Full_Name}</div>
+                        <div className = "date"> 15 sept </div>
+                   </div> 
+               );
+        }
+        return list;
+        
+    }
+    
 
     return (        
         <div>
@@ -27,7 +59,10 @@ export default function FeedLeft({ setUser }) {
                 </div>
                 
                 <div className="navbar-items">
-                    <p>Messages</p>
+                    <p>Matches</p>
+                </div>
+                <div>
+                    {showMatches()}
                 </div>
             </div>
         </div>

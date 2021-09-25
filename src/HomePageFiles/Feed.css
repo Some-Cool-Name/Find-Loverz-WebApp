@@ -38,6 +38,7 @@ div.User-Info {
 }
 
 /* Left Feed */
+
 .right-container-1{
     width: 75vw;
     height: fit-content;
@@ -230,6 +231,46 @@ div.User-Info {
 #no-button:hover{
     background: #bfbfbf;
     color: #ff0000;
+}
+.userTab{
+    display: grid;
+    grid-template-columns: 40px 1fr max-content;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    background-color:#e2eae5;
+    border-bottom: 1px solid grey;
+    margin-bottom: 1px;
+    border-radius: 4px;
+    padding: 4px 1px 4px 0px ;
+}
+.userTab.active,.userTab:hover{
+    background: lightblue;
+}
+.profilepicture{
+    width: 40px;
+    height: 40px;
+
+    margin-right: 20px;
+    border-radius: 50px;
+
+    background-image: url(../default.png);
+    background-position: 15px ;
+    background-size: 40px;
+    background-repeat: no-repeat;
+}
+.profilepicture > img{
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+}
+.userName{
+    font-size: large;
+    align-content: left;
+}
+.date{
+    font-size: small;
+    font-weight: bold;
 }
 /* Left Feed End */
 
