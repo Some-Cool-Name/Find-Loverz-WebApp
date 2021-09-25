@@ -33,7 +33,7 @@ export default function FeedLeft({ setUser, user }) {
             var picture = matches[i].Profile_Picture;
                list.push(
                    <div className = "userTab">
-                        <div className = "profilepicture"><img src = {picture} alt="pp" /> </div>
+                        <div className = "profilepicture"><img src = {picture} alt="" /> </div>
                         <div className = "userName">{matches[i].Full_Name}</div>
                         <div className = "date"> 15 sept </div>
                    </div> 
