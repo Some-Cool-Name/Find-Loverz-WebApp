@@ -117,7 +117,7 @@ function button(){
               <button id="open" onClick={button} >More Info</button>
                 <div className="modal-container" id="modal_container">
                   <div className="modal">
-                      <h1>Modals are here</h1>
+                      <h1>More information</h1>
                      {/* <p id="feed-age">21</p>*/}
                       <p>Age:21</p>
                       <p>Birthday: June 20 <i><b>gemini</b></i></p>
