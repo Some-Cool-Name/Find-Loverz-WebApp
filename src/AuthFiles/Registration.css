@@ -14,15 +14,12 @@ label.fieldDescription{
     text-align: start;
     width: 100%;
     padding: 1px;
-    padding-left: 15px;
+    padding-left: 10px;
     padding-bottom: 1px;
     margin-inline-start: auto;
     margin-inline-end: auto;
 }
-input.inputBox{
-    margin-top: 10px;
-    color: #b621fe;
-}div {
+div {
     display: block;
 }
 body {
@@ -34,7 +31,9 @@ body {
     overflow: hidden;
     background:linear-gradient(to right,#c471ed,#b621fe , #12c2e9); 
 }
-
+input.inputbox{
+    margin-top: 2px;
+}
 h3{
   margin-top: auto;
   margin-bottom: opx;
@@ -43,14 +42,15 @@ h3{
     font-family:cursive;
     font-size: xx-large;
 }
+
 .form{
     flex-direction: column;
-    width: 300px;
+    width: 350px;
     padding: 5;
     margin: auto;
     margin-top: 60px;
     margin-bottom: 60px;
-    height: 700px;
+    height: 1080px;
     background: #ffffff;
     box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
     padding: 20px 55px 20px 55px;
@@ -59,7 +59,7 @@ h3{
 }
 hr{
     margin-top: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
     margin-left: auto;
     margin-right: auto;
@@ -96,9 +96,9 @@ input{
     
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
-    border-color: #00bafa;
-    margin-top: 30px;
+input:focus{
+    /* border-color: #00bafa; */
+    border-color:#b621fe;
 }
 .button{
     cursor: pointer;
@@ -139,6 +139,9 @@ link.button{
     box-sizing: border-box;
     width: 100%;
    
+}
+button#interests-close{
+    background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
 }
 
 
