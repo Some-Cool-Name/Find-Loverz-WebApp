@@ -23,24 +23,15 @@ export default function FeedLeft({ setUser, user }) {
         userMatches();
     }, [user]);
 
-<<<<<<< HEAD
     
     const matches = fetchedMatches.matchedWith;
     const numberofMatches = fetchedMatches.count;
     console.log(); 
-=======
-    const numberofMatches = fetchedMatches.count;
-    const matches = fetchedMatches.matchedWith;
-    console.log(matches); 
->>>>>>> a6e63f0c212950662e04ec3d63029c14501bd168
 
     function showMatches(){
         var list = []
         for(var i = 0; i<numberofMatches;i++){
-<<<<<<< HEAD
             
-=======
->>>>>>> a6e63f0c212950662e04ec3d63029c14501bd168
             var picture = matches[i].Profile_Picture;
                list.push(
                    <div className = "userTab">
