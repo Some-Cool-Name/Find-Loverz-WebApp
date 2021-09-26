@@ -10,7 +10,7 @@ import './Feed.css';
 
 function Feed({ setUser, user }) {
     let history = useHistory();
-
+    console.log(user);
     // checks if user is logged and allows or gives him access to the page.
     if(!isLoggedIn()){
         history.push('/');
@@ -23,9 +23,15 @@ function Feed({ setUser, user }) {
     else {
 
         return (
-            <div className="feed">
-                <FeedLeft></FeedLeft>
+            
+            <div>
+                <div className="feed">
+                <FeedLeft user = {user}></FeedLeft>
                 <FeedRight></FeedRight>
+            </div>
+            <div>
+            <NavBar setUser={setUser} />
+            </div>
             </div>
         )
     }
