@@ -10,7 +10,6 @@ import './Feed.css';
 
 function Feed({ setUser, user }) {
     let history = useHistory();
-    console.log(user);
     // checks if user is logged and allows or gives him access to the page.
     if(!isLoggedIn()){
         history.push('/');

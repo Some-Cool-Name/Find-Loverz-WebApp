@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 export default function FeedLeft({ setUser, user }) {
     let history = useHistory();
     const [fetchedMatches, setFechedMatches] = useState([]);
+    const [error, setError] = useState(false);
 
     // handles user logout
     const handleLogout = () => {
@@ -23,18 +24,33 @@ export default function FeedLeft({ setUser, user }) {
         userMatches();
     }, [user]);
 
-    const numberofMatches = fetchedMatches.count;
     const matches = fetchedMatches.matchedWith;
-    console.log(matches); 
+    const numberofMatches = matches.length;
+    console.log(numberofMatches);
+    console.log(matches);
 
     function showMatches(){
+        
         var list = []
-        for(var i = 0; i<numberofMatches;i++){
-            var picture = matches[i].Profile_Picture;
+        for(var i = 0; i<numberofMatches ;i++){
+            var picture;
+            var name;
+            try{
+                picture = matches[i].Profile_Picture;
+                if(picture === undefined){
+                    picture = "";
+                }
+                name = matches[i].Full_Name;
+                if(name === undefined){
+                    name = "Error undefined name";
+                }
+            }catch(error){
+                setError(true);
+            }
                list.push(
                    <div className = "userTab">
                         <div className = "profilepicture"><img src = {picture} alt="" /> </div>
-                        <div className = "userName">{matches[i].Full_Name}</div>
+                        <div className = "userName">{name}</div>
                         <div className = "date"> 15 sept </div>
                    </div> 
                );
