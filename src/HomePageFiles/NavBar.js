@@ -12,7 +12,7 @@ export default function NavBar({ setUser }) {
         history.push('/');
     }
 
-    return (
+    return (        
         <div>
             <Link to="/feed" style={{marginRight: 5}} > <b>Feed</b> </Link>
             <Link to="/matches" style={{marginRight: 5}} > <b>Chat</b> </Link>

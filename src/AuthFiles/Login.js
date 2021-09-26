@@ -72,7 +72,7 @@ function Login({ setUser, user }) {
                     {
                         props => (
                             <div style={inputDivStyle}  >
-                                <h1>Log in</h1>
+                                <h1>Log In</h1>
                                 <br />
                                 <hr width="60px;"  size="8"></hr>
                                 <br />
