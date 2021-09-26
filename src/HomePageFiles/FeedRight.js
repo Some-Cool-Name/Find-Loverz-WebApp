@@ -1,4 +1,5 @@
 import React from "react";
+//import {button} from '../HelperClasses/modal.js';
 
 export default function FeedRight() {
   var dragging = false;
@@ -42,6 +43,24 @@ function mouseUp (event) {
     console.log("nothing");
   }
 }
+/*modal helper*/
+function button(){
+  const open = document.getElementById('open');
+  console.log(open);
+  const modal_container = document.getElementById('modal_container');
+  const close = document.getElementById('close');
+  
+  open.addEventListener('click',()=>{
+      modal_container.classList.add("show");
+  });
+  
+  
+  close.addEventListener('click',()=>{
+      modal_container.classList.remove('show');
+  });
+  
+  }
+/*end modal helper*/
 
   return (
     <div>
@@ -52,6 +71,21 @@ function mouseUp (event) {
             <div className="card-id">
               <p id="feed-name">Name</p>
               <p id="feed-age">Age</p>
+              <button id="open" onClick={button} >More Info</button>
+                {/* new stuff*/}
+                <div className="modal-container" id="modal_container">
+                  <div className="modal">
+                      <h1>Modals are here</h1>
+                      <p>Birthday: June 20 <i><b>gemini</b></i></p>
+                      <p>Location: Braamfontein</p>                   
+                      <p><b>Name</b> enjoys walks on the beach and hanging out with friends</p>
+                      <button id="close">
+                          Close
+                      </button>
+                  </div>
+
+                </div>
+                {/* end new stuff*/}
             </div>
             <div className="card-interests">
               Interest 1, Interest 2, Interest 3, Interest 4, Interest 5
