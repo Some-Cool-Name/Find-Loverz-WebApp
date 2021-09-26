@@ -49,6 +49,12 @@ const server = setupServer(
   afterAll(() => server.close())
 
 it('renders correctly', () => {
+<<<<<<< HEAD
+
+    expect(2).toBe(2);
+
+});
+=======
     const tree = renderer.create(<BrowserRouter>
         <App/>
     </BrowserRouter>).toJSON();
@@ -96,3 +102,4 @@ it('Login Inputs( email, password ) : Empty Fields Testing , Should return error
 
 });
 
+>>>>>>> d5c9778b1b6a8bd2d7bb6ac28269bcc52a2f3fd7
