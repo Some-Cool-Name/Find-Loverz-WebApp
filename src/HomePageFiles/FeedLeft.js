@@ -31,9 +31,14 @@ export default function FeedLeft({ setUser, user }) {
     function showMatches(){
         var list = []
         for(var i = 0; i<numberofMatches;i++){
+<<<<<<< HEAD
 
             if(matches[i] != undefined){
                 var picture = matches[i].Profile_Picture;
+=======
+            
+            var picture = matches[i].Profile_Picture;
+>>>>>>> 679e35da905c369d264bb16d96330a8b4d86ee81
                list.push(
                    <div className = "userTab">
                         <div className = "profilepicture"><img src = {picture} alt="" /> </div>
