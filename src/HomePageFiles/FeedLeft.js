@@ -31,8 +31,9 @@ export default function FeedLeft({ setUser, user }) {
     function showMatches(){
         var list = []
         for(var i = 0; i<numberofMatches;i++){
-            
-            var picture = matches[i].Profile_Picture;
+
+            if(matches[i] != undefined){
+                var picture = matches[i].Profile_Picture;
                list.push(
                    <div className = "match-container-2">
                         <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
@@ -40,6 +41,8 @@ export default function FeedLeft({ setUser, user }) {
                         <div className = "match-date"> 15 Sept </div>
                    </div> 
                );
+            }
+            
         }
         return list;
         
