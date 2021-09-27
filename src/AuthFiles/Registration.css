@@ -184,3 +184,10 @@ input#fileupload::before {
     white-space: nowrap;
     -webkit-user-select: none; 
 }
+
+#register-pic{
+    max-width: 320px;
+    max-height: 320px;
+    
+    border-radius: 20px;
+}

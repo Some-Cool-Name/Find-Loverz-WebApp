@@ -55,7 +55,7 @@ export default function FeedLeft({ setUser, user }) {
                         </div>
                     </div>
 
-                    <div id="logout"><i class="uil uil-sign-out-alt"></i></div>
+                    <div id="logout"><i class="uil uil-sign-out-alt" onClick={handleLogout}></i></div>
                 </div>
                 
                 <div className="navbar-items">
