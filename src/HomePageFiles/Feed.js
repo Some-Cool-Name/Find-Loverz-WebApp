@@ -26,8 +26,14 @@ function Feed({ setUser, user }) {
             
             <div>
                 <div className="feed">
+<<<<<<< HEAD
                 <FeedLeft user = {user} setUser={setUser}></FeedLeft>
                 <FeedRight></FeedRight>
+=======
+                <FeedLeft user={user}> </FeedLeft>
+                <FeedRight user={user}> </FeedRight>
+                
+>>>>>>> f7264ff9032e29cdd454719773477bfe9d62e760
             </div>
             <div>
             </div>

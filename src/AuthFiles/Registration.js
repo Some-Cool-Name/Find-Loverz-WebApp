@@ -157,7 +157,24 @@ function Registration({ setUser }) {
         if(password === confirm ){
         if (password && confirm && username &&  name) {
           
-          await handleImage(images);
+          if(!interest1 || !interest2 || !interest3 || !interest4 || !interest5){
+            setAlerts({
+              type: "error",
+              status: true,
+              title: "Please select 5 interests",
+            })
+            return
+        }
+       
+        if(!gender || !sexuality  ){
+          setAlerts({
+            type: "error",
+            status: true,
+            title: "Please specify gender and sexuality",
+          })
+          
+          return
+        }
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
               `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${getFromStorage('image_url')}`
@@ -172,6 +189,7 @@ function Registration({ setUser }) {
               })
               return
             }
+            
             // send interests to database
            
             const resp = await loginRequest({email: username, password: password});

@@ -1,7 +1,48 @@
-import React from "react";
-//import {button} from '../HelperClasses/modal.js';
+import React,{useState, useEffect} from "react";
 
-export default function FeedRight() {
+export default function FeedRight({user}) {
+
+
+  // fetching the feed
+  const [users,setUsers] = useState(
+    {length:0}
+  );
+  const fetchUsers = async (e) =>{
+    const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
+    `username=${user[0].username}`
+    )
+    console.log(user[0].username)
+    const data = await result.json();
+    setUsers(data.feedProfiles);
+    
+    console.log(data.feedProfiles)
+    }
+    useEffect(()=>{
+      fetchUsers();
+      
+      },[])
+
+
+
+  //Accepting and declining users 
+
+   const swipeRight = async (e)=>{
+     e.preventDefault()
+     const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+
+     `likerUsername=${user[0].username} & likeeUsername=${users[0].E_mail}`
+     )
+    fetchUsers();
+   } 
+   
+   
+   const swipeLeft = async (e)=>{
+    e.preventDefault()
+    const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
+    `rejectorUsername=${user[0].username}& rejecteeUsername=${users[0].E_mail}`
+    )
+   fetchUsers();
+  } 
+
   var dragging = false;
   var xStart = 0;
   var xEnd = 0;
@@ -67,15 +108,18 @@ function button(){
       <div className="right-container-1" onMouseDown={mouseDown} onMouseMove={mouseMove} onMouseUp={mouseUp}>
         <div className="right-container-2">
           <div className="card-container" id="card">
-            <div className="card-image"></div>
+            <img className="card-image" src={users.length ===0 ? 'no user': users[0].Profile_Picture} ></img>
             <div className="card-id">
-              <p id="feed-name">Name</p>
-              <p id="feed-age">Age</p>
+              <p id="feed-name">{users.length ===0 ? 'no user': users[0].Full_Name }</p>
+              
+              
+              {/* new stuff*/}
               <button id="open" onClick={button} >More Info</button>
-                {/* new stuff*/}
                 <div className="modal-container" id="modal_container">
                   <div className="modal">
-                      <h1>Modals are here</h1>
+                      <h1>More information</h1>
+                     {/* <p id="feed-age">21</p>*/}
+                      <p>Age:21</p>
                       <p>Birthday: June 20 <i><b>gemini</b></i></p>
                       <p>Location: Braamfontein</p>                   
                       <p><b>Name</b> enjoys walks on the beach and hanging out with friends</p>
@@ -90,24 +134,16 @@ function button(){
             <div className="card-interests">
               Interest 1, Interest 2, Interest 3, Interest 4, Interest 5
             </div>
+           
             <div className="card-bio">
-              <h1>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-              </h1>
+              <div>
+              {users.length ===0 ? 'no user': users[0].Bio }
+              </div>
             </div>
           </div>
           <div className="button-container">
-            <div id="yes-button"><i class="uil uil-check"></i></div>
-            <div id="no-button"><i class="uil uil-times"></i></div>
+            <div onClick={ users.length===0 ? '':swipeRight} id="yes-button"><i class="uil uil-check"></i></div>
+            <div onClick={ users.length===0 ? '':swipeLeft} id="no-button" ><i class="uil uil-times"></i></div>
           </div>
         </div>
       </div>

@@ -23,13 +23,15 @@ export default function FeedLeft({ setUser, user }) {
         userMatches();
     }, [user]);
 
-    const numberofMatches = fetchedMatches.count;
+    
     const matches = fetchedMatches.matchedWith;
-    console.log(matches); 
+    const numberofMatches = fetchedMatches.count;
+    console.log(); 
 
     function showMatches(){
         var list = []
         for(var i = 0; i<numberofMatches;i++){
+            
             var picture = matches[i].Profile_Picture;
                list.push(
                    <div className = "userTab">
