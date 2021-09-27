@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from "react";
+import Modal from "./Modal";
 
 export default function FeedRight({user}) {
 
@@ -84,24 +85,7 @@ function mouseUp (event) {
     console.log("nothing");
   }
 }
-/*modal helper*/
-function button(){
-  const open = document.getElementById('open');
-  console.log(open);
-  const modal_container = document.getElementById('modal_container');
-  const close = document.getElementById('close');
-  
-  open.addEventListener('click',()=>{
-      modal_container.classList.add("show");
-  });
-  
-  
-  close.addEventListener('click',()=>{
-      modal_container.classList.remove('show');
-  });
-  
-  }
-/*end modal helper*/
+
 
   return (
     <div>
@@ -112,24 +96,8 @@ function button(){
             <div className="card-id">
               <p id="feed-name">{users.length ===0 ? 'no user': users[0].Full_Name }</p>
               
+              <Modal></Modal>
               
-              {/* new stuff*/}
-              <button id="open" onClick={button} >More Info</button>
-                <div className="modal-container" id="modal_container">
-                  <div className="modal">
-                      <h1>More information</h1>
-                     {/* <p id="feed-age">21</p>*/}
-                      <p>Age:21</p>
-                      <p>Birthday: June 20 <i><b>gemini</b></i></p>
-                      <p>Location: Braamfontein</p>                   
-                      <p><b>Name</b> enjoys walks on the beach and hanging out with friends</p>
-                      <button id="close">
-                          Close
-                      </button>
-                  </div>
-
-                </div>
-                {/* end new stuff*/}
             </div>
             <div className="card-interests">
               Interest 1, Interest 2, Interest 3, Interest 4, Interest 5

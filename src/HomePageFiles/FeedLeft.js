@@ -34,10 +34,10 @@ export default function FeedLeft({ setUser, user }) {
             
             var picture = matches[i].Profile_Picture;
                list.push(
-                   <div className = "userTab">
-                        <div className = "profilepicture"><img src = {picture} alt="" /> </div>
-                        <div className = "userName">{matches[i].Full_Name}</div>
-                        <div className = "date"> 15 sept </div>
+                   <div className = "match-container-2">
+                        <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
+                        <div className = "match-username">{matches[i].Full_Name}</div>
+                        <div className = "match-date"> 15 Sept </div>
                    </div> 
                );
         }
@@ -63,7 +63,8 @@ export default function FeedLeft({ setUser, user }) {
                 <div className="navbar-items">
                     <p>Matches</p>
                 </div>
-                <div>
+
+                <div className="match-container-1">
                     {showMatches()}
                 </div>
             </div>

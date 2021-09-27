@@ -17,15 +17,15 @@ function Matches({ setUser }) {
     else{
         return (
             <div>
-                <div className = "header">
+                <div className = "matches-header">
                     <h1>Matches page</h1>
                 </div>
-                <div className = "container">
+                <div className = "matches-container">
                     <div className = "userList">
                         <div className = "title">
                             <h3>Matches</h3>
                         </div>
-                        <div>MAtched users here</div>
+                        <div>Matched users here</div>
     
                     </div>
                 </div>
