@@ -23,14 +23,17 @@ export default function FeedLeft({ setUser, user }) {
         userMatches();
     }, [user]);
 
-    const numberofMatches = fetchedMatches.count;
+    
     const matches = fetchedMatches.matchedWith;
-    console.log(matches); 
+    const numberofMatches = fetchedMatches.count;
+    console.log(); 
 
     function showMatches(){
         var list = []
         for(var i = 0; i<numberofMatches;i++){
-            var picture = matches[i].Profile_Picture;
+
+            if(matches[i] != undefined){
+                var picture = matches[i].Profile_Picture;
                list.push(
                    <div className = "userTab">
                         <div className = "profilepicture"><img src = {picture} alt="" /> </div>
@@ -38,6 +41,8 @@ export default function FeedLeft({ setUser, user }) {
                         <div className = "date"> 15 sept </div>
                    </div> 
                );
+            }
+            
         }
         return list;
         
@@ -55,7 +60,7 @@ export default function FeedLeft({ setUser, user }) {
                         </div>
                     </div>
 
-                    <div id="logout"><i class="uil uil-sign-out-alt"></i></div>
+                    <div id="logout"><i class="uil uil-sign-out-alt" onClick={handleLogout}></i></div>
                 </div>
                 
                 <div className="navbar-items">
