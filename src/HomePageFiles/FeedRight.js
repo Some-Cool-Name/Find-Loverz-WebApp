@@ -104,7 +104,7 @@ function button(){
   }
 /*end modal helper*/
 
-console.log(users[0]);
+// console.log(users[0]);
 
 
   return (
@@ -123,8 +123,8 @@ console.log(users[0]);
                       <br/>
                       <br/>
                      {/* <p id="feed-age">21</p>*/}
-                      <p style={{color: 'purple'}} > Name:</p> <p> {users[0].Full_Name}</p>
-                      <p style={{color: 'purple', marginTop: 5}} >Age:</p><p>21</p>
+                      {/* <p style={{color: 'purple'}} > Name:</p> <p> {users[0].Full_Name}</p> */}
+                      <p style={{color: 'purple'}} >Age:</p><p>21</p>
                       <p style={{color: 'purple', marginTop: 5}} >Location:</p><p> Braamfontein</p>
                       <p style={{color: 'purple', marginTop: 5}} >Birthday:</p> <p>{users.length ===0 ? 'no user': users[0].Birthday} <i><b></b></i></p>
                       <button className = "button" id="close">

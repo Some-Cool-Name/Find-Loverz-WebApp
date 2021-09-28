@@ -128,7 +128,6 @@ function Registration({ setUser }) {
         const formData = new FormData();
         formData.append("file", image);
         formData.append("upload_preset", "gbu8evn2");
-        document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]);
 
         const resp = await fetch(cloudinary, {
             body: formData,
@@ -272,7 +271,7 @@ function Registration({ setUser }) {
             id="fileupload"
             accept="image/*"
             ref={fileInputEl => setFile(fileInputEl)}
-            
+            onChange={(e) => document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) }
           />
           <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input
