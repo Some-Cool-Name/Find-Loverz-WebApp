@@ -78,11 +78,11 @@ export default function FeedLeft({ setUser, user }) {
             }
             try {
                list.push(
-                   <div className = "userTab">
+                   <div className = "match-container-2">
 
-                        <div className = "profilepicture"><img src = {picture} alt="" /> </div>
-                        <div className = "userName">{name}</div>
-                        <div className = "date"> 15 sept </div>
+                        <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
+                        <div className = "match-userName">{name}</div>
+                        <div className = "match-date"> 15 sept </div>
                    </div> 
                );
             }
