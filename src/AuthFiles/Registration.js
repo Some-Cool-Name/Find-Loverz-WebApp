@@ -153,7 +153,7 @@ function Registration({ setUser }) {
       console.log(interest1);
       if( userAge>=18){
         setAgeError(" ")
-       
+        
         if(password === confirm ){
         if (password && confirm && username &&  name) {
           
@@ -175,11 +175,11 @@ function Registration({ setUser }) {
           
           return
         }
-          
+          console.log("before")
           await handleImage(images)
           const te = getFromStorage('image_url')
           console.log(getFromStorage('image_url'))
-          
+          console.log("after")
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/WDAReg.php?" +
               `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${te}&bio="yo"`

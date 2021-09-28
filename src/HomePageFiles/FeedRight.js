@@ -27,16 +27,16 @@ export default function FeedRight({user}) {
   //Accepting and declining users 
 
    const swipeRight = async (e)=>{
-     e.preventDefault()
+    // e.preventDefault()
      const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+
      `likerUsername=${user[0].username} & likeeUsername=${users[0].E_mail}`
-     ,{method:"POST"})
+     )
     fetchUsers();
    } 
    
    
    const swipeLeft = async (e)=>{
-    e.preventDefault()
+    //e.preventDefault()
     const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
     `rejectorUsername=${user[0].username}& rejecteeUsername=${users[0].E_mail}`
     )
@@ -73,14 +73,17 @@ function mouseUp (event) {
    }
 
    if (swipe < 0){
+    swipeLeft();
      console.log("left");
    }
 
    else if (swipe > 0){
+     swipeRight();
     console.log("right");
   }
 
   else{
+    
     console.log("nothing");
   }
 }
