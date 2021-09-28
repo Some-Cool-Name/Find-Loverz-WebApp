@@ -1,6 +1,6 @@
 // sends login request to backend
 export const loginRequest = async (user) => {
-    const resp = await fetch('https://lamp.ms.wits.ac.za/home/s1851427/loverzlog.php?' + 
+    const resp = await fetch('https://lamp.ms.wits.ac.za/home/s1851427/WDAGet.php?' + 
         `username=${user.email}&password=${user.password}`, {
         method: 'GET',
     });
