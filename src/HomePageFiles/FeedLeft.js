@@ -81,7 +81,7 @@ export default function FeedLeft({ setUser, user }) {
                    <div className = "match-container-2">
 
                         <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
-                        <div className = "mtach-userName">{name}</div>
+                        <div className = "match-userName">{name}</div>
                         <div className = "match-date"> 15 sept </div>
                    </div> 
                );

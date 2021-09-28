@@ -107,6 +107,8 @@ function button(){
   }
 /*end modal helper*/
 
+// console.log(users[0]);
+
 
   return (
     <div>
@@ -121,12 +123,14 @@ function button(){
                 <div className="modal-container" id="modal_container">
                   <div className="modal">
                       <h1>More information</h1>
+                      <br/>
+                      <br/>
                      {/* <p id="feed-age">21</p>*/}
-                      <p>Age:21</p>
-                      <p>Birthday: {users.length ===0 ? 'no user': users[0].Birthday} <i><b></b></i></p>
-                      <p>Location: Braamfontein</p>                   
-                      <p><b>Name</b> enjoys walks on the beach and hanging out with friends</p>
-                      <button id="close">
+                      {/* <p style={{color: 'purple'}} > Name:</p> <p> {users[0].Full_Name}</p> */}
+                      <p style={{color: 'purple'}} >Age:</p><p>21</p>
+                      <p style={{color: 'purple', marginTop: 5}} >Location:</p><p> Braamfontein</p>
+                      <p style={{color: 'purple', marginTop: 5}} >Birthday:</p> <p>{users.length ===0 ? 'no user': users[0].Birthday} <i><b></b></i></p>
+                      <button className = "button" id="close">
                           Close
                       </button>
                   </div>
