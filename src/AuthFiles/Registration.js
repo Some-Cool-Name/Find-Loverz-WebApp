@@ -175,9 +175,14 @@ function Registration({ setUser }) {
           
           return
         }
+          
+          await handleImage(images)
+          const te = getFromStorage('image_url')
+          console.log(getFromStorage('image_url'))
+          
           const result = await fetch(
-            "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
-              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${getFromStorage('image_url')}`
+            "https://lamp.ms.wits.ac.za/home/s1851427/WDAReg.php?" +
+              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${te}&bio="yo"`
           ).then(async (res) =>{
             const temp = await res.json()
             console.log(temp)
@@ -267,7 +272,7 @@ function Registration({ setUser }) {
             id="fileupload"
             accept="image/*"
             ref={fileInputEl => setFile(fileInputEl)}
-            onChange={(e) => handleImage(file.files,e) }
+            
           />
           <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input
@@ -503,5 +508,6 @@ function Registration({ setUser }) {
   );
 
 }
+
 
 export default Registration;

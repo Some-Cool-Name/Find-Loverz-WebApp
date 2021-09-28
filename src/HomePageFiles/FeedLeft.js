@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 export default function FeedLeft({ setUser, user }) {
     let history = useHistory();
     const [fetchedMatches, setFechedMatches] = useState([]);
+    const [error, setError] = useState(false);
 
     // handles user logout
     const handleLogout = () => {
@@ -17,32 +18,77 @@ export default function FeedLeft({ setUser, user }) {
 
     useEffect(()=>{
         const userMatches = async() =>{
-            const data =  await matchRequest(user[0].username);
-            setFechedMatches(data);
+            try{
+                var data =  await matchRequest(user[0].username);
+                if( data.matchedWith === "no matches found"){
+                    console.log("in if")
+                    setFechedMatches([]);
+
+                }
+                else{
+                    console.log("in else")
+                    console.log(data)
+                setFechedMatches(data);
+                
+                }
+            }
+            catch(e){
+                setFechedMatches([])
+            }
+            
         };
         userMatches();
     }, [user]);
 
+    var matches;
+    var numberofMatches;
+    console.log(fetchedMatches.length);
+    if(fetchedMatches.length === 0){
+        matches = 0;
+        numberofMatches = 0;
+    }
+    else{
+        
+        matches = fetchedMatches.matchedWith;
+        console.log(matches);
+        numberofMatches = matches.length;
+        console.log(numberofMatches);
+    }
     
-    const matches = fetchedMatches.matchedWith;
-    const numberofMatches = fetchedMatches.count;
-    console.log(); 
+    
 
     function showMatches(){
-        var list = []
-        for(var i = 0; i<numberofMatches;i++){
+        
+        var list = [];
 
-            if(matches[i] != undefined){
-                var picture = matches[i].Profile_Picture;
+        for(var i = 0; i<numberofMatches ;i++){
+            var picture;
+            var name;
+            try{
+                picture = matches[i].Profile_Picture;
+                if(picture === undefined){
+                    picture = "";
+                }
+                name = matches[i].Full_Name;
+                if(name === undefined){
+                    name = "Error undefined name";
+                }
+            }catch(error){
+                setError(true);
+            }
+            try {
                list.push(
-                   <div className = "match-container-2">
-                        <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
-                        <div className = "match-username">{matches[i].Full_Name}</div>
-                        <div className = "match-date"> 15 Sept </div>
+                   <div className = "userTab">
+
+                        <div className = "profilepicture"><img src = {picture} alt="" /> </div>
+                        <div className = "userName">{name}</div>
+                        <div className = "date"> 15 sept </div>
                    </div> 
                );
             }
-            
+            catch(e){
+                console.log(e)
+            }
         }
         return list;
         
