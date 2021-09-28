@@ -30,7 +30,7 @@ export default function FeedRight({user}) {
      e.preventDefault()
      const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+
      `likerUsername=${user[0].username} & likeeUsername=${users[0].E_mail}`
-     )
+     ,{method:"POST"})
     fetchUsers();
    } 
    
@@ -112,15 +112,30 @@ function button(){
             <div className="card-id">
               <p id="feed-name">{users.length ===0 ? 'no user': users[0].Full_Name }</p>
               
-              <p id="feed-age">21</p>
+              <button id="open" onClick={button} >More Info</button>
+                <div className="modal-container" id="modal_container">
+                  <div className="modal">
+                      <h1>More information</h1>
+                     {/* <p id="feed-age">21</p>*/}
+                      <p>Age:21</p>
+                      <p>Birthday: {users.length ===0 ? 'no user': users[0].Birthday} <i><b></b></i></p>
+                      <p>Location: Braamfontein</p>                   
+                      <p><b>Name</b> enjoys walks on the beach and hanging out with friends</p>
+                      <button id="close">
+                          Close
+                      </button>
+                  </div>
+
+                </div>
             </div>
             <div className="card-interests">
-              Interest 1, Interest 2, Interest 3, Interest 4, Interest 5
+             {users.length ===0 ? 'no user': users[0].Interest_1 +'  '+ users[0].Interest_2 +'  '+ users[0].Interest_3+'  '+ users[0].Interest_4+'  '+ users[0].Interest_5   }
+              
             </div>
            
             <div className="card-bio">
               <div>
-              {users.length ===0 ? 'no user': users[0].Bio }
+              {users.length ===0 ? 'no user': users[0].Bio + " just to occupy some space for short bios like this one :)" }
               </div>
             </div>
           </div>
