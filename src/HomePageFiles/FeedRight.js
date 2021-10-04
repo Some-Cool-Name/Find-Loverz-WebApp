@@ -95,6 +95,7 @@ function button(){
   open.addEventListener('click',()=>{
       modal_container.classList.add("show");
   });
+
   
   
   close.addEventListener('click',()=>{
@@ -105,6 +106,20 @@ function button(){
 /*end modal helper*/
 
 // console.log(users[0]);
+
+function getAge(dateString){
+  var today = new Date();
+  var birthDate = new Date(dateString);
+  var age = today.getFullYear() - birthDate.getFullYear();
+  var m = today.getMonth() - birthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+  {
+      age--;
+  }
+  return age;
+  //age
+  
+}
 
 
   return (
@@ -124,9 +139,9 @@ function button(){
                       <br/>
                      {/* <p id="feed-age">21</p>*/}
                       {/* <p style={{color: 'purple'}} > Name:</p> <p> {users[0].Full_Name}</p> */}
-                      <p style={{color: 'purple'}} >Age:</p><p>21</p>
                       <p style={{color: 'purple', marginTop: 5}} >Location:</p><p> Braamfontein</p>
                       <p style={{color: 'purple', marginTop: 5}} >Birthday:</p> <p>{users.length ===0 ? 'no user': users[0].Birthday} <i><b></b></i></p>
+                      {/* <p style={{color: 'purple'}} >Age:</p><p>{users.length ===0 ? 'no user': getAge(`${users[0].Birthday}`)}</p> */}
                       <button className = "button" id="close">
                           Close
                       </button>
