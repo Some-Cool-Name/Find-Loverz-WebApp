@@ -100,9 +100,9 @@ export default function FeedLeft({ setUser, user }) {
             <div className="panel-container-1">
                 <div className="panel-container-2">
                     <div className="profile-container">
-                        <div className="profile-image" id="feed-image"></div>
+                    <div className = "match-profile-picture"><img src = {user[0].profile_picture} alt="" /> </div>
                         <div className="profile-name">
-                            <p id="feed-username">Username</p>                          
+                            <p id="feed-username">{user[0].username}</p>                          
                         </div>
                     </div>
 

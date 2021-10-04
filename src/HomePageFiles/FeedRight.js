@@ -3,6 +3,13 @@ import React,{useState, useEffect} from "react";
 export default function FeedRight({user}) {
 
 
+  //const [age,setAge] = useState(21);
+  function getAge(dateString){
+    
+  const myArr = dateString.split("-");    
+    const age = myArr[2];
+   return 2021-Number(age);
+}
   // fetching the feed
   const [users,setUsers] = useState(
     {length:0}
@@ -18,6 +25,7 @@ export default function FeedRight({user}) {
     console.log(data.feedProfiles)
     }
     useEffect(()=>{
+    
       fetchUsers();
       
       },[])
@@ -27,18 +35,18 @@ export default function FeedRight({user}) {
   //Accepting and declining users 
 
    const swipeRight = async (e)=>{
-     e.preventDefault()
+    // e.preventDefault()
      const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+
-     `likerUsername=${user[0].username} & likeeUsername=${users[0].E_mail}`
-     ,{method:"POST"})
+     `likerUsername=${user[0].username}&likeeUsername=${users[0].E_mail}`
+     )
     fetchUsers();
    } 
    
    
    const swipeLeft = async (e)=>{
-    e.preventDefault()
+    //e.preventDefault()
     const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
-    `rejectorUsername=${user[0].username}& rejecteeUsername=${users[0].E_mail}`
+    `rejectorUsername=${user[0].username}&rejecteeUsername=${users[0].E_mail}`
     )
    fetchUsers();
   } 
@@ -73,14 +81,17 @@ function mouseUp (event) {
    }
 
    if (swipe < 0){
+    swipeLeft();
      console.log("left");
    }
 
    else if (swipe > 0){
+     swipeRight();
     console.log("right");
   }
 
   else{
+    
     console.log("nothing");
   }
 }
@@ -139,6 +150,9 @@ function getAge(dateString){
                       <br/>
                      {/* <p id="feed-age">21</p>*/}
                       {/* <p style={{color: 'purple'}} > Name:</p> <p> {users[0].Full_Name}</p> */}
+                      <p style={{color: 'purple' }} >Name:</p><p>{users.length ===0 ? 'no user': users[0].Full_Name}</p>
+                      <p style={{color: 'purple',marginTop: 5}} >Age:</p><p>{users.length ===0 ? '21':getAge(users[0].Birthday)}</p>
+
                       <p style={{color: 'purple', marginTop: 5}} >Location:</p><p> Braamfontein</p>
                       <p style={{color: 'purple', marginTop: 5}} >Birthday:</p> <p>{users.length ===0 ? 'no user': users[0].Birthday} <i><b></b></i></p>
                       {/* <p style={{color: 'purple'}} >Age:</p><p>{users.length ===0 ? 'no user': getAge(`${users[0].Birthday}`)}</p> */}
