@@ -16,6 +16,12 @@ export default function FeedLeft({ setUser, user }) {
         history.push('/');
     }
 
+    const goToChat = (name) => {
+        history.push('/chat', {
+            otherPersonUserName: name
+        });
+    }
+
     useEffect(()=>{
         const userMatches = async() =>{
             try{
@@ -28,7 +34,7 @@ export default function FeedLeft({ setUser, user }) {
                 else{
                     console.log("in else")
                     console.log(data)
-                setFechedMatches(data);
+                    setFechedMatches(data);
                 
                 }
             }
@@ -59,11 +65,11 @@ export default function FeedLeft({ setUser, user }) {
 
     function showMatches(){
         
-        var list = [];
+        let list = [];
 
-        for(var i = 0; i<numberofMatches ;i++){
-            var picture;
-            var name;
+        for(let i = 0; i<numberofMatches ;i++){
+            let picture;
+            let name;
             try{
                 picture = matches[i].Profile_Picture;
                 if(picture === undefined){
@@ -78,7 +84,7 @@ export default function FeedLeft({ setUser, user }) {
             }
             try {
                list.push(
-                   <div className = "match-container-2">
+                   <div onClick={() => goToChat(matches[i].Full_Name)} className = "match-container-2">
 
                         <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
                         <div className = "match-userName">{name}</div>
