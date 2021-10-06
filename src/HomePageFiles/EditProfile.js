@@ -1,22 +1,40 @@
 import {Link, useHistory } from 'react-router-dom';
 import { globalStyles } from '../globalStyles';
 import { Formik } from 'formik';
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
 import { ImLocation2 } from "react-icons/im";
 
 const EditProfile = ({ setUser, user }) => {
     //current user's name
-    const [name,setName]=useState("Tumi");
-    const [bio,setBio]=useState("Hook ups only, example of bio \nI'm looking for a cute girl \nI love good & kind people");
+    // This whole view functionality is using the prop user, if details are changed , update the variable by using setUser
+    
+    //you can use the states below inorder to send requests to update the profile
+    const [name,setName]=useState();
+    const [bio,setBio]=useState();
     let history = useHistory();
+    let curr = null;
+    
+   
+    if(user){
+        try{
+            curr = user;
+            console.log(curr)
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+    
     
     
     const handleFeed = () => {
         history.push('/feed');
     }
-
-
+   
+    console.log("current")
+    
     return (  
+        
         <div>
            <div className="panel-container-1">
                 <div className="panel-container-2">
@@ -29,12 +47,12 @@ const EditProfile = ({ setUser, user }) => {
                 </div>
                 <br />
                 <div>
-                    <div className="profile-image" id="feed-image"></div>
+                    <img className="profile-image" id="feed-image" src={curr === null? "no user": curr[0].profile_picture}></img>
                     <p className="editProfile">edit profile</p>
                 </div>
                 
                 <div >
-                    <h2 className="usernameAge">Username, Age</h2>
+                    <h2 className="usernameAge">{curr === null? "no user": curr[0].username+ " ,22"}</h2>
                     <hr className="divider" size="6" />
                     <br /><br />
                 </div>
@@ -47,23 +65,23 @@ const EditProfile = ({ setUser, user }) => {
                             <input
                                 className='inputfield'
                                 type="text" 
-                                value={name}
+                                value={curr === null? "no user": curr[0].name}
                                 align="start"
                                 onChange={e => setName(e.target.value)}
                                                                                                                
                             />
-                            <p className="lblDiscriber">LOCTION</p>
+                            <p className="lblDiscriber">LOCATION</p>
                             
                             <input
                                 className='inputfield'
                                 type="text" 
-                                value={"braamfontein"}
+                                value={curr === null? "no user": curr[0].location}
                                 align="start"
                                 style={{ color: "#00bafa" }}
                                 readOnly 
                             />
                             <p className="lblDiscriber">BIO</p>
-                                <textarea value={bio} onChange={e => setBio(e.target.value)} type="text" className="bio" rows="6" cols="52"></textarea>
+                                <textarea value={curr === null? "no user": curr[0].bio+" Im just here for beautiful ladies, I love cute,beautiful and kind XD"} onChange={e => setBio(e.target.value)} type="text" className="bio" rows="6" cols="52"></textarea>
                                 <p className="lblDiscriber">Interest</p>
                                 <div className="interest">
                                     <div className="interest-element"  style={{borderColor: "#12c2e9", color:"#12c2e9" }} >interest-1</div>
