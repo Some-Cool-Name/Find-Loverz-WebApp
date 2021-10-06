@@ -2,6 +2,7 @@ import {Link, useHistory } from 'react-router-dom';
 import { globalStyles } from '../globalStyles';
 import { Formik } from 'formik';
 import { React, useState } from "react";
+import { ImLocation2 } from "react-icons/im";
 
 const EditProfile = ({ setUser, user }) => {
     //current user's name
@@ -42,6 +43,7 @@ const EditProfile = ({ setUser, user }) => {
                     <Formik>
                         <div className="wrapper">
                             <p className="lblDiscriber">NAME</p>
+                            
                             <input
                                 className='inputfield'
                                 type="text" 
@@ -51,10 +53,11 @@ const EditProfile = ({ setUser, user }) => {
                                                                                                                
                             />
                             <p className="lblDiscriber">LOCTION</p>
+                            
                             <input
                                 className='inputfield'
                                 type="text" 
-                                value="braamfontein" 
+                                value={"braamfontein"}
                                 align="start"
                                 style={{ color: "#00bafa" }}
                                 readOnly 
