@@ -87,7 +87,7 @@ function mouseUp (event) {
   }
 }
 var usersAvailable = users.length;
-console.log(usersAvailable);
+// console.log(usersAvailable);
 
 function showUsers(){
   var list = [];
