@@ -6,6 +6,7 @@ import Registration from './AuthFiles/Registration';
 import Feed from './HomePageFiles/Feed';
 import Matches from './HomePageFiles/Matches';
 import Chat from './HomePageFiles/Chat';
+import Profile from './HomePageFiles/Profile';
 import { getFromStorage } from './HelperClasses/StorageHandler';
 
 // Component to hold and control all the apps pages
@@ -56,6 +57,11 @@ function App() {
         <Route path="/chat" render={props => (
             <Chat user={user} />
         )} />
+
+         {/* profile page */}
+        <Route path="/profile" render={props => (
+            <Profile setUser={setUser} user={user}/>
+        )} /> 
 
       </div>
     </Router>
