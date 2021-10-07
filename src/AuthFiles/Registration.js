@@ -123,11 +123,12 @@ function Registration({ setUser }) {
     
   }
 
-  const handleImage = async (images) => {
+  const handleImage = async (images,e) => {
     for (let image of images) {
         const formData = new FormData();
         formData.append("file", image);
         formData.append("upload_preset", "gbu8evn2");
+        document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]);
 
         const resp = await fetch(cloudinary, {
             body: formData,
@@ -136,8 +137,10 @@ function Registration({ setUser }) {
         await resp.json().then((respJSON) => {
             saveToStorage('image_url', respJSON.secure_url);
         });
+    }
   }
-}
+
+
 
   const registerUser = async (e, images) => {
     try {
@@ -154,7 +157,24 @@ function Registration({ setUser }) {
         if(password === confirm ){
         if (password && confirm && username &&  name) {
           
-          await handleImage(images);
+          if(!interest1 || !interest2 || !interest3 || !interest4 || !interest5){
+            setAlerts({
+              type: "error",
+              status: true,
+              title: "Please select 5 interests",
+            })
+            return
+        }
+       
+        if(!gender || !sexuality  ){
+          setAlerts({
+            type: "error",
+            status: true,
+            title: "Please specify gender and sexuality",
+          })
+          
+          return
+        }
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/webb.php?" +
               `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${getFromStorage('image_url')}`
@@ -169,6 +189,7 @@ function Registration({ setUser }) {
               })
               return
             }
+            
             // send interests to database
            
             const resp = await loginRequest({email: username, password: password});
@@ -238,12 +259,15 @@ function Registration({ setUser }) {
       <br />
       <hr width="100px;"  size="8"></hr>
         <div className="form-element">
+        
+        <label className = "fieldDescription" htmlFor="username"> Profile Picture</label>
+        <img id="register-pic"></img>
           <input
             type="file"
             id="fileupload"
             accept="image/*"
             ref={fileInputEl => setFile(fileInputEl)}
-            onChange={() => handleImage(file.files) }
+            onChange={(e) => handleImage(file.files,e) }
           />
           <label className = "fieldDescription" htmlFor="username"> Username</label>
           <input

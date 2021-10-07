@@ -24,36 +24,27 @@ export default function FeedLeft({ setUser, user }) {
         userMatches();
     }, [user]);
 
+    
     const matches = fetchedMatches.matchedWith;
-    const numberofMatches = matches.length;
-    console.log(numberofMatches);
-    console.log(matches);
+    const numberofMatches = fetchedMatches.count;
+    console.log(); 
 
     function showMatches(){
         
         var list = []
-        for(var i = 0; i<numberofMatches ;i++){
-            var picture;
-            var name;
-            try{
-                picture = matches[i].Profile_Picture;
-                if(picture === undefined){
-                    picture = "";
-                }
-                name = matches[i].Full_Name;
-                if(name === undefined){
-                    name = "Error undefined name";
-                }
-            }catch(error){
-                setError(true);
-            }
+        for(var i = 0; i<numberofMatches;i++){
+
+            if(matches[i] != undefined){
+                var picture = matches[i].Profile_Picture;
                list.push(
-                   <div className = "userTab">
-                        <div className = "profilepicture"><img src = {picture} alt="" /> </div>
-                        <div className = "userName">{name}</div>
-                        <div className = "date"> 15 sept </div>
+                   <div className = "match-container-2">
+                        <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
+                        <div className = "match-username">{matches[i].Full_Name}</div>
+                        <div className = "match-date"> 15 Sept </div>
                    </div> 
                );
+            }
+            
         }
         return list;
         
@@ -71,13 +62,14 @@ export default function FeedLeft({ setUser, user }) {
                         </div>
                     </div>
 
-                    <div id="logout"><i class="uil uil-sign-out-alt"></i></div>
+                    <div id="logout"><i class="uil uil-sign-out-alt" onClick={handleLogout}></i></div>
                 </div>
                 
                 <div className="navbar-items">
                     <p>Matches</p>
                 </div>
-                <div>
+
+                <div className="match-container-1">
                     {showMatches()}
                 </div>
             </div>

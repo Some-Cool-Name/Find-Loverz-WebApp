@@ -1,6 +1,50 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
+import Modal from "./Modal";
+import HorizontalScroll from 'react-scroll-horizontal'
 
-export default function FeedRight() {
+export default function FeedRight({user}) {
+
+
+  // fetching the feed
+  const [users,setUsers] = useState(
+    {length:0}
+  );
+  const fetchUsers = async (e) =>{
+    const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
+    `username=${user[0].username}`
+    )
+    console.log(user[0].username)
+    const data = await result.json();
+    setUsers(data.feedProfiles);
+    
+    console.log(data.feedProfiles)
+    }
+    useEffect(()=>{
+      fetchUsers();
+      
+      },[])
+
+
+
+  //Accepting and declining users 
+
+   const swipeRight = async (e)=>{
+     e.preventDefault()
+     const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+
+     `likerUsername=${user[0].username} & likeeUsername=${users[0].E_mail}`
+     )
+    fetchUsers();
+   } 
+   
+   
+   const swipeLeft = async (e)=>{
+    e.preventDefault()
+    const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
+    `rejectorUsername=${user[0].username}& rejecteeUsername=${users[0].E_mail}`
+    )
+   fetchUsers();
+  } 
+
   var dragging = false;
   var xStart = 0;
   var xEnd = 0;
@@ -43,40 +87,111 @@ function mouseUp (event) {
   }
 }
 
-  return (
-    <div>
-      <div className="right-container-1" onMouseDown={mouseDown} onMouseMove={mouseMove} onMouseUp={mouseUp}>
-        <div className="right-container-2">
-          <div className="card-container" id="card">
-            <div className="card-image"></div>
-            <div className="card-id">
-              <p id="feed-name">Name</p>
-              <p id="feed-age">Age</p>
-            </div>
-            <div className="card-interests">
-              Interest 1, Interest 2, Interest 3, Interest 4, Interest 5
-            </div>
-            <div className="card-bio">
-              <h1>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
-              </h1>
-            </div>
+console.log(users);
+console.log(users.length);
+console.log(users[0]);
+var usersAvailable = users.length;
+
+function showUsers(){
+  var list = [];
+  if(usersAvailable>= 1){
+    for(var i = 0; i<usersAvailable;i++){
+      var userAccount = users[i];
+      list.push(
+      <div className="card-container" id="card">
+        <img className="card-image" src={users.length ===0 ? 'no user': userAccount.Profile_Picture} ></img>
+          <div className="card-id">
+            <p id="feed-name">{users.length ===0 ? 'no user': userAccount.Full_Name }</p>
+        
+            <Modal></Modal>
+        
           </div>
-          <div className="button-container">
-            <div id="yes-button"><i class="uil uil-check"></i></div>
-            <div id="no-button"><i class="uil uil-times"></i></div>
+        <div className="card-interests">
+        {userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
+        </div>
+     
+        <div className="card-bio">
+          <div>
+            {users.length ===0 ? 'no user': userAccount.Bio }
           </div>
         </div>
-      </div>
+        <div className="button-container">
+          <div onClick={ users.length===0 ? '':swipeRight} id="yes-button"><i class="uil uil-check"></i></div>
+          <div onClick={ users.length===0 ? '':swipeLeft} id="no-button" ><i class="uil uil-times"></i></div>
+        </div>
+      </div>);
+    }
+  }
+  else if(usersAvailable === undefined){
+    list.push(
+    <div className="card-container" id="card">
+        <img className="card-image" src={users.length ===undefined ? 'no user returned': userAccount.Profile_Picture} ></img>
+          <div className="card-id">
+            <p id="feed-name">{users.length ===undefined ? 'no user returned': userAccount.Full_Name }</p>
+        
+            <Modal></Modal>
+        
+          </div>
+        <div className="card-interests">
+        {users.length === undefined?'no user returned' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
+        </div>
+     
+        <div className="card-bio">
+          <div>
+            {users.length ===undefined ? 'no user returned': userAccount.Bio }
+          </div>
+        </div>
+        <div className="button-container">
+          <div onClick={ users.length===0 ? '':swipeRight} id="yes-button"><i class="uil uil-check"></i></div>
+          <div onClick={ users.length===0 ? '':swipeLeft} id="no-button" ><i class="uil uil-times"></i></div>
+        </div>
+      </div>);
+  }
+  else{
+    list.push(
+      <div className="card-container" id="card">
+        <img className="card-image" src={users.length ===0 ? 'no user available': userAccount.Profile_Picture} ></img>
+          <div className="card-id">
+            <p id="feed-name">{users.length ===0 ? 'no user available': userAccount.Full_Name }</p>
+        
+            <Modal></Modal>
+        
+          </div>
+        <div className="card-interests">
+        {users.length === 0 ?'no user available' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
+        </div>
+     
+        <div className="card-bio">
+          <div>
+            {users.length ===0 ? 'no user available': userAccount.Bio }
+          </div>
+        </div>
+        <div className="button-container">
+          <div onClick={ users.length===0 ? '':swipeRight} id="yes-button"><i class="uil uil-check"></i></div>
+          <div onClick={ users.length===0 ? '':swipeLeft} id="no-button" ><i class="uil uil-times"></i></div>
+        </div>
+      </div>);
+  }
+  return list;
+}
+
+
+
+  return (
+    <div className = 'feedcontainer'>
+      <HorizontalScroll>
+        {showUsers()}
+      </HorizontalScroll>
     </div>
   );
 }
+
+
+// onMouseDown={mouseDown} onMouseMove={mouseMove} onMouseUp={mouseUp}
+
+
+{/* <div className="right-container-1" >
+        <div className="right-container-2">
+          
+        </div>
+      </div> */}

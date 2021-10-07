@@ -1,10 +1,10 @@
-.header{
+.matches-header{
     height: 45px;
     overflow: hidden;
     background:linear-gradient(to right,#c471ed,#b621fe , #12c2e9); 
 }
 
-h1{
+.matches-header h1{
     margin-top: auto;
     margin-bottom: opx;
     align-items: baseline;
@@ -13,7 +13,7 @@ h1{
     font-size: xx-large;
 }
 
-h3{
+.matches-header h3{
     margin-top: auto;
     margin-bottom: opx;
     align-items: baseline;
@@ -22,7 +22,7 @@ h3{
     font-size: x-large;
 }
 
-.container{
+.matches-container{
     background-color: gray;
 }
 .userList{
