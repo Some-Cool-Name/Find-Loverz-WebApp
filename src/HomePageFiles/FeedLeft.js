@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { deleteFromStorage } from '../HelperClasses/StorageHandler';
+import { deleteFromStorage, getFromStorage, saveToStorage } from '../HelperClasses/StorageHandler';
 import { matchRequest } from '../BackendRequests/Matches';
 import { useEffect, useState } from 'react';
 
@@ -17,9 +17,9 @@ export default function FeedLeft({ setUser, user }) {
     }
 
     const goToChat = (name) => {
-        history.push('/chat', {
-            otherPersonUserName: name
-        });
+        saveToStorage('otherPersonUsername', `${name}`);
+        console.log("name: ", getFromStorage('otherPersonUsername'));
+        history.push('/chat');
     }
 
     useEffect(()=>{

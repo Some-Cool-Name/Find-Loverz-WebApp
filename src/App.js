@@ -8,9 +8,33 @@ import Matches from './HomePageFiles/Matches';
 import Chat from './HomePageFiles/Chat';
 import { getFromStorage } from './HelperClasses/StorageHandler';
 
+// firebase
+import firebase from "firebase/app";
+import 'firebase/firestore';
+import 'firebase/database';
+
+
 // Component to hold and control all the apps pages
 function App() {
   const [user, setUser] = useState(null);
+  const [db, setDb] = useState(null);
+
+  useEffect(() => {
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCXGM_HwxTPMBSRE8AuEUIlUnN3h0_Ny9A",
+      authDomain: "dating-b5a28.firebaseapp.com",
+      databaseURL: "https://dating-b5a28-default-rtdb.firebaseio.com",
+      projectId: "dating-b5a28",
+      storageBucket: "dating-b5a28.appspot.com",
+      messagingSenderId: "116688027145",
+      appId: "1:116688027145:web:8483dc7960328dc29902d8"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    setDb(firebase.database());
+  }, [])
 
   const resetStateAfterReload = () => {
     try {
@@ -54,7 +78,7 @@ function App() {
 
         {/* Chat page */}
         <Route path="/chat" render={props => (
-            <Chat user={user} />
+            <Chat user={user} db={db} setUser={setUser} />
         )} />
 
       </div>
