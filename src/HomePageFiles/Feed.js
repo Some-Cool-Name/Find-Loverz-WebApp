@@ -6,6 +6,7 @@ import Users from './Users';
 import NavBar from './NavBar';
 import FeedLeft from './FeedLeft';
 import FeedRight from './FeedRight';
+import ChatWindow from './ChatWindow';
 import './Feed.css';
 
 function Feed({ setUser, user }) {
@@ -19,13 +20,13 @@ function Feed({ setUser, user }) {
 
     else if(user==null) return <h1>loading...</h1>;
 
-
     else {
 
         return (
             
             <div>
                 <div className="feed">
+                    <NavBar user={user} setUser={setUser}></NavBar>
                     <FeedLeft user={user} setUser={setUser}> </FeedLeft>
                     <FeedRight user={user} setUser={setUser}> </FeedRight>
                 </div>
