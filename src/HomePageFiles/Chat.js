@@ -7,13 +7,13 @@ import { getFromStorage } from '../HelperClasses/StorageHandler';
 import './Chat.css';
 import NavBar from './NavBar';
 
-function Chat({ user, setUser, db }) {
+function Chat({ user, setUser, db, otherUser, setOtherUser }) {
     // we will use this to scroll to bottom of chat on page-reload and after sending a message
     const dummy = useRef();
     const location = useLocation();
     const [messages, setMessages] = useState([]);
     const [text, setText] = useState("");
-    let otherPersonUserName = getFromStorage('otherPersonUsername');
+    // let otherPersonUserName = getFromStorage('otherPersonUsername');
 
     const scrollToBottom = () => {
         dummy.current.scrollIntoView({ behavior: 'smooth' });
@@ -24,7 +24,7 @@ function Chat({ user, setUser, db }) {
         let dateStringWithTime = moment(now).format('YYYY-MM-DD HH:MM:SS');
         // Output of dateString: 2020-07-21 07:24:06
 
-        db.ref(`${user[0].username}_${otherPersonUserName}`)
+        db.ref(`${user[0].username}_${otherUser}`)
           .push({
             message: text,
             time: dateStringWithTime,
@@ -35,7 +35,7 @@ function Chat({ user, setUser, db }) {
             // do nothing for now
         });
 
-        db.ref(`${otherPersonUserName}_${user[0].username}`)
+        db.ref(`${otherUser}_${user[0].username}`)
           .push({
             message:text,
             time: dateStringWithTime,
@@ -55,10 +55,10 @@ function Chat({ user, setUser, db }) {
 
 
     useEffect(() => {
-        if(getFromStorage('otherPersonUsername')){
+        if(otherUser){
             console.log('me: ', user[0].username);
             console.log('other person: ', getFromStorage('otherPersonUsername'));
-            db.ref(`${user[0].username}_${getFromStorage('otherPersonUsername')}`).on("value", snapshot => {
+            db.ref(`${user[0].username}_${otherUser}`).on("value", snapshot => {
                 let allMessages = [];
                 snapshot.forEach(snap => {
                     allMessages.push(snap.val());
@@ -67,7 +67,7 @@ function Chat({ user, setUser, db }) {
             });
             scrollToBottom();
         }
-    }, []);
+    }, [otherUser]);
 
     // useFocusEffect(
     //     React.useCallback(() => {
@@ -79,12 +79,12 @@ function Chat({ user, setUser, db }) {
 
     // scrollToBottom();
 
-    if(!getFromStorage('otherPersonUsername')){
+    if(!otherUser){
         return(
             <React.Fragment>
-                <FeedLeft user={user} setUser={setUser} />
+                <FeedLeft user={user} setUser={setUser} setOtherUser={setOtherUser} />
                 <div className="chat-window">
-                    <NavBar user={user} setUser={setUser}/>
+                    <NavBar user={user} setUser={setUser} />
                     <h1 style={{color: 'gray', marginTop: 200}}>
                         Select a user to chat to on <br/>
                         the matches section (on your left).
@@ -96,15 +96,15 @@ function Chat({ user, setUser, db }) {
 
     return (
         <React.Fragment>
-            <FeedLeft user={user} setUser={setUser} />
+            <FeedLeft user={user} setUser={setUser} setOtherUser={setOtherUser} />
             <div className="chat-window">
                 <NavBar user={user} setUser={setUser}/>
                 <div className="chat-top">
                     <div className="chat-details">
-                        <div className = "chat-profile-picture"><img src = {getFromStorage('otherImageUrl')} alt="" /> </div>
+                        {/* <div className = "chat-profile-picture"><img src = {getFromStorage('')} alt="" /> </div> */}
                     
                         <div className="chat-profile-name">
-                            <p id="chat-username">{otherPersonUserName}</p>                          
+                            <p id="chat-username">{otherUser}</p>                          
                         </div>
                     </div>
 

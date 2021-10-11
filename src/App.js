@@ -18,6 +18,7 @@ import 'firebase/database';
 // Component to hold and control all the apps pages
 function App() {
   const [user, setUser] = useState(null);
+  const [otherUser, setOtherUser] = useState(null);
   const [db, setDb] = useState(null);
 
   useEffect(() => {
@@ -73,7 +74,7 @@ function App() {
 
         {/* Feed page */}
         <Route path="/feed" render={props => (
-            <Feed setUser={setUser} user={user} />
+            <Feed setUser={setUser} user={user} setOtherUser={setOtherUser} />
         )} />
 
         {/* Matches page */}
@@ -83,7 +84,7 @@ function App() {
 
         {/* Chat page */}
         <Route path="/chat" render={props => (
-            <Chat user={user} db={db} setUser={setUser} />
+            <Chat user={user} db={db} setUser={setUser} otherUser={otherUser} setOtherUser={setOtherUser} />
         )} />
 
          {/* profile page */}
