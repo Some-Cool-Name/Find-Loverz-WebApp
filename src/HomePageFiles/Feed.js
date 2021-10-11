@@ -9,7 +9,7 @@ import FeedRight from './FeedRight';
 import ChatWindow from './ChatWindow';
 import './Feed.css';
 
-function Feed({ setUser, user }) {
+function Feed({ setUser, user, setOtherUser }) {
     let history = useHistory();
     console.log(user);
     // checks if user is logged and allows or gives him access to the page.
@@ -26,7 +26,7 @@ function Feed({ setUser, user }) {
             
             <div>
                 <div className="feed">
-                    <FeedLeft user={user} setUser={setUser}> </FeedLeft>
+                    <FeedLeft user={user} setUser={setUser} setOtherUser={setOtherUser} > </FeedLeft>
                     {/* <NavBar user={user} setUser={setUser}/> */}
                     <FeedRight user={user} setUser={setUser}> </FeedRight>
                 </div>

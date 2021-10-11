@@ -4,14 +4,15 @@ import { deleteFromStorage, getFromStorage, saveToStorage } from '../HelperClass
 import { matchRequest } from '../BackendRequests/Matches';
 import { useEffect, useState } from 'react';
 
-export default function FeedLeft({ setUser, user }) {
+export default function FeedLeft({ setUser, user, setOtherUser }) {
     let history = useHistory();
     const [fetchedMatches, setFechedMatches] = useState([]);
     const [error, setError] = useState(false);
 
     const goToChat = (name, image) => {
         saveToStorage('otherPersonUsername', `${name}`);
-        saveToStorage('otherImageUrl', image);
+        setOtherUser(name);
+        // saveToStorage('otherImageUrl', image);
         history.push('/chat');
     }
 
