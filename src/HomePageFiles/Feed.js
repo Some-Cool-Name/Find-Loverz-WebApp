@@ -26,8 +26,8 @@ function Feed({ setUser, user }) {
             
             <div>
                 <div className="feed">
-                    <NavBar user={user} setUser={setUser}></NavBar>
                     <FeedLeft user={user} setUser={setUser}> </FeedLeft>
+                    {/* <NavBar user={user} setUser={setUser}/> */}
                     <FeedRight user={user} setUser={setUser}> </FeedRight>
                 </div>
             

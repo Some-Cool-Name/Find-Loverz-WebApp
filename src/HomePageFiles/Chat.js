@@ -5,7 +5,7 @@ import Message from './Message';
 import moment from 'moment';
 import { getFromStorage } from '../HelperClasses/StorageHandler';
 import './Chat.css';
-import { useFocusEffect } from '@react-navigation/native';
+import NavBar from './NavBar';
 
 function Chat({ user, setUser, db }) {
     // we will use this to scroll to bottom of chat on page-reload and after sending a message
@@ -24,7 +24,7 @@ function Chat({ user, setUser, db }) {
         let dateStringWithTime = moment(now).format('YYYY-MM-DD HH:MM:SS');
         // Output of dateString: 2020-07-21 07:24:06
 
-        db.ref(`${user[0].name}_${otherPersonUserName}`)
+        db.ref(`${user[0].username}_${otherPersonUserName}`)
           .push({
             message: text,
             time: dateStringWithTime,
@@ -35,7 +35,7 @@ function Chat({ user, setUser, db }) {
             // do nothing for now
         });
 
-        db.ref(`${otherPersonUserName}_${user[0].name}`)
+        db.ref(`${otherPersonUserName}_${user[0].username}`)
           .push({
             message:text,
             time: dateStringWithTime,
@@ -55,16 +55,18 @@ function Chat({ user, setUser, db }) {
 
 
     useEffect(() => {
-        // console.log("name2: ", getFromStorage('otherPersonUsername'));
-        // otherPersonUserName = getFromStorage('otherPersonUsername');
-        db.ref(`${user[0].name}_${getFromStorage('otherPersonUsername')}`).on("value", snapshot => {
-            let allMessages = [];
-            snapshot.forEach(snap => {
-                allMessages.push(snap.val());
+        if(getFromStorage('otherPersonUsername')){
+            console.log('me: ', user[0].username);
+            console.log('other person: ', getFromStorage('otherPersonUsername'));
+            db.ref(`${user[0].username}_${getFromStorage('otherPersonUsername')}`).on("value", snapshot => {
+                let allMessages = [];
+                snapshot.forEach(snap => {
+                    allMessages.push(snap.val());
+                });
+                setMessages(allMessages);
             });
-            setMessages(allMessages);
-        });
-        scrollToBottom();
+            scrollToBottom();
+        }
     }, []);
 
     // useFocusEffect(
@@ -77,16 +79,32 @@ function Chat({ user, setUser, db }) {
 
     // scrollToBottom();
 
+    if(!getFromStorage('otherPersonUsername')){
+        return(
+            <React.Fragment>
+                <FeedLeft user={user} setUser={setUser} />
+                <div className="chat-window">
+                    <NavBar user={user} setUser={setUser}/>
+                    <h1 style={{color: 'gray', marginTop: 200}}>
+                        Select a user to chat to on <br/>
+                        the matches section (on your left).
+                    </h1>
+                </div>
+            </React.Fragment>
+        )
+    }
+
     return (
         <React.Fragment>
             <FeedLeft user={user} setUser={setUser} />
             <div className="chat-window">
+                <NavBar user={user} setUser={setUser}/>
                 <div className="chat-top">
                     <div className="chat-details">
-                        <div className = "chat-profile-picture"><img src = {user[0].profile_picture} alt="" /> </div>
+                        <div className = "chat-profile-picture"><img src = {getFromStorage('otherImageUrl')} alt="" /> </div>
                     
                         <div className="chat-profile-name">
-                            <p id="chat-username">{user[0].username}</p>                          
+                            <p id="chat-username">{otherPersonUserName}</p>                          
                         </div>
                     </div>
 

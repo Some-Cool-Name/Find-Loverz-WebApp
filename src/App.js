@@ -22,19 +22,23 @@ function App() {
 
   useEffect(() => {
     // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCXGM_HwxTPMBSRE8AuEUIlUnN3h0_Ny9A",
-      authDomain: "dating-b5a28.firebaseapp.com",
-      databaseURL: "https://dating-b5a28-default-rtdb.firebaseio.com",
-      projectId: "dating-b5a28",
-      storageBucket: "dating-b5a28.appspot.com",
-      messagingSenderId: "116688027145",
-      appId: "1:116688027145:web:8483dc7960328dc29902d8"
-    };
-
-    // Initialize Firebase
-    const app = firebase.initializeApp(firebaseConfig);
-    setDb(firebase.database());
+    try {
+      const firebaseConfig = {
+        apiKey: "AIzaSyCXGM_HwxTPMBSRE8AuEUIlUnN3h0_Ny9A",
+        authDomain: "dating-b5a28.firebaseapp.com",
+        databaseURL: "https://dating-b5a28-default-rtdb.firebaseio.com",
+        projectId: "dating-b5a28",
+        storageBucket: "dating-b5a28.appspot.com",
+        messagingSenderId: "116688027145",
+        appId: "1:116688027145:web:8483dc7960328dc29902d8"
+      };
+  
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      setDb(firebase.database());
+    } catch (error) {
+      // do nothing
+    }
   }, [])
 
   const resetStateAfterReload = () => {

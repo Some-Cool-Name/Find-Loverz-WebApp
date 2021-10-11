@@ -9,16 +9,9 @@ export default function FeedLeft({ setUser, user }) {
     const [fetchedMatches, setFechedMatches] = useState([]);
     const [error, setError] = useState(false);
 
-    // handles user logout
-    const handleLogout = () => {
-        deleteFromStorage('user');
-        setUser(null);
-        history.push('/');
-    }
-
-    const goToChat = (name) => {
+    const goToChat = (name, image) => {
         saveToStorage('otherPersonUsername', `${name}`);
-        console.log("name: ", getFromStorage('otherPersonUsername'));
+        saveToStorage('otherImageUrl', image);
         history.push('/chat');
     }
 
@@ -75,7 +68,7 @@ export default function FeedLeft({ setUser, user }) {
                 if(picture === undefined){
                     picture = "";
                 }
-                name = matches[i].Full_Name;
+                name = matches[i].E_mail;
                 if(name === undefined){
                     name = "Error undefined name";
                 }
@@ -84,7 +77,7 @@ export default function FeedLeft({ setUser, user }) {
             }
             try {
                list.push(
-                   <div onClick={() => goToChat(matches[i].Full_Name)} className = "match-container-2">
+                   <div onClick={() => goToChat(matches[i].E_mail, matches[i].Profile_Picture)} className = "match-container-2">
 
                         <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
                         <div className = "match-userName">{name}</div>
