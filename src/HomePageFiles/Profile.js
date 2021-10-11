@@ -5,6 +5,9 @@ import './Profile.css'
 
 
 const Profile = ({ setUser, user }) => {
+
+
+
     return ( 
         <div>
             <div className="profile">
