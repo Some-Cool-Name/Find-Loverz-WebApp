@@ -101,7 +101,7 @@ function Chat({ user, setUser, db }) {
                 <NavBar user={user} setUser={setUser}/>
                 <div className="chat-top">
                     <div className="chat-details">
-                        <div className = "chat-profile-picture"><img src = {getFromStorage('otherImageUrl')} alt="" /> </div>
+                        {/* <div className = "chat-profile-picture"><img src = {getFromStorage('')} alt="" /> </div> */}
                     
                         <div className="chat-profile-name">
                             <p id="chat-username">{otherPersonUserName}</p>                          
