@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { deleteFromStorage } from '../HelperClasses/StorageHandler';
+import { deleteFromStorage, getFromStorage, saveToStorage } from '../HelperClasses/StorageHandler';
 import { matchRequest } from '../BackendRequests/Matches';
 import { useEffect, useState } from 'react';
 
@@ -9,17 +9,10 @@ export default function FeedLeft({ setUser, user }) {
     const [fetchedMatches, setFechedMatches] = useState([]);
     const [error, setError] = useState(false);
 
-    // handles user logout
-    const handleLogout = () => {
-        deleteFromStorage('user');
-        setUser(null);
-        history.push('/');
-    }
-
-    const goToChat = (name) => {
-        history.push('/chat', {
-            otherPersonUserName: name
-        });
+    const goToChat = (name, image) => {
+        saveToStorage('otherPersonUsername', `${name}`);
+        saveToStorage('otherImageUrl', image);
+        history.push('/chat');
     }
 
     useEffect(()=>{
@@ -75,7 +68,7 @@ export default function FeedLeft({ setUser, user }) {
                 if(picture === undefined){
                     picture = "";
                 }
-                name = matches[i].Full_Name;
+                name = matches[i].E_mail;
                 if(name === undefined){
                     name = "Error undefined name";
                 }
@@ -84,7 +77,7 @@ export default function FeedLeft({ setUser, user }) {
             }
             try {
                list.push(
-                   <div onClick={() => goToChat(matches[i].Full_Name)} className = "match-container-2">
+                   <div onClick={() => goToChat(matches[i].E_mail, matches[i].Profile_Picture)} className = "match-container-2">
 
                         <div className = "match-profile-picture"><img src = {picture} alt="" /> </div>
                         <div className = "match-userName">{name}</div>

@@ -1,18 +1,22 @@
-import React from 'react'
+import React from 'react';
+import './Chat.css';
+
 
 function Message({ text, isMe }) {
 
     if(isMe){
         return (
-            <div style={{marginTop: 20, marginBottom: 20, width: '100%'}}>
-                <p style={{float: 'right', backgroundColor: 'black', color: 'white'}}>{text}</p><br/>
+            <div className="chat-outgoing">
+                <p className="chat-message">{text}</p>
+                <p className="chat-time">20:25</p>
             </div>
         ) 
     }
 
     return (
-        <div style={{marginTop: 20, marginBottom: 20, width: '100%'}}>
-            <p style={{float: 'left', backgroundColor: 'gray', color: 'black'}}>{text}</p><br/>
+        <div className="chat-incomming">
+            <p className="chat-message">{text}</p>
+            <p className="chat-time">20:25</p>
         </div>
     )
 }

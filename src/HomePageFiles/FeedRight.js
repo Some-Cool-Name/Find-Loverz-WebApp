@@ -1,8 +1,9 @@
 import React,{useState, useEffect} from "react";
 import Modal from "./Modal";
-import HorizontalScroll from 'react-scroll-horizontal'
+import HorizontalScroll from 'react-scroll-horizontal';
+import NavBar from './NavBar';
 
-export default function FeedRight({user}) {
+export default function FeedRight({user, setUser}) {
 
 
   // fetching the feed
@@ -176,6 +177,7 @@ function showUsers(){
 
   return (
     <div className = 'feedcontainer'>
+      <NavBar user={user} setUser={setUser}/>
       <HorizontalScroll>
         {showUsers()}
       </HorizontalScroll>

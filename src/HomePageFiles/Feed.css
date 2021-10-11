@@ -35,8 +35,8 @@ div.User-Info {
 
 /* Right Feed */
 .feedcontainer{
-  width: 730px;
-  height: 600px;
+  width: 75vw;
+  height: 700px;
   background: linear-gradient(to right, #b621fe, #1fd1f9);
   overflow-x: scroll;
   overflow-y: hidden;
