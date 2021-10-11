@@ -1,0 +1,38 @@
+.matches-header{
+    height: 45px;
+    overflow: hidden;
+    background:linear-gradient(to right,#c471ed,#b621fe , #12c2e9); 
+}
+
+.matches-header h1{
+    margin-top: auto;
+    margin-bottom: opx;
+    align-items: baseline;
+    color: white;
+    font-family:cursive;
+    font-size: xx-large;
+}
+
+.matches-header h3{
+    margin-top: auto;
+    margin-bottom: opx;
+    align-items: baseline;
+    color: pink;
+    font-family:cursive;
+    font-size: x-large;
+}
+
+.matches-container{
+    background-color: gray;
+}
+.userList{
+    background-color: white;
+    width: 25%;
+    height: 500px;
+}
+
+.title{
+    height: max-content;
+    width: 100%;
+    background: linear-gradient(to right, #00ffff,#0000ff);
+}

@@ -1,7 +1,7 @@
-// sends login request to backend
-export const loginRequest = async (user) => {
-    const resp = await fetch('https://lamp.ms.wits.ac.za/home/s1851427/loverzlog.php?' + 
-        `username=${user.email}&password=${user.password}`, {
+// sends json file of matched users
+export const matchRequest = async (user) => {
+    const resp = await fetch('https://lamp.ms.wits.ac.za/home/s1851427/WDAgetMatches.php?' + 
+        `username=${user}`, {
         method: 'GET',
     });
     if(resp.status === 200){

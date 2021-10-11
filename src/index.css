@@ -19,6 +19,7 @@ code {
 /* Registration Form */
 .registration{
   width: fit-content;
+  height: fit-content;
   margin: 10px auto;
 
   box-sizing: border-box;
@@ -26,25 +27,26 @@ code {
 
 .registration .form-element{
   width: fit-content;
+  height: fit-content;
   display: block;
-  margin: 5px 20px;
+  margin: auto;
+  margin-bottom: 0;
 }
 
 .registration label,
 .registration input,
 .registration select{
-  width: 250px;
-  height: 22px;
+  width: 320px;
+  height: 35px;
 
-  padding: 0 5px;
-  margin: 0;
+  padding: 0 10px;
+  margin: 10px 0;
 
   display: block;
 }
 
-#register-button{
-  width: auto;
-  margin: 5px 20px;
+.react-datepicker__input-container input{
+  margin: 0;
 }
 /* Registration Form */
 
@@ -55,7 +57,7 @@ code {
 
   display: none;
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
@@ -64,11 +66,12 @@ code {
 }
 
 #interests-interface{
-  width: 40%;
+  width: 45%;
   max-height: 65%;
 
   margin-bottom: 15px;
-  padding: 10px 50px;
+  padding: 25px 50px;
+  border-radius: 30px;
   
   position: absolute;
   top: 50%;
@@ -104,8 +107,7 @@ code {
   display: flex;
 
   margin: 5px;
-  padding: 2px 8px;
-  padding-bottom: 3px;
+  padding: 5px 15px;
   border-radius: 10px;
 
   background-color: #ddd;
@@ -128,13 +130,13 @@ code {
   display: flex;
 }
 
-#interests-interface button{
-  border-style: none;
-  margin: 0 5px;
-  padding: 10px 50px;
-  border-radius: 15px;
-
-  cursor: pointer;
-  transition: ease-in-out 0.5s;
+.interest-element,
+#interests-interface h1,
+#interests-close{
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 /* Interests Interface */

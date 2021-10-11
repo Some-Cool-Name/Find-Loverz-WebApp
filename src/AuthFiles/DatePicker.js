@@ -7,10 +7,13 @@ function DatePicker(props){
     const setDate = props.setDate;
     return(
         <div className="datepicker">
-            <Datepicker selected={date} onChange={d=>setDate(d)}
+            <Datepicker 
+            selected={date} 
+            onChange={d=>setDate(d)}
             dateFormat='dd/MM/yyyy'
-            
-            
+            showYearDropdown
+            scrollableYearDropdown
+            isClearable
             ></Datepicker>
           
         </div>
