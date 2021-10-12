@@ -1,4 +1,4 @@
-import EditProfile from "../../EditProfile";
+import ProfilePreview from "../../ProfilePreview";
 import {render,fireEvent} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 
@@ -15,12 +15,67 @@ const user = [
         "location":"braam"
     }
 ]
-it('checkInterestRender',()=>{
-    render(
-        <BrowserRouter>
-            <EditProfile user={null} setUser={null}></EditProfile>
-        </BrowserRouter>
-
-    );
+it('viewName',()=>{
+   const {queryByTitle} = render(<ProfilePreview></ProfilePreview>)
+   const name = queryByTitle("name");
+   expect(name.innerHTML).toBe("pigs")
+        
+    
+    
     
 })
+it('viewInterestOne',()=>{
+    const {queryByTitle} = render(<ProfilePreview></ProfilePreview>)
+    const name = queryByTitle("intOne");
+    expect(name.innerHTML).toBe("Golf")
+         
+     
+     
+     
+ })
+
+ it('viewInterestTwo',()=>{
+    const {queryByTitle} = render(<ProfilePreview></ProfilePreview>)
+    const name = queryByTitle("intTwo");
+    expect(name.innerHTML).toBe("Gym")
+         
+     
+     
+     
+ })
+ it('viewInterestThree',()=>{
+    const {queryByTitle} = render(<ProfilePreview></ProfilePreview>)
+    const name = queryByTitle("intThree");
+    expect(name.innerHTML).toBe("Pet Lover")
+         
+     
+     
+     
+ })
+ it('viewInterestFour',()=>{
+    const {queryByTitle} = render(<ProfilePreview></ProfilePreview>)
+    const name = queryByTitle("intFour");
+    expect(name.innerHTML).toBe("Spirituality")
+         
+     
+     
+     
+ })
+ it('viewInterestFive',()=>{
+    const {queryByTitle} = render(<ProfilePreview></ProfilePreview>)
+    const name = queryByTitle("intFive");
+    expect(name.innerHTML).toBe("Vlogging")
+         
+     
+     
+     
+ })
+ /*it('viewBio',()=>{
+    const {queryByTitle} = render(<ProfilePreview></ProfilePreview>)
+    const name = queryByTitle("previewBio");
+    expect(name.innerHTML).toBe("lllll")
+         
+     
+     
+     
+ })*/
