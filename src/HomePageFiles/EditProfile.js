@@ -339,7 +339,7 @@ const EditProfile = ({ setUser, user }) => {
                                     <div className="interest-element" style={{borderColor: "#fc32e8", color:"#fc32e8" }}>{interest.length ===0 ? 'no user': interest.interest_4}</div>
                                     <div className="interest-element" >{interest.length ===0 ? 'no user': interest.interest_5}</div>
                              </div>
-<button className='intrestbutton' 
+                                <button className='intrestbutton' 
                                     onClick={interestsDisplay}
                                     id="interests-button">
                                         Choose Interests

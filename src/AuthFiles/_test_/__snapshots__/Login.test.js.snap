@@ -30,7 +30,7 @@ exports[`renders correctly 1`] = `
         }
       >
         <h1>
-          Log in
+          Log In
         </h1>
         <br />
         <hr
