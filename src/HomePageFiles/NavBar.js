@@ -18,7 +18,10 @@ export default function NavBar({ setUser, user}) {
         <div className="navBarNew">
             <p id="findLovers"><b>FindLoverz   </b></p> 
             <p id="divider">|</p>
-            <Link to="/profile" ><img src ={user[0].profile_picture} id="NavBarImage"  /></Link>
+            {
+                user &&
+                <Link to="/profile" ><img src ={user[0].profile_picture} id="NavBarImage"  /></Link>
+            }
             <Link to="/feed" id="navFeed" > <b>Feed</b> </Link>
             <Link to="/chat"  id="navChat"> <b>Chat</b> </Link>
             <Link to="/" onClick={handleLogout} id="navLogout"> <b>Logout</b> </Link>
