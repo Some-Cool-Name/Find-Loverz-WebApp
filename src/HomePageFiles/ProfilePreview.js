@@ -5,11 +5,22 @@ const ProfilePreview = ({ setUser, user }) => {
     let curr = null;
     const [interest,setInterest]= useState({length:0});
     const fetchInterest = async (e) =>{
-        
-        const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAGetInterest.php?username=begin"
-        )
-        const data = await result.json();
-        setInterest(data.Interest[0]);
+        console.log(user)
+        console.log("user")
+        try{
+          const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAGetInterest.php?"+`username=${curr[0].username}`
+  
+          )
+          
+  
+          const data = await result.json();
+          setInterest(data.Interest[0]);
+        }
+        catch(e){
+            console.log(e)
+            
+  
+        }
         
         
         }
@@ -55,7 +66,7 @@ const ProfilePreview = ({ setUser, user }) => {
                 
                 <div className="card-bio">
                     <div>
-                    <p> {curr[0].bio} </p>
+                    <p> {curr === null? "no user": curr[0].bio} </p>
                     </div>
                 </div>
                 </div>
