@@ -7,7 +7,7 @@ import { getFromStorage } from '../HelperClasses/StorageHandler';
 import './Chat.css';
 import NavBar from './NavBar';
 
-function Chat({ user, setUser, db, otherUser, setOtherUser }) {
+function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
     // we will use this to scroll to bottom of chat on page-reload and after sending a message
     const dummy = useRef();
     const location = useLocation();
@@ -55,9 +55,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser }) {
 
 
     useEffect(() => {
-        if(otherUser){
-            console.log('me: ', user[0].username);
-            console.log('other person: ', getFromStorage('otherPersonUsername'));
+        if(otherUser && !isTest){
             db.ref(`${user[0].username}_${otherUser}`).on("value", snapshot => {
                 let allMessages = [];
                 snapshot.forEach(snap => {
@@ -96,7 +94,10 @@ function Chat({ user, setUser, db, otherUser, setOtherUser }) {
 
     return (
         <React.Fragment>
-            <FeedLeft user={user} setUser={setUser} setOtherUser={setOtherUser} />
+            {
+                !isTest &&
+                <FeedLeft user={user} setUser={setUser} setOtherUser={setOtherUser} />
+            }
             <div className="chat-window">
                 <NavBar user={user} setUser={setUser}/>
                 <div className="chat-top">
