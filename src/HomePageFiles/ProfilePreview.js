@@ -61,5 +61,4 @@ const ProfilePreview = ({ setUser, user }) => {
       </div>
     );
 }
- 
 export default ProfilePreview;

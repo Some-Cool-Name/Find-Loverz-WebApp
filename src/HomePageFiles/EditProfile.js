@@ -31,6 +31,25 @@ const EditProfile = ({ setUser, user }) => {
     let history = useHistory();
     let curr = null;
    
+    const [interest,setInterest]= useState({length:0});
+
+    const fetchInterest = async (e) =>{
+        console.log(user)
+        
+        const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAGetInterest.php?username=begin"
+
+        )
+        const data = await result.json();
+        setInterest(data.Interest[0]);
+        
+        
+        }
+    useEffect(()=>{
+        //get Interest  function
+        fetchInterest();
+        },[])
+  
+    
     if(user){
         try{
             curr = user;
@@ -309,15 +328,22 @@ const EditProfile = ({ setUser, user }) => {
                                     type="text"
                                     className="bio"
                                     rows="6"cols="52"></textarea>
-                                <p className="lblDiscriber">Interests</p>
-                                <button className='intrestbutton' 
+                                
+                                <textarea value={curr === null? "no user": curr[0].bio+" Im just here for beautiful ladies, I love cute,beautiful and kind XD"} onChange={e => setBio(e.target.value)} type="text" className="bio" rows="6" cols="52"></textarea>
+                                <p className="lblDiscriber">Interest</p>
+                                <div className="interest">
+                                    <div className="interest-element"  style={{borderColor: "#12c2e9", color:"#12c2e9" }} >{interest.length ===0 ? 'no user': interest.interest_1}</div>
+                                    <div className="interest-element" style={{borderColor: "#c471ed", color:"#c471ed" }} >{interest.length ===0 ? 'no user': interest.interest_2}</div>
+                                    <div className="interest-element"  style={{borderColor: "#fc32e8", color:"#fc32e8" }}>{interest.length ===0 ? 'no user': interest.interest_3}</div>
+                                    <br />
+                                    <div className="interest-element" style={{borderColor: "#fc32e8", color:"#fc32e8" }}>{interest.length ===0 ? 'no user': interest.interest_4}</div>
+                                    <div className="interest-element" >{interest.length ===0 ? 'no user': interest.interest_5}</div>
+                             </div>
+<button className='intrestbutton' 
                                     onClick={interestsDisplay}
                                     id="interests-button">
                                         Choose Interests
-                                </button>
-                           
-                             <p className="editInterest">edit interest</p>
-                             <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
+                                </button>                             <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
                              <div className="btnUpdate">
                                 <Link className='button' /* to="/profile" */ style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
                              </div>
