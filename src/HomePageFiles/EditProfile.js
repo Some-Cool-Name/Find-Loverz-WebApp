@@ -32,18 +32,28 @@ const EditProfile = ({ setUser, user }) => {
     let curr = null;
    
     const [interest,setInterest]= useState({length:0});
-
     const fetchInterest = async (e) =>{
-        console.log(user)
-        
-        const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAGetInterest.php?username=begin"
+      console.log(user)
+      console.log("user")
+      try{
+        const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAGetInterest.php?"+`username=${curr[0].username}`
 
         )
+        
+
         const data = await result.json();
         setInterest(data.Interest[0]);
-        
-        
-        }
+      
+      }
+      catch(e){
+          console.log(e)
+          
+
+      }
+      
+      
+      }
+    
     useEffect(()=>{
         //get Interest  function
         fetchInterest();
@@ -243,6 +253,7 @@ const EditProfile = ({ setUser, user }) => {
                  .then( function (response){
                    console.log(response);
                    alert('successful')
+                   
                  } )
                  .catch(function (error) {
                  console.log(error);
@@ -329,10 +340,10 @@ const EditProfile = ({ setUser, user }) => {
                                     className="bio"
                                     rows="6"cols="52"></textarea>
                                 
-                                <textarea value={curr === null? "no user": curr[0].bio+" Im just here for beautiful ladies, I love cute,beautiful and kind XD"} onChange={e => setBio(e.target.value)} type="text" className="bio" rows="6" cols="52"></textarea>
+                                <textarea value={curr === null? "no user": curr[0].bio} onChange={e => setBio(e.target.value)} type="text" className="bio" rows="6" cols="52"></textarea>
                                 <p className="lblDiscriber">Interest</p>
                                 <div className="interest">
-                                    <div className="interest-element"  style={{borderColor: "#12c2e9", color:"#12c2e9" }} >{interest.length ===0 ? 'no user': interest.interest_1}</div>
+                                    <div title="interestOne" className="interest-element"  style={{borderColor: "#12c2e9", color:"#12c2e9" }} >{interest.length ===0 ? 'no user': interest.interest_1}</div>
                                     <div className="interest-element" style={{borderColor: "#c471ed", color:"#c471ed" }} >{interest.length ===0 ? 'no user': interest.interest_2}</div>
                                     <div className="interest-element"  style={{borderColor: "#fc32e8", color:"#fc32e8" }}>{interest.length ===0 ? 'no user': interest.interest_3}</div>
                                     <br />
