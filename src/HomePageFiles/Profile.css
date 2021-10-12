@@ -1,0 +1,148 @@
+div.profile{
+    display: flex;
+    width: fit-content;
+    width: fit-content;
+    height: fit-content;
+    height:max-content;
+    flex-wrap: nowrap;
+    min-width: 700px;
+}
+
+.right-container-1 {
+    min-width: 400px;
+}
+.profile-image {
+    width: 120px;
+    height: 110px;
+    padding-top: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 100px;
+    background-image: url(../default.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+p.editProfile{
+    color: blue;
+    font-size: small;
+    margin-bottom: 10px;
+}
+h2.usernameAge{
+    color: rgb(160, 157, 157);
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 20px;
+}
+h2.usernameAge2{
+    color: rgb(160, 157, 157);
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    text-align: start;
+}
+p.location{
+    margin-bottom: 10px;
+    margin-left: 10px;
+    text-align: start;
+    color: blue;
+}
+
+h2.txtAccInfo{
+    text-align: start;
+    font-size:medium ;
+    padding-left: 5px;
+}
+hr.divider{
+    width: 120px;
+    background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
+}
+dir{
+    padding-left: 0;
+}
+P.lblDiscriber{
+    text-align: start;
+    font-weight: bolder;
+    font-size: medium;
+    padding-left:15PX ;
+    
+}
+.wrapper{
+    padding: 20px;
+   
+}
+input.inputfield{
+    border:none;
+    border-bottom: 2px solid silver;
+    border-radius: 0%;
+    
+    color: lightslategrey;
+    font-size: smaller;
+}
+textarea.bio{
+    border:none;
+    resize: none;
+    border-bottom: 2px solid silver;
+    color: lightslategrey;
+    padding: 10px;
+
+}
+
+textarea[type="text"]:focus{
+    border:none;
+    resize: none;
+    outline: 0;
+    border-bottom: 2px solid #00bafa;
+    box-shadow:0 2px 0 0 #c471ed;   
+}
+div.interest-element{
+    display:inline-block ;
+    margin-top: 20px;
+    
+}
+div.interest-element2{
+    display:inline-block ;
+    margin: 5px;
+    
+}
+.interest-element {
+    height: 22px;
+    width: 100px;
+    border-radius:15px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+}
+.interest-element2 {
+    width: 80px;
+    height: 15px;
+    border-radius:15px;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    font-size: x-small;
+}
+div.interest-element:hover{
+    background-color: white;
+}
+p.editInterest{
+    margin-top: 10px;
+    color: blue;
+    font-size: small;
+    margin-bottom: 10px;
+   text-align: right;
+   margin-left: 20px;
+}
+hr.line2{
+    
+    background: silver;
+}
+.btnUpdate{
+    margin: auto;
+    padding: auto; 
+}
+div.btnUpdate{
+  margin-top: 20px;
+  display:inline-block ; 
+}

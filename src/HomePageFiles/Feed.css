@@ -37,7 +37,7 @@ div.User-Info {
 .feedcontainer{
   width: 930px;
   height: 600px;
-  background: linear-gradient(to right, #b621fe, #1fd1f9);
+  background: rgb(238, 237, 237);
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -80,8 +80,8 @@ div.User-Info {
 }
 
 .card-container {
-  width: 350px;
-  height: 550px;
+  width: 300px;
+  height: 450px;
 
   border: 1px solid #cccccc;
   border-radius: 20px;
@@ -104,8 +104,8 @@ div.User-Info {
 }
 
 .card-image {
-  width: 350px;
-  height: 300px;
+  width: 300px;
+  height: 250px;
 
   display: flex;
   margin-bottom: 10px;
