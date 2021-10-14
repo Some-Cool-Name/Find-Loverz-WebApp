@@ -95,4 +95,3 @@ it('Login Inputs( email, password ) : Empty Fields Testing , Should return error
     //expect(loginBtn).toBeTruthy();
 
 });
-

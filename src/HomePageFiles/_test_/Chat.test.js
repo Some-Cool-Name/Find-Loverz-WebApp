@@ -1,4 +1,5 @@
 import React from 'react';
+import 'regenerator-runtime/runtime';
 import { BrowserRouter } from "react-router-dom"
 import Chat from '../Chat';
 import { render, screen } from '@testing-library/react';
