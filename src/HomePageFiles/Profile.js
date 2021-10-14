@@ -6,6 +6,9 @@ import NavBar from './NavBar';
 
 
 const Profile = ({ setUser, user }) => {
+
+
+
     return ( 
         <div>
             <div className="profile">
