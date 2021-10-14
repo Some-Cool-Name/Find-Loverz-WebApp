@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing if it renders and buttons 1`] = `
+<a
+  href="/../../Profile.js"
+  onClick={[Function]}
+>
+  profile
+</a>
+`;
