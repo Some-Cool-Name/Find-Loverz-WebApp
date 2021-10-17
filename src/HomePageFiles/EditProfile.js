@@ -15,6 +15,7 @@ const EditProfile = ({ setUser, user }) => {
     //you can use the states below inorder to send requests to update the profile
     const [name,setName]=useState('');
     const [bio,setBio]=useState('');
+    const [location,setLocation]=useState('');
     const [file, setFile] = useState(null);
     const cloudinary = 'https://api.cloudinary.com/v1_1/dkctv74ue/image/upload';
 
@@ -235,6 +236,29 @@ const EditProfile = ({ setUser, user }) => {
                     curr[0].bio = bio;
 
         }
+        if( curr[0].username && location.trim() !='' ) 
+        {
+                //location
+                axios({
+                    method : 'post',
+                    url : 'https://lamp.ms.wits.ac.za/home/s1851427/WDAUpdateLocation.php',
+                    params : {
+                      username : curr[0].username,
+                      location : location
+                    }
+                    })
+                    .then( function (response){
+                      console.log(response);
+                      //alert('successful')
+                    } )
+                    .catch(function (error) {
+                    console.log(error);
+                    updateStatus = 'update successful'
+                    });
+                    curr[0].location = location;
+
+        }
+
         if(interest1 && interest2 && interest3 && interest4 && interest5){
             
              // interests
@@ -260,7 +284,7 @@ const EditProfile = ({ setUser, user }) => {
                  updateStatus = 'update successful'
                  });
         }
-        if(name.trim() === '' || bio.trim() === '' ){ // bug here
+        if(name.trim() === '' || bio.trim() === '' || location.trim() === '' ){ // bug here
           return
         }
         else{
@@ -288,7 +312,6 @@ const EditProfile = ({ setUser, user }) => {
                 <br />
                 <div>
                     <img className="profile-image" id="feed-image" src={curr === null? "no user": curr[0].profile_picture}></img>
-                    <p className="editProfile">edit profile</p>
                 </div>
                 
                 <div >
@@ -325,12 +348,13 @@ const EditProfile = ({ setUser, user }) => {
                             <p className="lblDiscriber">LOCATION</p>
                             
                             <input
-                                value = "braam"
-                                className='inputfield'
+                                value = {location}
+                                onChange={e => setLocation(e.target.value)}
+                                className="location"
                                 type="text" 
                                 align="start"
                                 style={{ color: "#00bafa" }}
-                                readOnly 
+                                 
                             />
                             <p className="lblDiscriber">BIO</p>
                                 <textarea 
@@ -340,7 +364,6 @@ const EditProfile = ({ setUser, user }) => {
                                     className="bio"
                                     rows="6"cols="52"></textarea>
                                 
-                                <textarea value={curr === null? "no user": curr[0].bio} onChange={e => setBio(e.target.value)} type="text" className="bio" rows="6" cols="52"></textarea>
                                 <p className="lblDiscriber">Interest</p>
                                 <div className="interest">
                                     <div title="interestOne" className="interest-element"  style={{borderColor: "#12c2e9", color:"#12c2e9" }} >{interest.length ===0 ? 'no user': interest.interest_1}</div>
