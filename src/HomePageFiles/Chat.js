@@ -119,7 +119,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
                             {
                                 messages && messages.map((obj) => {
                                     return(
-                                            <Message text={obj.message} isMe={obj.user===user[0].username} />
+                                            <Message text={obj.message} isMe={obj.user===user[0].username} time={obj.time} />
                                     );
                                 })
                             }
