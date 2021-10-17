@@ -110,8 +110,8 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
                     </div>
 
                     <div className="chat-buttons-container">
-                        <button className="chat-buttons" id="chat-search-button"><i class="uil uil-search"></i></button>
-                        <button className="chat-buttons" id="chat-options-button"><i class="uil uil-ellipsis-h"></i></button>          
+                        <button className="chat-buttons" id="chat-search-button"><i className="uil uil-search"></i></button>
+                        <button className="chat-buttons" id="chat-options-button"><i className="uil uil-ellipsis-h"></i></button>          
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
                         onChange={handleChange}
                         value={text}
                         ></input>
-                    <div id="message-send" type="button" onClick={sendMessage}><i class="uil uil-message"></i></div>
+                    <div id="message-send" type="button" onClick={sendMessage}><i className="uil uil-message"></i></div>
                 </div>
                 </div>
         </React.Fragment>
