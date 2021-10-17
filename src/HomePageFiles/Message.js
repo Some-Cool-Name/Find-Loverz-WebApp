@@ -47,7 +47,6 @@ function Message({ text, isMe, time }) {
                      // --------- Same min ---------
                     if (tmn == dmn){
                         timestamp = "a few seconds ago";
-                        console.log(timestamp);
                     }
 
                     // --------- Different min ---------
@@ -61,8 +60,6 @@ function Message({ text, isMe, time }) {
                         else{
                             timestamp = (xmn + " minutes ago");
                         }
-            
-                        console.log(timestamp);
                     }
                 }
 
@@ -77,8 +74,6 @@ function Message({ text, isMe, time }) {
                     else{
                         timestamp = (xh + " hours ago");
                     }
-            
-                    console.log(timestamp);
                 }
             }
 
@@ -90,45 +85,26 @@ function Message({ text, isMe, time }) {
                     timestamp = (xd + " day ago");
                 }
     
-                else{
+                 else if (xd < 7){
                     timestamp = (xd + " days ago");
                 }
-            
-                console.log(timestamp);
+
+                else{
+                    timestamp = time;
+                }
             }
         }
 
         // --------- Different month ---------
         else{
-            let xm = (dm - tm);
-            
-            if (xm == 1){  
-                timestamp = (xm + " month ago");
-            }
-    
-            else{
-                timestamp = (xm + " months ago");
-            }
-            
-            console.log(timestamp);
+            timestamp = time;
         }
     }
 
     // --------- Different year ---------
     else{
         timestamp = time;
-        
-        console.log(timestamp);
     }
-
-    console.log(time);
-    console.log(date);
-    console.log("time: " + ty + ", " + tm + ", " + td + ", " + th + ", " + tmn + ", " + ts);
-    console.log("date: " + dy + ", " + dm + ", " + dd + ", " + dh + ", " + dmn + ", " + ds);
-   /* if ([0][1][2][3] == [0][1][2][3]){
-       console.log("Same year") 
-    }*/
-
 
     if(isMe){
         return (
