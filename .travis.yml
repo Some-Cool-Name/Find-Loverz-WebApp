@@ -10,7 +10,7 @@ cache:
 script:
     - npm test
     - npm run build
-    - npm run codecov --clear-cache
+    - npm run coveralls
     
 notifications:
   email: false
