@@ -3,11 +3,8 @@ import './Chat.css';
 
 
 function Message({ text, isMe, time }) {
-
     var today = new Date();
-    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() +'-'+ today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     console.log(time.length);
-    console.log(date);
 
     // Length of date is 19 (YYYY-MM-DD-HH:MM:SS)
     // year: [0][1][2][3]
@@ -29,10 +26,6 @@ function Message({ text, isMe, time }) {
     // min: [14][15]
     let tmn = parseInt(time[14] + time[15]);
     let dmn = today.getMinutes()
-
-    // sec: [17][18]
-    let ts = parseInt(time[17] + time[18]);
-    let ds = today.getSeconds();
 
     let timestamp = "none";
     //dy = 10;
