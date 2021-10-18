@@ -1,3 +1,4 @@
+import React from 'react';
 import {render, fireEvent} from "@testing-library/react";
 import NavBar from "../NavBar.js"
 import { StaticRouter } from 'react-router';

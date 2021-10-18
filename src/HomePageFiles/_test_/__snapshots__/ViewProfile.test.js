@@ -1,3 +1,4 @@
+import React from 'react';
 import ProfilePreview from "../../ProfilePreview";
 import {render,fireEvent} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
