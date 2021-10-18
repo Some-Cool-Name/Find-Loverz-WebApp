@@ -1,6 +1,6 @@
-import Modal from "./Modal";
 import { React, useState,useEffect } from "react";
 import { ImLocation2 } from "react-icons/im";
+
 const ProfilePreview = ({ setUser, user }) => {
     let curr = null;
     const [interest,setInterest]= useState({length:0});
