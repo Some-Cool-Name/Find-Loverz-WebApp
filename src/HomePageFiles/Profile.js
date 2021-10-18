@@ -12,10 +12,18 @@ const Profile = ({ setUser, user }) => {
     return ( 
         <div>
             <div className="profile">
-                <EditProfile user={user} setUser={setUser}></EditProfile>
-                <NavBar user={user} setUser={setUser} />
+                <div className="left"><EditProfile user={user} setUser={setUser}></EditProfile></div>
+                <div className="right"><ProfilePreview user={user} setUser={setUser}></ProfilePreview></div>
+               {/*  <div className="navTopBar1">
+                    <NavBar user={user} setUser={setUser} />
+                </div>
+                
                 <div style={{width: "51vw", height: 0}}></div>
-                <ProfilePreview user={user} setUser={setUser}></ProfilePreview>
+                <div className="ProfileComp1">
+                    <div className="left"><EditProfile user={user} setUser={setUser}></EditProfile></div>
+                    <div className="right"><ProfilePreview user={user} setUser={setUser}></ProfilePreview></div>   
+                </div> */}
+               
             </div>
         </div>
     );

@@ -46,10 +46,10 @@ div.User-Info {
   display: none;
 }
 .right-container-1 {
-  width: 75vw;
+ /*  width: 75vw; */
   height: fit-content;
-  min-height: 100vh;
-  min-width: 350px;
+  /* min-height: 100vh; */
+ /*  min-width: 350px; */
 
   box-sizing: border-box;
   padding: 20px;

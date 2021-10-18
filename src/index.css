@@ -25,13 +25,13 @@ code {
   box-sizing: border-box;
 }
 
-.registration .form-element{
+/* .registration .form-element{
   width: fit-content;
   height: fit-content;
   display: block;
   margin: auto;
   margin-bottom: 0;
-}
+} */
 
 .registration label,
 .registration input,
@@ -67,7 +67,7 @@ code {
 
 #interests-interface{
   width: 45%;
-  max-height: 65%;
+  height:min-content;
 
   margin-bottom: 15px;
   padding: 25px 50px;

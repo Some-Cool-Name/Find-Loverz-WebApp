@@ -41,10 +41,10 @@ const ProfilePreview = ({ setUser, user }) => {
     
     
     return ( 
-        <div style={{position: "absolute",
+        <div /* style={{position: "absolute",
             right: "0px",
             top: "0px",
-            zIndex: -1}}>
+            zIndex: -1}} */>
             
             <div className="right-container-1">
             <div className="right-container-2">

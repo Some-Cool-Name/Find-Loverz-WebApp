@@ -1,10 +1,11 @@
 .navBarNew {
+  
     height: 50px;
-    width: 100%;
+    width: 1550px;
     display: flex;
     border-style: groove;
     background: linear-gradient(to right, #b621fe, #1fd1f9);
-  }
+}
   
   #findLovers {
     font-size: 20px;

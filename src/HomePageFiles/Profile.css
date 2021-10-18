@@ -1,28 +1,81 @@
 div.profile{
     display: flex;
-    width: fit-content;
-    width: fit-content;
-    height: fit-content;
+    width: 1550px;
     height:max-content;
     flex-wrap: nowrap;
-    min-width: 700px;
+    
+}
+/* .navTopBar1{
+    
+    position: relative;
+    
+    
+}
+.ProfileComp1{
+    position: relative;
+    z-index: -1;
+    width: 100%;
+    right: 1560px;
+}
+.left{
+    
+    width: 465px;
+    height: 800px;
+    max-width: 460px;
+    max-height: 800px;
+    
+    float: left;
+}
+.right{
+    
+    width: 1080px;
+    height: 800px;
+    max-width: 1085px;
+    max-height: 800px;
+    float: right;
+    
+}
+ */
+ .panel-container-1{
+    width: 26vw;
+   height: 778px; 
+   
+   overflow-x: hidden;
+   overflow-y: scroll;
+   display: block;
+ 
+   position: relative;
+   top: 0;
+   left: 0;
+ 
+   background-color: #ffffff;
+   overflow: hidden;
+   
+}
+.right-container-1 {
+   
+    /* width: 70vw;
+  height: 93vh;
+  min-height: 100vh; */
+  width: 74vw;
+  height: 778px;
+  box-sizing: border-box;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-left: 1px solid #cccccc;
+
+  position: relative;
+  top: 0;
+  right: 0;
+
+  background-color: #eeeeee;
+    
 }
 
-.right-container-1 {
-    min-width: 400px;
-}
-.profile-image {
-    width: 120px;
-    height: 110px;
-    padding-top: 10px;
-    margin: auto;
-    margin-bottom: 10px;
-    border-radius: 100px;
-    background-image: url(../default.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 p.editProfile{
     color: blue;
     font-size: small;
@@ -32,13 +85,15 @@ h2.usernameAge{
     color: rgb(160, 157, 157);
     font-weight: bolder;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
+    font-size: 35px;
 }
 h2.usernameAge2{
     color: rgb(160, 157, 157);
     font-weight: bolder;
+    
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
     margin-left: 10px;
     text-align: start;
 }
@@ -55,7 +110,7 @@ h2.txtAccInfo{
     padding-left: 5px;
 }
 hr.divider{
-    width: 120px;
+    width: 160px;
     background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
 }
 dir{
@@ -70,6 +125,8 @@ P.lblDiscriber{
 }
 .wrapper{
     padding: 20px;
+    margin: 20px;
+    
    
 }
 input.inputfield{
@@ -98,7 +155,7 @@ textarea[type="text"]:focus{
 }
 div.interest-element{
     display:inline-block ;
-    margin-top: 20px;
+    margin-top: 5px;
     
 }
 div.interest-element2{
@@ -107,8 +164,8 @@ div.interest-element2{
     
 }
 .interest-element {
-    height: 22px;
-    width: 100px;
+    height: 20px;
+    width: max-content;
     border-radius:15px;
     background-color: white;
     border-style: solid;
@@ -134,15 +191,62 @@ p.editInterest{
    text-align: right;
    margin-left: 20px;
 }
+.intrestbutton, #register-button, #interests-close {
+    margin: 5px 0px;
+}
 hr.line2{
     
     background: silver;
 }
-.btnUpdate{
-    margin: auto;
-    padding: auto; 
-}
+
 div.btnUpdate{
-  margin-top: 20px;
+  
   display:inline-block ; 
+}
+#register-pic{
+    width:70px;
+   clear: both;
+    height: 70px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 20px;
+    border-radius: 100px;
+    background-image: url(../default.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+input#fileupload::before {
+    content: 'edit';
+    display: inline-flex;
+    border: none;
+    border-radius: 50px;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: linear-gradient(to right,#b621fe , #12c2e9);
+    font-size: 14px;
+    font-weight: 900;
+    /* background: -webkit-linear-gradient(#b621fe , #12c2e9); */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: pointer;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+}
+input#fileupload {
+    width: 50px;
+    margin: auto;
+    height: max-content;
+    border: none;
+    border-radius: 10%;
+    padding: 0;
+    size: 2px;
+}
+a.button{
+    margin: 0px 0px;
+    margin-top: 0px;
 }
