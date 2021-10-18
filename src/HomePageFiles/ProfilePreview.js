@@ -1,4 +1,4 @@
-import { React, useState,useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { ImLocation2 } from "react-icons/im";
 import 'regenerator-runtime/runtime';
 
