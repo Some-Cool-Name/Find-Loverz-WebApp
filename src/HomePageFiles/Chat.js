@@ -80,9 +80,10 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
     if(!otherUser){
         return(
             <React.Fragment>
+                <NavBar user={user} setUser={setUser} />
                 <FeedLeft user={user} setUser={setUser} setOtherUser={setOtherUser} />
                 <div className="chat-window">
-                    <NavBar user={user} setUser={setUser} />
+                    
                     <h1 style={{color: 'gray', marginTop: 200}}>
                         Select a user to chat to on <br/>
                         the matches section (on your left).
@@ -94,12 +95,13 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
 
     return (
         <React.Fragment>
+            <NavBar user={user} setUser={setUser}/>
             {
                 !isTest &&
                 <FeedLeft user={user} setUser={setUser} setOtherUser={setOtherUser} />
             }
             <div className="chat-window">
-                <NavBar user={user} setUser={setUser}/>
+                
                 <div className="chat-top">
                     <div className="chat-details">
                         {/* <div className = "chat-profile-picture"><img src = {getFromStorage('')} alt="" /> </div> */}

@@ -177,7 +177,7 @@ function showUsers(){
 
   return (
     <div className = 'feedcontainer'>
-      <NavBar user={user} setUser={setUser}/>
+      {/* <NavBar user={user} setUser={setUser}/> */}
       <HorizontalScroll>
         {showUsers()}
       </HorizontalScroll>
