@@ -66,6 +66,7 @@ input{
 
 input[type="text"]:focus, input[type="password"]:focus {
     border-color: #00bafa;
+    box-shadow:0 2px 0 0 #c471ed;
 }
 
 a.button{

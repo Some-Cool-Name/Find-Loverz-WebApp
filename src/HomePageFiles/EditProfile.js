@@ -1,8 +1,11 @@
+import React, { useState,useEffect } from "react";
 import {Link, useHistory } from 'react-router-dom';
 import { globalStyles } from '../globalStyles';
 import { Formik } from 'formik';
-import { React, useState,useEffect } from "react";
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
+import { getFromStorage, saveToStorage } from '../HelperClasses/StorageHandler';
+
+
 import axios from 'axios';
 
 const EditProfile = ({ setUser, user }) => {
@@ -12,20 +15,52 @@ const EditProfile = ({ setUser, user }) => {
     //you can use the states below inorder to send requests to update the profile
     const [name,setName]=useState('');
     const [bio,setBio]=useState('');
+    const [location,setLocation]=useState('');
+    const [file, setFile] = useState(null);
+    const cloudinary = 'https://api.cloudinary.com/v1_1/dkctv74ue/image/upload';
 
-    const [interest1,setInterest1] = useState();
-    const [interest2,setInterest2] = useState();
-    const [interest3,setInterest3] = useState();
-    const [interest4,setInterest4] = useState();
-    const [interest5,setInterest5] = useState();
+
+    const [interest1,setInterest1] = useState('');
+    const [interest2,setInterest2] = useState('');
+    const [interest3,setInterest3] = useState('');
+    const [interest4,setInterest4] = useState('');
+    const [interest5,setInterest5] = useState('');
     var listen = true;
     var interestsArray = [];
     var interestsStrings = [];
 
     let history = useHistory();
     let curr = null;
-    
    
+    const [interest,setInterest]= useState({length:0});
+    const fetchInterest = async (e) =>{
+      console.log(user)
+      console.log("user")
+      try{
+        const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAGetInterest.php?"+`username=${curr[0].username}`
+
+        )
+        
+
+        const data = await result.json();
+        setInterest(data.Interest[0]);
+      
+      }
+      catch(e){
+          console.log(e)
+          
+
+      }
+      
+      
+      }
+    
+    useEffect(()=>{
+        //get Interest  function
+        fetchInterest();
+        },[])
+  
+    
     if(user){
         try{
             curr = user;
@@ -109,9 +144,52 @@ const EditProfile = ({ setUser, user }) => {
       function interestsClose() {
         document.getElementById("interests-background").style.display = "none";
       }
+
+      const handleImage = async (images,e) => {
+        for (let image of images) {
+            const formData = new FormData();
+            formData.append("file", image);
+            formData.append("upload_preset", "gbu8evn2");
+    
+            const resp = await fetch(cloudinary, {
+                body: formData,
+                method: 'POST'
+            })
+            await resp.json().then((respJSON) => {
+                saveToStorage('image_url', respJSON.secure_url);
+            });
+        }
+      }
       
 
-    const handleUpdate = async () => {
+    const handleUpdate = async (images) => {
+
+      if(images){
+        await handleImage(images)
+        const te = getFromStorage('image_url')
+        console.log(getFromStorage('image_url'))
+
+        axios({
+          method : 'put',
+          url : 'https://lamp.ms.wits.ac.za/home/s1851427/WDAUpPicture.php',
+          params : {
+            username : curr[0].username,
+            profile_picture : te
+          }
+          })
+          .then( function (response){
+            console.log(response);
+            alert('successful')
+          } )
+          .catch(function (error) {
+          console.log(error);
+          updateStatus = 'update successful'
+          });
+
+          curr[0].profile_picture = te;
+      }
+
+         
 
         let updateStatus = 'nothing to update';
 
@@ -132,7 +210,8 @@ const EditProfile = ({ setUser, user }) => {
                 console.log(error);
                 updateStatus = 'update successful'
                 });
-
+                curr[0].name = name;
+                
         }
         if( curr[0].username && bio.trim() !='' ) 
         {
@@ -154,9 +233,32 @@ const EditProfile = ({ setUser, user }) => {
                     console.log(error);
                     updateStatus = 'update successful'
                     });
+                    curr[0].bio = bio;
 
-                
         }
+        if( curr[0].username && location.trim() !='' ) 
+        {
+                //location
+                axios({
+                    method : 'post',
+                    url : 'https://lamp.ms.wits.ac.za/home/s1851427/WDAUpdateLocation.php',
+                    params : {
+                      username : curr[0].username,
+                      location : location
+                    }
+                    })
+                    .then( function (response){
+                      console.log(response);
+                      //alert('successful')
+                    } )
+                    .catch(function (error) {
+                    console.log(error);
+                    updateStatus = 'update successful'
+                    });
+                    curr[0].location = location;
+
+        }
+
         if(interest1 && interest2 && interest3 && interest4 && interest5){
             
              // interests
@@ -175,13 +277,20 @@ const EditProfile = ({ setUser, user }) => {
                  .then( function (response){
                    console.log(response);
                    alert('successful')
+                   
                  } )
                  .catch(function (error) {
                  console.log(error);
                  updateStatus = 'update successful'
                  });
         }
-        alert(updateStatus);
+        if(name.trim() === '' || bio.trim() === '' || location.trim() === '' ){ // bug here
+          return
+        }
+        else{
+          saveToStorage('user', curr);
+        }
+        //alert(updateStatus);
 
     } 
 
@@ -203,7 +312,6 @@ const EditProfile = ({ setUser, user }) => {
                 <br />
                 <div>
                     <img className="profile-image" id="feed-image" src={curr === null? "no user": curr[0].profile_picture}></img>
-                    <p className="editProfile">edit profile</p>
                 </div>
                 
                 <div >
@@ -215,6 +323,18 @@ const EditProfile = ({ setUser, user }) => {
                 <dir>
                     <Formik>
                         <div className="wrapper">
+
+                        <label className = "fieldDescription" htmlFor="username"> Profile Picture</label>
+
+                            <img id="register-pic"></img>
+                            <input
+                              type="file"
+                              id="fileupload"
+                              accept="image/*"
+                              ref={fileInputEl => setFile(fileInputEl)}
+                              onChange={(e) => document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) }
+                            />
+
                             <p className="lblDiscriber">NAME</p>
                             
                             <input
@@ -228,12 +348,13 @@ const EditProfile = ({ setUser, user }) => {
                             <p className="lblDiscriber">LOCATION</p>
                             
                             <input
-                                value = "braam"
-                                className='inputfield'
+                                value = {location}
+                                onChange={e => setLocation(e.target.value)}
+                                className="location"
                                 type="text" 
                                 align="start"
                                 style={{ color: "#00bafa" }}
-                                readOnly 
+                                 
                             />
                             <p className="lblDiscriber">BIO</p>
                                 <textarea 
@@ -242,21 +363,27 @@ const EditProfile = ({ setUser, user }) => {
                                     type="text"
                                     className="bio"
                                     rows="6"cols="52"></textarea>
-                                <p className="lblDiscriber">Interests</p>
+                                
+                                <p className="lblDiscriber">Interest</p>
+                                <div className="interest">
+                                    <div title="interestOne" className="interest-element"  style={{borderColor: "#12c2e9", color:"#12c2e9" }} >{interest.length ===0 ? 'no user': interest.interest_1}</div>
+                                    <div className="interest-element" style={{borderColor: "#c471ed", color:"#c471ed" }} >{interest.length ===0 ? 'no user': interest.interest_2}</div>
+                                    <div className="interest-element"  style={{borderColor: "#fc32e8", color:"#fc32e8" }}>{interest.length ===0 ? 'no user': interest.interest_3}</div>
+                                    <br />
+                                    <div className="interest-element" style={{borderColor: "#fc32e8", color:"#fc32e8" }}>{interest.length ===0 ? 'no user': interest.interest_4}</div>
+                                    <div className="interest-element" >{interest.length ===0 ? 'no user': interest.interest_5}</div>
+                             </div>
                                 <button className='intrestbutton' 
                                     onClick={interestsDisplay}
                                     id="interests-button">
                                         Choose Interests
-                                </button>
-                           
-                             <p className="editInterest">edit interest</p>
-                             <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
+                                </button>                             <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
                              <div className="btnUpdate">
-                                <Link className='button' /* to="/profile" */ style={globalStyles.button}  onClick={ () => handleUpdate()} ><b>Update</b> </Link>
+                                <Link className='button' to="/profile" style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
                              </div>
                              
                         </div>
-                            
+                        
                                         
                     </Formik>
 
