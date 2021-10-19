@@ -1,7 +1,7 @@
-import React, { useState,useEffect } from "react";
 import {Link, useHistory } from 'react-router-dom';
 import { globalStyles } from '../globalStyles';
 import { Formik } from 'formik';
+import { React, useState,useEffect } from "react";
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
 import { getFromStorage, saveToStorage } from '../HelperClasses/StorageHandler';
 
@@ -168,25 +168,32 @@ const EditProfile = ({ setUser, user }) => {
         await handleImage(images)
         const te = getFromStorage('image_url')
         console.log(getFromStorage('image_url'))
+        
+        if(te != null && curr[0].username){
 
-        axios({
-          method : 'put',
-          url : 'https://lamp.ms.wits.ac.za/home/s1851427/WDAUpPicture.php',
-          params : {
-            username : curr[0].username,
-            profile_picture : te
-          }
-          })
-          .then( function (response){
-            console.log(response);
-            alert('successful')
-          } )
-          .catch(function (error) {
-          console.log(error);
-          updateStatus = 'update successful'
-          });
+          axios({
+            method : 'put',
+            url : 'https://lamp.ms.wits.ac.za/home/s1851427/WDAUpPicture.php',
+            params : {
+              username : curr[0].username,
+              profile_picture : te
+            }
+            })
+            .then( function (response){
+              console.log(response);
+              alert('successful')
+            } )
+            .catch(function (error) {
+            console.log(error);
+            updateStatus = 'update successful'
+            });
+  
+            curr[0].profile_picture = te;
 
-          curr[0].profile_picture = te;
+          
+        }
+
+        
       }
 
          
@@ -339,6 +346,8 @@ const EditProfile = ({ setUser, user }) => {
                             
                             <input
                                 value = {name}
+                                placeholder = "name"
+                                alt = "Placeholder"
                                 className='inputfield'
                                 type="text" 
                                 align="start"
@@ -349,6 +358,8 @@ const EditProfile = ({ setUser, user }) => {
                             
                             <input
                                 value = {location}
+                                placeholder = "location"
+                                alt = "Placeholder"
                                 onChange={e => setLocation(e.target.value)}
                                 className="location"
                                 type="text" 
@@ -359,6 +370,8 @@ const EditProfile = ({ setUser, user }) => {
                             <p className="lblDiscriber">BIO</p>
                                 <textarea 
                                     value = {bio}
+                                    placeholder = "bio"
+                                    alt = "Placeholder"
                                     onChange={e => setBio(e.target.value)}
                                     type="text"
                                     className="bio"
@@ -373,13 +386,13 @@ const EditProfile = ({ setUser, user }) => {
                                     <div className="interest-element" style={{borderColor: "#fc32e8", color:"#fc32e8" }}>{interest.length ===0 ? 'no user': interest.interest_4}</div>
                                     <div className="interest-element" >{interest.length ===0 ? 'no user': interest.interest_5}</div>
                              </div>
-                                <button className='intrestbutton' 
+<button className='intrestbutton' 
                                     onClick={interestsDisplay}
                                     id="interests-button">
                                         Choose Interests
                                 </button>                             <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
                              <div className="btnUpdate">
-                                <Link className='button' to="/profile" style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
+                                <Link className='button' /* to="/profile" */ style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
                              </div>
                              
                         </div>
