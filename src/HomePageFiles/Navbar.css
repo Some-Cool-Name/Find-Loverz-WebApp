@@ -1,43 +1,58 @@
 .navBarNew {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    border-style: groove;
-    background: linear-gradient(to right, #b621fe, #1fd1f9);
-  }
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  border-style: groove;
+  background: linear-gradient(to right, #b621fe, #1fd1f9);
+  position: fixed;
+  z-index: 10;
+}
+
+#findLovers {
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+#NavBarImage {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-left: 15px;
+  pointer-events: none;
+}
+#divider {
+  font-size: 35px;
+  width: auto;
+  height: auto;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+svg{
+  font-size: 25px;
+}
+#navFeed {
+  font-size: 15px;
+  margin-top: 10px;
+  text-decoration-line: none;
   
-  #findLovers {
-    font-size: 20px;
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-  #NavBarImage {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin-left: 15px;
-  }
-  #divider {
-    font-size: 35px;
-    width: auto;
-    height: auto;
-    margin-left: 10px;
-    margin-bottom: 15px;
-  }
-  
-  #navFeed {
-    font-size: 25px;
-    margin-top: 10px;
-    margin-left: 255px;
-  }
-  #navChat {
-    font-size: 25px;
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-  #navLogout {
-    font-size: 25px;
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-  
+}
+#navChat {
+  font-size: 15px;
+  margin-top: 10px;
+  text-decoration-line: none;
+  margin-left: 25px;
+}
+#navLogout {
+  font-size: 15px;
+  margin-top: 10px;
+  margin-left: 25px;
+  text-decoration-line: none;
+}
+div.NavIcons{
+  width: fit-content;
+  margin: auto;
+}
+b{
+  padding-top: auto;
+  padding-bottom: auto;
+}

@@ -20,18 +20,12 @@ code {
 .registration{
   width: fit-content;
   height: fit-content;
-  margin: 10px auto;
+  margin: 30px auto;
 
   box-sizing: border-box;
 }
 
-.registration .form-element{
-  width: fit-content;
-  height: fit-content;
-  display: block;
-  margin: auto;
-  margin-bottom: 0;
-}
+
 
 .registration label,
 .registration input,

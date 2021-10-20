@@ -1,29 +1,22 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.header{
-    height: 45px;
-    overflow: hidden;
-    background:linear-gradient(to right,#c471ed,#b621fe , #12c2e9); 
-}
 label.fieldDescription{
     font-weight: bold;
     box-sizing: border-box;
     text-align: start;
     width: 100%;
     height: fit-content;
-    padding: 1px;
+    padding: 0px;
+    text-align:left;
     padding-left: 10px;
-    padding-bottom: 1px;
-    margin-inline-start: auto;
-    margin-inline-end: auto;
-}
-div {
-    display: block;
+    padding-bottom: 0px;
+    
 }
 
+
+div.form-element{
+    display: inline-block;
+    padding-right: 8px;
+    padding-left: 0.5%;
+}
 .header{
     height: 45px;
     overflow: hidden;
@@ -31,10 +24,11 @@ div {
 }
 input.inputbox{
     margin-top: 2px;
+    display: inline;
 }
 h3{
   margin-top: auto;
-  margin-bottom: opx;
+  margin-bottom: 0px;
     align-items: baseline;
     color: white;
     font-family:cursive;
@@ -42,13 +36,13 @@ h3{
 }
 
 .form{
-    width: 350px;
+    width: 660px;
     height: fit-content;
 
     flex-direction: column;
     
-    padding: 20px 55px 20px 55px;
-    margin: 60px auto;
+    padding: 10px 10px 10px 10px;
+    margin: 30px auto;
     border-radius: 25px;
 
     background: #ffffff;
@@ -57,12 +51,11 @@ h3{
     transition: all .3s;
 }
 hr{
-    margin-top: 0px;
-    margin-bottom: 20px;
+    margin: auto;
+    margin-bottom: 1%;
     background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
-    margin-left: auto;
-    margin-right: auto;
 }
+
 .input-boxes{
     padding: 0%;
 }
@@ -113,6 +106,15 @@ input:focus{
     height: 25px;
     width: 140px;
     margin: 20px 0px;
+    
+}
+button#interests-button.intrestbutton{
+    background: linear-gradient(to right,#b621fe , #12c2e9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    box-shadow: none;
+    clear: both;
+    float: none;
 }
 .intrestbutton,
 #register-button,
@@ -125,10 +127,11 @@ input:focus{
 
     color: #fff;
     background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
+   
     box-shadow: 0px 5px 15px 5px #840fe440;
     
     padding: 10px;
-    margin: 20px 0px;
+    margin: 10px 0px;
     border-radius: 25px;
     border: none;
 
@@ -155,9 +158,14 @@ link.button{
 }
 
 input#fileupload{
+   
+    width: 120px;
+    margin: auto;
+    height: max-content;
     border: none;
-    border-radius: 0;
+    border-radius: 10%;
     padding: 0;
+    
 }
 
 input#fileupload::-webkit-file-upload-button {
@@ -166,28 +174,47 @@ input#fileupload::-webkit-file-upload-button {
 
 input#fileupload::before {
     content: 'Choose File';
-    display: inline-block;
+    
+    display: inline-flex;
 
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
+    border:none;
+   /*  border-style: solid; */
+    border-radius: 50px;
+   /*  border-color: #12c2e9; */
+    padding: 5px;
 
     font-weight: 700;
     font-size: 10pt;
     text-transform: uppercase;
 
     color: #ffffff;
-    background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
+    background: linear-gradient(to right,#b621fe , #12c2e9);
     
+    font-size: 14px;
+    font-weight: 900;
+    /* background: -webkit-linear-gradient(#b621fe , #12c2e9); */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     cursor: pointer;
     outline: none;
     white-space: nowrap;
     -webkit-user-select: none; 
 }
-
 #register-pic{
-    max-width: 320px;
-    max-height: 320px;
+    margin-top: 0px;
     
-    border-radius: 20px;
 }
+.registration label, .registration input, .registration select {
+    width: 300px;
+    height: 30px;
+    padding: 0 10px;
+    margin: 10px 0;
+    display: block;
+}
+div#ContainerRegistration.containerRegistration{
+   /*  height: 80%; */
+   width: 100%;
+    height: 80vh;
+}
+

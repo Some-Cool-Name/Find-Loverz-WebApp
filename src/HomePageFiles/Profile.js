@@ -11,9 +11,10 @@ const Profile = ({ setUser, user }) => {
 
     return ( 
         <div>
+            <NavBar user={user} setUser={setUser} />
             <div className="profile">
                 <EditProfile user={user} setUser={setUser}></EditProfile>
-                <NavBar user={user} setUser={setUser} />
+                
                 <div style={{width: "51vw", height: 0}}></div>
                 <ProfilePreview user={user} setUser={setUser}></ProfilePreview>
             </div>

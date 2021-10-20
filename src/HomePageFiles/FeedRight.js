@@ -177,7 +177,7 @@ function showUsers(){
 
   return (
     <div className = 'feedcontainer'>
-      <NavBar user={user} setUser={setUser}/>
+      {/* <NavBar user={user} setUser={setUser}/> */}
       <HorizontalScroll>
         {showUsers()}
       </HorizontalScroll>
@@ -185,12 +185,3 @@ function showUsers(){
   );
 }
 
-
-// onMouseDown={mouseDown} onMouseMove={mouseMove} onMouseUp={mouseUp}
-
-
-{/* <div className="right-container-1" >
-        <div className="right-container-2">
-          
-        </div>
-      </div> */}

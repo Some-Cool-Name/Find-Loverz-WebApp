@@ -4,6 +4,7 @@ import { deleteFromStorage, getFromStorage, saveToStorage } from '../HelperClass
 import { matchRequest } from '../BackendRequests/Matches';
 import { useEffect, useState } from 'react';
 
+
 export default function FeedLeft({ setUser, user, setOtherUser }) {
     let history = useHistory();
     const [fetchedMatches, setFechedMatches] = useState([]);
@@ -97,7 +98,7 @@ export default function FeedLeft({ setUser, user, setOtherUser }) {
 
     return (        
         <div>
-            <div className="panel-container-1">      
+            <div className="panel-container-1">     
                 <div className="navbar-items">
                     <p>Matches</p>
                 </div>
