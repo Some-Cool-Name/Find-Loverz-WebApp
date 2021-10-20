@@ -1,10 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
 import './Navbar.css';
 
 export default function NavBar({ setUser, user}) {
+
     let history = useHistory();
+    const [search, setSearch] = useState('');
+
+    const stateSetter = () =>{
+        sessionStorage.setItem("Interest", document.getElementById("search").value);
+    }
+
+    const handleKey=(e)=>{
+        console.log(e.target.value);
+        console.log("Enter button clicked");
+        stateSetter();
+    }
 
     // handles user logout
     const handleLogout = () => {
@@ -25,6 +37,13 @@ export default function NavBar({ setUser, user}) {
             <Link to="/feed" id="navFeed" > <b>Feed</b> </Link>
             <Link to="/chat"  id="navChat"> <b>Chat</b> </Link>
             <Link to="/" onClick={handleLogout} id="navLogout"> <b>Logout</b> </Link>
+            <div onKeyDown={handleKey}/>
+            <div>
+                <input type="text" placeholder="Search" value={search.SearchInterest} id="search"/>
+                <Link to="/Search">
+                    <button onClick={handleKey}><img src="./search_icon.png" alt="Search"/></button>
+                </Link>
+            </div>
         </div>
 
         // <navbar>
