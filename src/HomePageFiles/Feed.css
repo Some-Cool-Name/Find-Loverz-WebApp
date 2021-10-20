@@ -35,8 +35,8 @@ div.User-Info {
 
 /* Right Feed */
 .feedcontainer {
-  width: 930px;
-  height: 600px;
+  width: 75vw;
+  height: 850px;
   background: rgb(238, 237, 237);
   overflow-x: scroll;
   overflow-y: hidden;
@@ -47,7 +47,7 @@ div.User-Info {
 }
 .right-container-1 {
   width: 75vw;
-  height: fit-content;
+  height: 797px;
   min-height: 100vh;
   min-width: 350px;
 
@@ -240,7 +240,7 @@ div.User-Info {
 .panel-container-1 {
   top: 500px;
   width: 25vw;
-  height: 100%;
+  height: 797px;
   min-height: 200px;
   min-width: 300px;
 
@@ -254,16 +254,7 @@ div.User-Info {
   overflow: hidden;
 }
 
-.panel-container-2 {
-  width: 100%;
-  height: 60px;
 
-  display: flex;
-  align-items: center;
-
-  overflow: hidden;
-  background: linear-gradient(to right, #b621fe, #1fd1f9);
-}
 
 .profile-container {
   width: fit-content;
@@ -329,24 +320,28 @@ div.User-Info {
 
   margin: 5px;
   display: flex;
+  padding-top: 50px;
+  
 }
 
 .navbar-items p {
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 600;
 
   margin: 10px;
   padding-bottom: 4px;
-  border-bottom: 4px solid #b621fe;
+ /*  border-bottom: 4px solid #b621fe; */
 
-  background: transparent;
+ background: linear-gradient(to right,#b621fe , #12c2e9);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
   cursor: default;
 }
 /* Left Feed End */
 
 /* Matches Display */
 .match-container-1 {
-  width: 100%;
+  width: 23vw;
   height: 100%;
 
   overflow-y: auto;

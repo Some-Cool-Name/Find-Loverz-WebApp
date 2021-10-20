@@ -1,6 +1,6 @@
 .navBarNew {
   height: 50px;
-  width: 100%;
+  width: 100vw;
   display: flex;
   border-style: groove;
   background: linear-gradient(to right, #b621fe, #1fd1f9);
@@ -27,19 +27,32 @@
   margin-left: 10px;
   margin-bottom: 15px;
 }
-
-#navFeed {
+svg{
   font-size: 25px;
+}
+#navFeed {
+  font-size: 15px;
   margin-top: 10px;
-  margin-left: 255px;
+  text-decoration-line: none;
+  
 }
 #navChat {
-  font-size: 25px;
+  font-size: 15px;
   margin-top: 10px;
-  margin-left: 20px;
+  text-decoration-line: none;
+  margin-left: 25px;
 }
 #navLogout {
-  font-size: 25px;
+  font-size: 15px;
   margin-top: 10px;
-  margin-left: 20px;
+  margin-left: 25px;
+  text-decoration-line: none;
+}
+div.NavIcons{
+  width: fit-content;
+  margin: auto;
+}
+b{
+  padding-top: auto;
+  padding-bottom: auto;
 }

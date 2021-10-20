@@ -159,8 +159,8 @@
   width: 100%;
   height: fit-content;
   max-height: calc(100% - 160px);
-  min-height: 100px;
-
+  min-height: 680px;
+  background-color: #eeeeee;
   display: block;
 
   position: absolute;

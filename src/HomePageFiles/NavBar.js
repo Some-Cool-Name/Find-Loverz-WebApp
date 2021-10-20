@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
+import {IoHomeSharp } from "react-icons/io5";
+import { BsFillChatFill } from "react-icons/bs";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 import './Navbar.css';
 
 export default function NavBar({ setUser, user}) {
@@ -22,9 +25,12 @@ export default function NavBar({ setUser, user}) {
                 user &&
                 <Link to="/profile" ><img src ={user[0].profile_picture} id="NavBarImage"  /></Link>
             }
-            <Link to="/feed" id="navFeed" > <b>Feed</b> </Link>
-            <Link to="/chat"  id="navChat"> <b>Chat</b> </Link>
-            <Link to="/" onClick={handleLogout} id="navLogout"> <b>Logout</b> </Link>
+            <div className="NavIcons">
+                <Link to="/feed" id="navFeed" ><IoHomeSharp /> <b>Feed</b> </Link>
+                <Link to="/chat"  id="navChat"> <BsFillChatFill/><b>Chat</b> </Link>
+                <Link to="/" onClick={handleLogout} id="navLogout"><RiLogoutBoxRFill/> <b>Logout</b> </Link>
+            </div>
+            
         </div>
 
         // <navbar>
