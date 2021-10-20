@@ -175,7 +175,6 @@ input#fileupload::before {
     background: linear-gradient(to right,#b621fe , #12c2e9);
     font-size: 14px;
     font-weight: 900;
-    /* background: -webkit-linear-gradient(#b621fe , #12c2e9); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     cursor: pointer;
