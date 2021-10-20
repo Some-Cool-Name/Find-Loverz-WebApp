@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
+    "build": "react-scripts build",
     "test": "CI=false && react-scripts test -u --coverage",
     "eject": "react-scripts eject",
     "coveralls": "jest -u --coverage && cat ./coverage/lcov.info | coveralls",
