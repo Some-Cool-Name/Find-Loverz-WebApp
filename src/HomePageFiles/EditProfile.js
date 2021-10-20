@@ -314,7 +314,7 @@ const EditProfile = ({ setUser, user }) => {
                                 <p id="feed-username">PROFILE</p>                          
                             </div>
                         </div>
-                        <div id="logout"><i class="uil uil-sign-out-alt" onClick={handleLogout}></i></div>
+                        <div id="logout"><i className="uil uil-sign-out-alt" onClick={handleLogout}></i></div>
                 </div>
                 <br />
                 <div>
@@ -392,7 +392,7 @@ const EditProfile = ({ setUser, user }) => {
                                         Choose Interests
                                 </button>                             <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
                              <div className="btnUpdate">
-                                <Link className='button' /* to="/profile" */ style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
+                                <Link className='button' to="/profile" style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
                              </div>
                              
                         </div>
