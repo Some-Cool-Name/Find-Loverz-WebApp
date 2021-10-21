@@ -7,12 +7,13 @@ function Message({ text, isMe, url }) {
     if(isMe){
         return (
             <div className="chat-outgoing">
-                <p className="chat-message">{text}</p>
+                
                 {url !== "" &&
                 <img src={url}></img>
                 
                 
                 }
+                <p className="chat-message">{text}</p>
                 {/* <p className="chat-time">20:25</p> */}
             </div>
         ) 

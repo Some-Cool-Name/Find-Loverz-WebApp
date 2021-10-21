@@ -15,6 +15,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
     const [text, setText] = useState("");
     const [img, setImg] = useState("");
     let ur ="";
+    let done = false;
     // let otherPersonUserName = getFromStorage('otherPersonUsername');
     const [file, setFile] = useState(null);
     const cloudinary = 'https://api.cloudinary.com/v1_1/dkctv74ue/image/upload';
@@ -41,7 +42,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
         }
       }
 
-      const sendImage= async (images)=>{
+      const sendImage= async (images, _callback)=>{
        
         await handleImage(images)
         // const te = getFromStorage('image_url')
@@ -50,19 +51,24 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
         console.log(ur)
         
         return ur;
+        
       }
 
-    const sendMessage = () => {
+    const sendMessage = async (images) => {
+        let ln = await sendImage(images)
+        setImg(ln);
+        console.log(ln);
         let now = new Date();
         let dateStringWithTime = moment(now).format('YYYY-MM-DD HH:MM:SS');
         // Output of dateString: 2020-07-21 07:24:06
         console.log(img)
+
         db.ref(`${user[0].username}_${otherUser}`)
           .push({
             message: text,
             time: dateStringWithTime,
             user:user[0].username,
-            image_url: img,
+            image_url: ln,
           })
           .then(() => {
             // do nothing for now
@@ -81,6 +87,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
             console.log(ur)
         });
         setText("");
+      
         dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -177,8 +184,8 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
             ref={fileInputEl => setFile(fileInputEl)}
             onChange={(e) => document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) }
           />
-                    <div id="message-send" type="button" onClick={sendMessage}><i className="uil uil-message"></i></div>
-                    <button onClick={()=>sendImage(file.files)}>send</button>
+                    <div id="message-send" type="button" onClick={()=>sendMessage(file.files)}><i className="uil uil-message"></i></div>
+                    
                 </div>
                 </div>
         </React.Fragment>
