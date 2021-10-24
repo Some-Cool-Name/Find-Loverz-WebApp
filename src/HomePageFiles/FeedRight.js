@@ -40,7 +40,11 @@ export default function FeedRight({user, setUser}) {
      fetchUsers();
     }
     const temp = like;
+<<<<<<< HEAD
     console.log("The temp variable is:", temp);
+=======
+    // console.log("The temp variable is:", temp);
+>>>>>>> c120a9674c1ea756f34f38f74116c05f8b8dc999
     return temp;
    }
 

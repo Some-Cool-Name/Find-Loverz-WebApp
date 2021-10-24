@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "stable"
+  - 14
   
 cache:
   directories:
@@ -10,7 +10,6 @@ cache:
 script:
     - npm test
     - npm run build
-    - npm run coveralls
     
 notifications:
   email: false

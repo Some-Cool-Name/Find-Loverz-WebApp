@@ -2,127 +2,133 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="container"
+  className="App"
 >
   <div
-    className="header"
-  >
-    <h3
-      className="appName"
-    >
-      find loverz
-    </h3>
-  </div>
-  <div
-    className="form"
+    className="container"
   >
     <div
-      style={
-        Object {
-          "alignItems": "center",
-          "display": "flex",
-          "flexDirection": "column",
-          "justifyContent": "center",
-        }
-      }
+      className="header"
     >
-      <h1>
-        Log in
-      </h1>
-      <hr
-        size="8"
-        width="60px;"
-      />
-      <label
-        className="fieldDescription"
+      <h3
+        className="appName"
       >
-        <b>
-          Email
-        </b>
-      </label>
-      <input
-        className="inputBox"
-        onBlur={[Function]}
-        onChange={[Function]}
-        placeholder="Email..."
+        find loverz
+      </h3>
+    </div>
+    <div
+      className="formLogin"
+    >
+      <div
         style={
           Object {
-            "marginTop": "10px",
-          }
-        }
-        type="text"
-        value=""
-      />
-      <p
-        style={
-          Object {
-            "color": "crimson",
-            "fontWeight": "bold",
-            "marginBottom": 10,
-            "marginTop": 6,
-            "textAlign": "center",
-          }
-        }
-      />
-      <br />
-      <label
-        className="fieldDescription"
-      >
-        <b>
-          Password
-        </b>
-      </label>
-      <input
-        alt="Placeholder"
-        onBlur={[Function]}
-        onChange={[Function]}
-        placeholder="Password..."
-        required={true}
-        style={
-          Object {
-            "marginTop": "10px",
-          }
-        }
-        type="password"
-        value=""
-      />
-      <p
-        style={
-          Object {
-            "color": "crimson",
-            "fontWeight": "bold",
-            "marginBottom": 10,
-            "marginTop": 6,
-            "textAlign": "center",
-          }
-        }
-      />
-      <br />
-      <a
-        className="button"
-        href="/feed"
-        onClick={[Function]}
-        style={
-          Object {
-            "backgroundColor": "grey",
-            "color": "black",
-            "marginTop": 10,
-            "padding": 5,
-            "textDecoration": "none",
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "column",
+            "justifyContent": "center",
           }
         }
       >
-        <b>
-          Login
-        </b>
-         
-      </a>
-      <a
-        href="/signup"
-        onClick={[Function]}
-      >
-        register
-      </a>
+        <h1>
+          Log In
+        </h1>
+        <br />
+        <hr
+          size="8"
+          width="60px;"
+        />
+        <br />
+        <label
+          className="fieldDescription"
+        >
+          <b>
+            Email
+          </b>
+        </label>
+        <input
+          className="inputBox"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Email..."
+          style={
+            Object {
+              "marginTop": "10px",
+            }
+          }
+          type="text"
+          value=""
+        />
+        <p
+          style={
+            Object {
+              "color": "crimson",
+              "fontWeight": "bold",
+              "marginBottom": 10,
+              "marginTop": 6,
+              "textAlign": "center",
+            }
+          }
+        />
+        <br />
+        <label
+          className="fieldDescription"
+        >
+          <b>
+            Password
+          </b>
+        </label>
+        <input
+          alt="Placeholder"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Password..."
+          required={true}
+          style={
+            Object {
+              "marginTop": "10px",
+            }
+          }
+          type="password"
+          value=""
+        />
+        <p
+          style={
+            Object {
+              "color": "crimson",
+              "fontWeight": "bold",
+              "marginBottom": 10,
+              "marginTop": 6,
+              "textAlign": "center",
+            }
+          }
+        />
+        <br />
+        <a
+          className="button"
+          href="/feed"
+          onClick={[Function]}
+          style={
+            Object {
+              "backgroundColor": "grey",
+              "color": "black",
+              "marginTop": 10,
+              "padding": 5,
+              "textDecoration": "none",
+            }
+          }
+        >
+          <b>
+            Login
+          </b>
+           
+        </a>
+        <a
+          href="/signup"
+          onClick={[Function]}
+        >
+          register
+        </a>
+      </div>
     </div>
   </div>
 </div>
