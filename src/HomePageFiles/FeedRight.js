@@ -40,11 +40,7 @@ export default function FeedRight({user, setUser}) {
      fetchUsers();
     }
     const temp = like;
-<<<<<<< HEAD
-    console.log("The temp variable is:", temp);
-=======
     // console.log("The temp variable is:", temp);
->>>>>>> c120a9674c1ea756f34f38f74116c05f8b8dc999
     return temp;
    }
 
@@ -52,7 +48,7 @@ export default function FeedRight({user, setUser}) {
     const reject = async (e)=>{
       e.preventDefault()
       const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
-      `rejectorUsername=${user[0].username}&rejecteeUsername=${users[0].E_mail}`
+      `rejectorUsername=${user[0].username}&rejecteeUsername=${likedUser.E_mail}`
       )
      fetchUsers();
     } 
