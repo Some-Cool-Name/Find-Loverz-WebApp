@@ -14,17 +14,16 @@ export default function FeedRight({user, setUser}) {
     const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
     `username=${user[0].username}`
     )
-    console.log(user[0].username)
+    //console.log(user[0].username)
     const data = await result.json();
     setUsers(data.feedProfiles);
     
-    console.log(data.feedProfiles)
+    //console.log(data.feedProfiles)
     }
     useEffect(()=>{
       fetchUsers();
       
       },[])
-
 
 
   //Accepting and declining users 
@@ -101,13 +100,14 @@ function mouseUp (event) {
   }
 }
 var usersAvailable = users.length;
-// console.log(usersAvailable);
+//console.log(usersAvailable);
 
 function showUsers(){
   var list = [];
   if(usersAvailable>= 1){
     for(var i = 0; i<usersAvailable;i++){
       var userAccount = users[i];
+      console.log(userAccount);
       list.push(
       <div className="card-container" id="card">
         <img className="card-image" src={users.length ===0 ? 'no user': userAccount.Profile_Picture} ></img>
@@ -190,7 +190,7 @@ function showUsers(){
 
   return (
     <div className = 'feedcontainer'>
-      <NavBar user={user} setUser={setUser}/>
+      {/* <NavBar user={user} setUser={setUser}/> */}
       <HorizontalScroll>
         {showUsers()}
       </HorizontalScroll>
@@ -198,12 +198,3 @@ function showUsers(){
   );
 }
 
-
-// onMouseDown={mouseDown} onMouseMove={mouseMove} onMouseUp={mouseUp}
-
-
-{/* <div className="right-container-1" >
-        <div className="right-container-2">
-          
-        </div>
-      </div> */}
