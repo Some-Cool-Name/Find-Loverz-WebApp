@@ -1,6 +1,7 @@
 import React from 'react';
 import 'regenerator-runtime/runtime';
 import { BrowserRouter } from "react-router-dom"
+import EditProfile from '../EditProfile';
 import Profile from '../Profile';
 import { render, screen, waitFor, fireEvent, cleanup, waitForElementToBeRemoved } from '@testing-library/react';
 import renderer, { act } from 'react-test-renderer';
@@ -20,10 +21,13 @@ const user = [
 ]
 
 it('renders correctly', () => {
-    const tree = renderer.create(<BrowserRouter>
-        <Profile user={user} setUser = {null}/>
-    </BrowserRouter>).toJSON();
-    expect(tree).toMatchSnapshot();
+    render(
+        <BrowserRouter>
+            <EditProfile user={user} setUser = {null}/>
+        </BrowserRouter>
+    );
+    const element = screen.getByText(/LOCATION/i);
+    expect(element).toBeTruthy();
 });
 
 it('Profile Inputs( name, location, bio, interests, profile picture ) : Empty Fields Testing , Should return error ', async () => {
