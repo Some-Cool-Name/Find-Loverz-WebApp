@@ -48,7 +48,7 @@ export default function FeedRight({user, setUser}) {
     const reject = async (e)=>{
       e.preventDefault()
       const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
-      `rejectorUsername=${user[0].username}&rejecteeUsername=${users[0].E_mail}`
+      `rejectorUsername=${user[0].username}&rejecteeUsername=${likedUser.E_mail}`
       )
      fetchUsers();
     } 
