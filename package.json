@@ -35,7 +35,7 @@
     "build": "CI=false && react-scripts build",
     "test": "CI=false && react-scripts test -u --coverage",
     "eject": "react-scripts eject",
-    "coveralls": "jest -u --coverage && cat ./coverage/lcov.info | coveralls",
+    "coveralls": "CI=false && react-scripts test -u --coverage && cat ./coverage/lcov.info | coveralls",
     "codecov": "jest -u --coverage && cat ./coverage/lcov.info | codecov"
   },
   "eslintConfig": {
