@@ -15,10 +15,20 @@ export default function NavBar({ setUser, user}) {
         sessionStorage.setItem("Interest", document.getElementById("search").value);
     }
 
+    const stateSet = () => {
+        sessionStorage.setItem("Location", document.getElementById("searchbyLocation").value);
+    }
+
     const handleKey=(e)=>{
         console.log(e.target.value);
         console.log("Enter button clicked");
         stateSetter();
+    }
+
+    const handlelocation=(e)=>{
+        console.log(e.target.value);
+        console.log("Enter button clicked");
+        stateSet();
     }
 
     // handles user logout
@@ -46,6 +56,12 @@ export default function NavBar({ setUser, user}) {
                 <input type="text" placeholder="Search" value={search.SearchInterest} id="search"/>
                 <Link to="/Search">
                     <button onClick={handleKey}><img src="./search_icon.png" alt="Search"/></button>
+                </Link>
+            </div>
+            <div>
+                <input type="text" placeholder="SearchbyLocation" value={search.SearchLocation} id="searchbyLocation"/>
+                <Link to="/SearchbyLocation">
+                    <button onClick={handlelocation}><img src="./search_icon.png" alt="Search"/></button>
                 </Link>
             </div>
             </div>
