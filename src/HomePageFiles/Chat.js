@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import FeedLeft from './FeedLeft';
 import Message from './Message';
 import moment from 'moment';
-import { getFromStorage } from '../HelperClasses/StorageHandler';
+import { getFromStorage,saveToStorage } from '../HelperClasses/StorageHandler';
 import './Chat.css';
 import NavBar from './NavBar';
 
@@ -13,23 +13,62 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
     const location = useLocation();
     const [messages, setMessages] = useState([]);
     const [text, setText] = useState("");
+    const [img, setImg] = useState("");
+    let ur ="";
+    let done = false;
     // let otherPersonUserName = getFromStorage('otherPersonUsername');
-
+    const [file, setFile] = useState(null);
+    const cloudinary = 'https://api.cloudinary.com/v1_1/dkctv74ue/image/upload';
     const scrollToBottom = () => {
         dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
+    const handleImage = async (images,e) => {
+        for (let image of images) {
+            const formData = new FormData();
+            formData.append("file", image);
+            formData.append("upload_preset", "gbu8evn2");
+    
+            const resp = await fetch(cloudinary, {
+                body: formData,
+                method: 'POST'
+            })
+            await resp.json().then((respJSON) => {
+                //saveToStorage('image_url', respJSON.secure_url);
+              
+                
+                ur = respJSON.secure_url;
+                setImg (ur);
+            });
+        }
+      }
 
-    const sendMessage = () => {
+      const sendImage= async (images, _callback)=>{
+       
+        await handleImage(images)
+        // const te = getFromStorage('image_url')
+        // console.log(getFromStorage('image_url'))
+        // setImg(getFromStorage("image_url"));
+        console.log(ur)
+        
+        return ur;
+        
+      }
+
+    const sendMessage = async (images) => {
+        let ln = await sendImage(images)
+        setImg(ln);
+        console.log(ln);
         let now = new Date();
         let dateStringWithTime = moment(now).format('YYYY-MM-DD HH:MM:SS');
         // Output of dateString: 2020-07-21 07:24:06
+        console.log(img)
 
         db.ref(`${user[0].username}_${otherUser}`)
           .push({
             message: text,
             time: dateStringWithTime,
             user:user[0].username,
-            image_url: "",
+            image_url: ln,
           })
           .then(() => {
             // do nothing for now
@@ -40,12 +79,15 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
             message:text,
             time: dateStringWithTime,
             user:user[0].username,
-            image_url: "",
+            image_url: img,
           })
           .then(() => {
             // reset things
+            console.log("url here")
+            console.log(ur)
         });
         setText("");
+      
         dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -121,7 +163,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
                             {
                                 messages && messages.map((obj) => {
                                     return(
-                                            <Message text={obj.message} isMe={obj.user===user[0].username} />
+                                            <Message url={obj.image_url} text={obj.message} isMe={obj.user===user[0].username} />
                                     );
                                 })
                             }
@@ -136,7 +178,16 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
                         onChange={handleChange}
                         value={text}
                         ></input>
-                    <div id="message-send" type="button" onClick={sendMessage}><i className="uil uil-message"></i></div>
+                    <img id="register-pic"></img>
+          <input
+            type="file"
+            id="fileupload"
+            accept="image/*"
+            ref={fileInputEl => setFile(fileInputEl)}
+            onChange={(e) => document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) }
+          />
+                    <div id="message-send" type="button" onClick={()=>sendMessage(file.files)}><i className="uil uil-message"></i></div>
+                    
                 </div>
                 </div>
         </React.Fragment>
