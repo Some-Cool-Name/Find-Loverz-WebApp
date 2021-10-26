@@ -317,31 +317,29 @@ const EditProfile = ({ setUser, user }) => {
                 </div>
                 <br />
                 <div>
-                    <img className="profile-image" id="feed-image" src={curr === null? "no user": curr[0].profile_picture}></img>
+                  <br /><br /><br /><br />
+                <img id="register-pic"  src={curr === null? "no user": curr[0].profile_picture}></img>
+                <br />        
+                <input
+                  type="file"
+                  id="fileupload"
+                  accept="image/*"
+                  ref={fileInputEl => setFile(fileInputEl)}
+                  onChange={(e) => document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) }
+                />
                 </div>
                 
                 <div >
                     <h2 className="usernameAge">{curr === null? "no user": curr[0].username+ " ,22"}</h2>
                     <hr className="divider" size="6" />
-                    <br /><br />
+                    <br />
                 </div>
 
                 <dir>
                     <Formik>
                         <div className="wrapper">
 
-                        <label className = "fieldDescription" htmlFor="username"> Profile Picture</label>
-
-                            <img id="register-pic"></img>
-                            <input
-                              type="file"
-                              id="fileupload"
-                              accept="image/*"
-                              ref={fileInputEl => setFile(fileInputEl)}
-                              onChange={(e) => document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) }
-                            />
-
-                            <p className="lblDiscriber">NAME</p>
+                           <p className="lblDiscriber">NAME</p>
                             
                             <input
                                 value = {name}
@@ -360,7 +358,7 @@ const EditProfile = ({ setUser, user }) => {
                                 placeholder = "location"
                                 alt = "Placeholder"
                                 onChange={e => setLocation(e.target.value)}
-                                className="location"
+                                className="inputfield"
                                 type="text" 
                                 align="start"
                                 style={{ color: "#00bafa" }}
@@ -374,7 +372,7 @@ const EditProfile = ({ setUser, user }) => {
                                     onChange={e => setBio(e.target.value)}
                                     type="text"
                                     className="bio"
-                                    rows="6"cols="52"></textarea>
+                                    rows="1"cols="52"></textarea>
                                 
                                 <p className="lblDiscriber">Interest</p>
                                 <div className="interest">
@@ -389,7 +387,9 @@ const EditProfile = ({ setUser, user }) => {
                                     onClick={interestsDisplay}
                                     id="interests-button">
                                         Choose Interests
-                                </button>                             <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
+                                </button> 
+                                <br />
+                                <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
                              <div className="btnUpdate">
                                 <Link className='button' to="/profile" style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
                              </div>

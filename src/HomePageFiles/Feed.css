@@ -34,20 +34,20 @@ div.User-Info {
 }
 
 /* Right Feed */
-.feedcontainer{
-  width: 930px;
-  height: 600px;
+.feedcontainer {
+  width: 75vw;
+  height: 850px;
   background: rgb(238, 237, 237);
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
 }
-.feedcontainer::-webkit-scrollbar{
+.feedcontainer::-webkit-scrollbar {
   display: none;
 }
 .right-container-1 {
   width: 75vw;
-  height: fit-content;
+  height: 797px;
   min-height: 100vh;
   min-width: 350px;
 
@@ -238,8 +238,9 @@ div.User-Info {
 
 /* Left Feed */
 .panel-container-1 {
+  top: 500px;
   width: 25vw;
-  height: 100%;
+  height: 797px;
   min-height: 200px;
   min-width: 300px;
 
@@ -253,16 +254,7 @@ div.User-Info {
   overflow: hidden;
 }
 
-.panel-container-2 {
-  width: 100%;
-  height: 60px;
 
-  display: flex;
-  align-items: center;
-
-  overflow: hidden;
-  background: linear-gradient(to right, #b621fe, #1fd1f9);
-}
 
 .profile-container {
   width: fit-content;
@@ -328,24 +320,28 @@ div.User-Info {
 
   margin: 5px;
   display: flex;
+  padding-top: 50px;
+  
 }
 
 .navbar-items p {
-  font-size: 18px;
+  font-size: 25px;
   font-weight: 600;
 
   margin: 10px;
   padding-bottom: 4px;
-  border-bottom: 4px solid #b621fe;
+ /*  border-bottom: 4px solid #b621fe; */
 
-  background: transparent;
+ background: linear-gradient(to right,#b621fe , #12c2e9);
+ -webkit-background-clip: text;
+ -webkit-text-fill-color: transparent;
   cursor: default;
 }
 /* Left Feed End */
 
 /* Matches Display */
 .match-container-1 {
-  width: 100%;
+  width: 23vw;
   height: 100%;
 
   overflow-y: auto;
@@ -357,13 +353,13 @@ div.User-Info {
   min-height: 50px;
 
   box-sizing: border-box;
-  padding: 8px;  
+  padding: 8px;
   border-bottom: 1px solid #cccccc;
   position: relative;
 
   display: flex;
 
-  background-color: #ffffff; 
+  background-color: #ffffff;
 
   transition: ease-in-out 0.3s;
   cursor: pointer;
@@ -380,7 +376,6 @@ div.User-Info {
 
   margin-right: 20px;
   border-radius: 50px;
-
 }
 
 .match-profile-picture > img {
@@ -418,26 +413,26 @@ div.User-Info {
 
 /* modal css */
 #modal-close {
-    min-width:  200px;
-    width: fit-content;
-    height: fit-content;
+  min-width: 200px;
+  width: fit-content;
+  height: fit-content;
 
-    cursor: pointer;
+  cursor: pointer;
 
-    color: #fff;
-    background: linear-gradient(to right,#c471ed,#b621fe , #12c2e9);
-    box-shadow: 0px 5px 15px 5px #840fe440;
-    
-    padding: 10px;
-    margin: 20px 0px;
-    border-radius: 25px;
-    border: none;
+  color: #fff;
+  background: linear-gradient(to right, #c471ed, #b621fe, #12c2e9);
+  box-shadow: 0px 5px 15px 5px #840fe440;
 
-    font-size: 1em;
-    text-transform: uppercase;
-    font-weight: bold;
-    align-items: center;
-    transition: ease-in-out 0.5s;
+  padding: 10px;
+  margin: 20px 0px;
+  border-radius: 25px;
+  border: none;
+
+  font-size: 1em;
+  text-transform: uppercase;
+  font-weight: bold;
+  align-items: center;
+  transition: ease-in-out 0.5s;
 }
 
 .modal-container {
@@ -464,17 +459,16 @@ div.User-Info {
   height: fit-content;
   min-width: 400px;
   min-height: 400px;
-  
+
   border-radius: 15px;
   padding: 30px;
 
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(17, 24, 3, 0.2);
-
 }
 
 .modal-picture,
-.user-details{
+.user-details {
   width: 100%;
   height: fit-content;
 
@@ -483,7 +477,7 @@ div.User-Info {
   align-items: center;
 }
 
-.modal-picture img{
+.modal-picture img {
   width: 180px;
   height: 180px;
 
@@ -492,7 +486,7 @@ div.User-Info {
   background-color: darkgray;
 }
 
-.user-details p{
+.user-details p {
   width: fit-content;
   height: fit-content;
 
@@ -505,26 +499,26 @@ div.User-Info {
   color: #000000;
 }
 
-#user-location{
+#user-location {
   font-size: 18px;
   font-weight: 500;
 }
 
-.modal-field{
-    width: 100%;
-    height: fit-content;
+.modal-field {
+  width: 100%;
+  height: fit-content;
 
-    display: block;
+  display: block;
 
-    box-sizing: border-box;
-    margin: 20px;
-    padding: 0 30px;
+  box-sizing: border-box;
+  margin: 20px;
+  padding: 0 30px;
 
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .modal-field h1,
-.modal-field p{
+.modal-field p {
   width: fit-content;
   height: fit-content;
 
@@ -534,15 +528,15 @@ div.User-Info {
   font-size: 20px;
   font-weight: 600;
 
-  color:#000000;
+  color: #000000;
 }
 
-.modal-field p{
+.modal-field p {
   font-size: 16px;
   font-weight: 500;
 }
 
-.modal-interests{
+.modal-interests {
   width: 100%;
   height: fit-content;
 
@@ -550,10 +544,10 @@ div.User-Info {
   flex-wrap: wrap;
 }
 
-.modal-interests p{
+.modal-interests p {
   width: fit-content;
   height: fit-content;
-  
+
   position: relative;
   display: flex;
 
@@ -563,7 +557,7 @@ div.User-Info {
 
   background-color: #ddd;
   color: #ffffff;
-  
+
   font-size: 15px;
   text-align: center;
   justify-content: center;
@@ -572,12 +566,12 @@ div.User-Info {
   transition: ease-in-out 0.5s;
 }
 
-#modal-open{
+#modal-open {
   width: fit-content;
   height: fit-content;
 }
 
-#modal-open i{
+#modal-open i {
   padding: 5px;
   font-size: 18px;
 
