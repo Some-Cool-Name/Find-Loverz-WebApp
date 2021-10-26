@@ -163,7 +163,7 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
                             {
                                 messages && messages.map((obj) => {
                                     return(
-                                            <Message url={obj.image_url} text={obj.message} isMe={obj.user===user[0].username} />
+                                            <Message text={obj.message} isMe={obj.user===user[0].username} time={obj.time} url={obj.image_url} />
                                     );
                                 })
                             }
