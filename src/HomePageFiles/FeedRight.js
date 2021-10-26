@@ -14,11 +14,11 @@ export default function FeedRight({user, setUser}) {
     const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
     `username=${user[0].username}`
     )
-    //console.log(user[0].username)
+    console.log(user[0].username)
     const data = await result.json();
     setUsers(data.feedProfiles);
     
-    //console.log(data.feedProfiles)
+    console.log(data.feedProfiles)
     }
     useEffect(()=>{
       fetchUsers();
