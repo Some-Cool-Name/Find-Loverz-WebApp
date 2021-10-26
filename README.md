@@ -3,8 +3,6 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/Some-Cool-Name/Find-Loverz-WebApp/badge.svg?branch=master)](https://coveralls.io/github/Some-Cool-Name/Find-Loverz-WebApp?branch=master)
 
-[![codecov](https://codecov.io/gh/Some-Cool-Name/Find-Loverz-WebApp/branch/master/graph/badge.svg?token=COAYBUYL7E)](https://codecov.io/gh/Some-Cool-Name/Find-Loverz-WebApp)
-
 
 This is a React.js project. 
 It is a dating WebApp that has helps people connect with their dates by being able to view other peoples profile on your feed and stating whether you're interested or not if interested you can activate a chat service.
