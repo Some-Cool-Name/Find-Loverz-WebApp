@@ -33,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false && react-scripts build",
-    "test": "CI=false react-scripts test",
+    "test": "CI=false jest",
     "eject": "react-scripts eject",
     "coveralls": "jest -u --coverage && cat ./coverage/lcov.info | coveralls"
   },
