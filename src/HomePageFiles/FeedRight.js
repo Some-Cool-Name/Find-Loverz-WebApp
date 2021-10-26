@@ -28,22 +28,35 @@ export default function FeedRight({user, setUser}) {
 
   //Accepting and declining users 
 
-   const swipeRight = async (e)=>{
-     e.preventDefault()
-     const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+
-     `likerUsername=${user[0].username} & likeeUsername=${users[0].E_mail}`
-     )
-    fetchUsers();
-   } 
+   
+
+   function swipeRight(likedUser){
+    const like = async (e)=>{
+      e.preventDefault()
+      const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+
+      `likerUsername=${user[0].username}&likeeUsername=${likedUser.E_mail}`
+      )
+     fetchUsers();
+    }
+    const temp = like;
+    // console.log("The temp variable is:", temp);
+    return temp;
+   }
+
+   function swipeLeft(likedUser){
+    const reject = async (e)=>{
+      e.preventDefault()
+      const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
+      `rejectorUsername=${user[0].username}&rejecteeUsername=${likedUser.E_mail}`
+      )
+     fetchUsers();
+    } 
+    const temp = reject;
+    return temp;
+   }
    
    
-   const swipeLeft = async (e)=>{
-    e.preventDefault()
-    const results = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+
-    `rejectorUsername=${user[0].username}& rejecteeUsername=${users[0].E_mail}`
-    )
-   fetchUsers();
-  } 
+  
 
   var dragging = false;
   var xStart = 0;
@@ -114,8 +127,8 @@ function showUsers(){
           </div>
         </div>
         <div className="button-container">
-          <div onClick={ users.length===0 ? '':swipeRight} id="yes-button"><i class="uil uil-check"></i></div>
-          <div onClick={ users.length===0 ? '':swipeLeft} id="no-button" ><i class="uil uil-times"></i></div>
+          <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+          <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
         </div>
       </div>);
     }
@@ -140,8 +153,8 @@ function showUsers(){
           </div>
         </div>
         <div className="button-container">
-          <div onClick={ users.length===0 ? '':swipeRight} id="yes-button"><i class="uil uil-check"></i></div>
-          <div onClick={ users.length===0 ? '':swipeLeft} id="no-button" ><i class="uil uil-times"></i></div>
+          <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+          <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
         </div>
       </div>);
   }
@@ -165,8 +178,8 @@ function showUsers(){
           </div>
         </div>
         <div className="button-container">
-          <div onClick={ users.length===0 ? '':swipeRight} id="yes-button"><i class="uil uil-check"></i></div>
-          <div onClick={ users.length===0 ? '':swipeLeft} id="no-button" ><i class="uil uil-times"></i></div>
+          <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+          <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
         </div>
       </div>);
   }
