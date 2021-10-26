@@ -2,29 +2,32 @@ import React, {useEffect, useState} from "react";
 import Modal from "./Modal";
 import HorizontalScroll from 'react-scroll-horizontal';
 import NavBar from './NavBar';
+import FeedRight from "./FeedRight";
 
 
-export default function SearchbyLocation({user, setUser}){
+export default function Search({user, setUser}){
 
 
-    const [users,setUsers] = useState(
-        {length:0}
-      );
-      const fetchUsers = async (e) =>{
-        const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
-        `username=${user[0].username}`
-        )
-        console.log(user[0].username)
-        const data = await result.json();
-        setUsers(data.feedProfiles);
-        
-        console.log(data.feedProfiles)
-        }
-        useEffect(()=>{
-          fetchUsers();
-          
-          },[])
+const [users, setUsers] = useState(
+  {length:0}
+);
+let location = sessionStorage.getItem("Location");
+console.log(location);
+
+const fetchUsers = async (e) =>{
+  const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
+  `username=${user[0].username}`
+  )
+  console.log(user[0].username)
+  const data = await result.json();
+  setUsers(data.feedProfiles);
+  
+  console.log(data.feedProfiles);
+  }
+  useEffect(()=>{
+    fetchUsers();
     
+    },[])
 
 
  function swipeRight(likedUser){
@@ -98,104 +101,124 @@ export default function SearchbyLocation({user, setUser}){
 
    var usersAvailable = users.length;
    console.log(usersAvailable);
-
-   let location = sessionStorage.getItem("Location");
-
-   function filterLocation(){
-       let filted = [];
-       if(usersAvailable >= 1){
-           for(let i = 0; i < usersAvailable;i++){
-               var userAccount = users[i];
-               if(userAccount.Location === location){
-                   filted.push(
-                    <div className="card-container" id="card">
-                    <img className="card-image" src={users.length ===0 ? 'no user': userAccount.Profile_Picture} ></img>
-                      <div className="card-id">
-                        <p id="feed-name">{users.length ===0 ? 'no user': userAccount.Full_Name }</p>
-                    
-                        <Modal></Modal>
-                    
-                      </div>
-                    <div className="card-interests">
-                    {userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
-                    </div>
-                 
-                    <div className="card-bio">
-                      <div>
-                        {users.length ===0 ? 'no user': userAccount.Bio }
-                      </div>
-                    </div>
-                    <div className="button-container">
-                      <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
-                      <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
-                    </div>
+   function showUsers(){
+    var list = [];
+    if(usersAvailable>= 1){
+      for(var i = 0; i<usersAvailable;i++){
+        var userAccount = users[i];
+        if(userAccount.Location === location){
+          console.log(userAccount);
+          list.push(
+          <div className="card-container" id="card">
+            <img className="card-image" src={users.length ===0 ? 'no user': userAccount.Profile_Picture} ></img>
+             <div className="card-id">
+               <p id="feed-name">{users.length ===0 ? 'no user': userAccount.Full_Name }</p>
+            
+                <Modal></Modal>
+          
+             </div>
+            <div className="card-interests">
+             {userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
+            </div>
+       
+            <div className="card-bio">
+             <div>
+                {users.length ===0 ? 'no user': userAccount.Bio }
+             </div>
+           </div>
+            <div className="button-container">
+              <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+              <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
+            </div>
+          </div>);
+        }
+        else{
+          console.log(userAccount);
+          list.push(
+            <div className="card-container" id="card">
+              <img className="card-image" src={'no user in loation'} ></img>
+                <div className="card-id">
+                  <p id="feed-name">{ 'no user in location'}</p>
+          
+                  <Modal></Modal>
+          
+                </div>
+                <div className="card-interests">
+                  {'no users in location'}
+                </div>
+       
+                <div className="card-bio">
+                  <div>
+                    {'no user in location' }
                   </div>
-                   );
-               }
-               else{
-                   continue;
-               }
-           }
-       }
-       else if(usersAvailable === undefined){
-           filted.push(
-            <div className="card-container" id="card">
-            <img className="card-image" src={users.length ===undefined ? 'no user returned': userAccount.Profile_Picture} ></img>
-              <div className="card-id">
-                <p id="feed-name">{users.length ===undefined ? 'no user returned': userAccount.Full_Name }</p>
-            
-                <Modal></Modal>
-            
-              </div>
-            <div className="card-interests">
-            {users.length === undefined?'no user returned' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
-            </div>
-         
-            <div className="card-bio">
-              <div>
-                {users.length ===undefined ? 'no user returned': userAccount.Bio }
-              </div>
-            </div>
-            <div className="button-container">
-              <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
-              <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
-            </div>
-          </div>
-           );
-       }
-       else{
-          filted.push(
-            <div className="card-container" id="card">
-            <img className="card-image" src={users.length ===0 ? 'no user available': userAccount.Profile_Picture} ></img>
-              <div className="card-id">
-                <p id="feed-name">{users.length ===0 ? 'no user available': userAccount.Full_Name }</p>
-            
-                <Modal></Modal>
-            
-              </div>
-            <div className="card-interests">
-            {users.length === 0 ?'no user available' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
-            </div>
-         
-            <div className="card-bio">
-              <div>
-                {users.length ===0 ? 'no user available': userAccount.Bio }
-              </div>
-            </div>
-            <div className="button-container">
-              <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
-              <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
-            </div>
-          </div>
-          ); 
-       }
-   } 
+                </div>
+                <div className="button-container">
+                  <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+                    <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
+                </div>
+             </div>);
+        }
+        
+      }
+    }
+    // else if(usersAvailable === undefined){
+    //   list.push(
+    //   <div className="card-container" id="card">
+    //       <img className="card-image" src={users.length ===undefined ? 'no user returned': userAccount.Profile_Picture} ></img>
+    //         <div className="card-id">
+    //           <p id="feed-name">{users.length ===undefined ? 'no user returned': userAccount.Full_Name }</p>
+          
+    //           <Modal></Modal>
+          
+    //         </div>
+    //       <div className="card-interests">
+    //       {users.length === undefined?'no user returned' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
+    //       </div>
+       
+    //       <div className="card-bio">
+    //         <div>
+    //           {users.length ===undefined ? 'no user returned': userAccount.Bio }
+    //         </div>
+    //       </div>
+    //       <div className="button-container">
+    //         <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+    //         <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
+    //       </div>
+    //     </div>);
+    // }
+    // else{
+    //   list.push(
+    //     <div className="card-container" id="card">
+    //       <img className="card-image" src={users.length ===0 ? 'no user available': userAccount.Profile_Picture} ></img>
+    //         <div className="card-id">
+    //           <p id="feed-name">{users.length ===0 ? 'no user available': userAccount.Full_Name }</p>
+          
+    //           <Modal></Modal>
+          
+    //         </div>
+    //       <div className="card-interests">
+    //       {users.length === 0 ?'no user available' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
+    //       </div>
+       
+    //       <div className="card-bio">
+    //         <div>
+    //           {users.length ===0 ? 'no user available': userAccount.Bio }
+    //         </div>
+    //       </div>
+    //       <div className="button-container">
+    //         <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+    //         <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
+    //       </div>
+    //     </div>);
+    // }
+    return list;
+  }
    
    return (
     <div className = 'feedcontainer'>
       <NavBar user={user} setUser={setUser}/>
       <HorizontalScroll>
-        {filterLocation()}
+        {showUsers()}
       </HorizontalScroll>
     </div>
   );

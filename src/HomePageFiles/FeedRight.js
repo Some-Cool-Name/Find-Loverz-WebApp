@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react";
 import Modal from "./Modal";
 import HorizontalScroll from 'react-scroll-horizontal';
+import { Link, useHistory } from 'react-router-dom';
 import NavBar from './NavBar';
 
 export default function FeedRight({user, setUser}) {
@@ -13,18 +14,17 @@ export default function FeedRight({user, setUser}) {
   const fetchUsers = async (e) =>{
     const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
     `username=${user[0].username}`
-    )
-    console.log(user[0].username)
+    );
+    console.log(user[0].username);
     const data = await result.json();
     setUsers(data.feedProfiles);
     
-    console.log(data.feedProfiles)
+    console.log(data.feedProfiles);
     }
     useEffect(()=>{
       fetchUsers();
       
-      },[])
-
+      },[]);
 
   //Accepting and declining users 
 
@@ -56,6 +56,18 @@ export default function FeedRight({user, setUser}) {
    }
    
    
+   let history = useHistory();
+      const [search, setSearch] = useState('');
+  
+      const stateSetter = () =>{
+          sessionStorage.setItem("Location", document.getElementById("searchbyLocation").value);
+      }
+  
+      const handleKey=(e)=>{
+          console.log(e.target.value);
+          console.log("Enter button clicked");
+          stateSetter();
+      }
   
 
   var dragging = false;
@@ -189,12 +201,24 @@ function showUsers(){
 
 
   return (
-    <div className = 'feedcontainer'>
+    <div>
+      <div className = 'nav'></div>
+      <div className = 'feedcontainer'>
       {/* <NavBar user={user} setUser={setUser}/> */}
+      <div className = 'searchArea'>
+        <div onKeyDown={handleKey}/>
+        <input className = 'searchBar' type="text" placeholder="Search by Location" value={search.SearchLocation} id="searchbyLocation"/>
+        <Link to="/SearchbyLocation">
+          <button onClick={handleKey}><img className = 'searchImage' src="./search_icon.png" alt="Search"/></button>
+        </Link>
+      </div>
       <HorizontalScroll>
         {showUsers()}
       </HorizontalScroll>
+      </div>
+      
     </div>
+    
   );
 }
 
