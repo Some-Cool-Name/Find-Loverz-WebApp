@@ -125,7 +125,9 @@
 }
 
 /* Send Button */
-.chat-bottom #message-send {
+.chat-bottom #message-send,
+#chat-fileupload,
+#upload-container {
   width: 40px;
   height: 40px;
 
@@ -151,6 +153,25 @@
 .chat-bottom #message-box:focus,
 .chat-bottom #message-send:focus {
   border-color: #ccc;
+}
+
+#chat-fileupload {
+  opacity: 0;
+  border: 0;
+  margin: 0;
+
+  width: 50px;
+  height: 50px;
+}
+
+#upload-container{
+  display: flex;
+  overflow: hidden;
+
+  background-image: url(../image-plus.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px;
 }
 /*********************************/
 
@@ -239,5 +260,24 @@
   margin-left: auto;
 
   background: #ad44c7;
+}
+
+.chat-outgoing img,
+.chat-incomming img {
+  width: auto;
+  height: auto;
+  max-width: 500px;
+  max-height: 500px;
+
+  box-sizing: border-box;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+.chat-add-image{
+width: 50px;
+height: 50px;
+
+background-color: #ad44c7;
+
 }
 /*********************************/
