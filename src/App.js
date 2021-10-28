@@ -6,6 +6,7 @@ import Registration from './AuthFiles/Registration';
 import Feed from './HomePageFiles/Feed';
 import Matches from './HomePageFiles/Matches';
 import Chat from './HomePageFiles/Chat';
+import SearchbyLocation from './HomePageFiles/SearchbyLocation';
 import Search from './HomePageFiles/Search';
 import Profile from './HomePageFiles/Profile';
 import { getFromStorage } from './HelperClasses/StorageHandler';
@@ -76,6 +77,11 @@ function App() {
            {/* Search Results */}
            <Route path="/search" render={props => (
             <Search setUser={setUser} user={user} />
+        )} />
+        
+           {/* Search by location Results */}
+           <Route path="/searchbyLocation" render={props => (
+            <SearchbyLocation setUser={setUser} user={user} />
         )} />
 
         {/* Feed page */}

@@ -34,9 +34,27 @@ div.User-Info {
 }
 
 /* Right Feed */
+.nav{
+  height: 50px;
+}
+.searchArea{
+  width: auto;
+  height: 50px;
+}
+.searchBar{
+  width: 200px;
+  height: 50px;
+  margin-left: 90px;
+}
+.searchImage{
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  
+}
 .feedcontainer {
   width: 75vw;
-  height: 850px;
+  height: 750px;
   background: rgb(238, 237, 237);
   overflow-x: scroll;
   overflow-y: hidden;
@@ -47,7 +65,7 @@ div.User-Info {
 }
 .right-container-1 {
   width: 75vw;
-  height: 797px;
+  height: 600px;
   min-height: 100vh;
   min-width: 350px;
 
