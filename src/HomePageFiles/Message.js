@@ -4,31 +4,48 @@ import './Chat.css';
 
 function Message({ text, isMe, url, time}) {
     var today = new Date();
-    console.log(time.length);
+    console.log(time)
+    
+    // --------- Store time as integers in an array ---------
+    let t = [];
+    let temp = "";
+    
+    for (let i = 0; i < time.length; ++i){
+        if ((time[i] == '-') || (time[i] == ' ') || (time[i] == ':')){ 
+            t.push(parseInt(temp));
+            temp = "";
+        }
 
-    // Length of date is 19 (YYYY-MM-DD-HH:MM:SS)
-    // year: [0][1][2][3]
-    let ty = parseInt(time[0] + time[1] + time[2] + time[3]);
+        else{
+            temp += time[i]; 
+        }   
+    }
+
+    t.push(parseInt(temp));
+    temp = "";
+
+    // --------- year ---------
+    let ty = t[0];
     let dy = today.getFullYear();
 
-    // month: [5][6]
-    let tm = parseInt(time[5] + time[6]);
+    // --------- month ---------
+    let tm =t[1];
     let dm = today.getMonth() +1;
 
-    // day: [8][9]
-    let td = parseInt(time[8] + time[9]);
+    // --------- day ---------
+    let td = t[2];
     let dd = today.getDate();
 
-    // hours: [11][12]
-    let th = parseInt(time[11] + time[12]);
+    // --------- hours ---------
+    let th = t[3];
     let dh = today.getHours();
 
-    // min: [14][15]
-    let tmn = parseInt(time[14] + time[15]);
+    // --------- min ---------
+    let tmn = t[4];
     let dmn = today.getMinutes()
 
     let timestamp = "none";
-    //dy = 10;
+
     // --------- Same year ---------
     if (ty == dy){
         // --------- Same month ---------
@@ -38,8 +55,8 @@ function Message({ text, isMe, url, time}) {
                  // --------- Same hour ---------
                 if (th == dh){
                      // --------- Same min ---------
-                    if (tmn == dmn){
-                        timestamp = "a few seconds ago";
+                    if (dmn == tmn){
+                        timestamp = "just now";
                     }
 
                     // --------- Different min ---------
