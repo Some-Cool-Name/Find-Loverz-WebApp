@@ -122,6 +122,69 @@ it('Profile Inputs( name, location, bio, interests, profile picture ) : Correct 
 
 });
 
+// it('Profile Inputs( interests ) : Correct Inputs Testing , Should not return error ', async () => {
+
+//     act( () => {
+//         render( 
+//         <BrowserRouter>
+//             <Profile user={user} setUser = {null}/>
+//         </BrowserRouter>
+//         );
+//     });
+
+
+//     const chooseInterests = screen.getByText('Choose Interests');
+//     act( () => {
+//         fireEvent.click(chooseInterests);
+//     });
+//     await waitFor(() => { 
+//         expect(screen.getByText('Choose Five Interests')).toBeTruthy();
+
+//     });
+//     const interest1 = screen.getByText('Photography');
+//     act( () => {
+//         fireEvent.click(interest1);
+//     });
+
+//     act( () => {
+//         fireEvent.click(interest1);
+//     });
+
+//     act( () => {
+//         fireEvent.click(interest1);
+//     });
+//     const interest2 = screen.getByText('Shopping');
+//     act( () => {
+//         fireEvent.click(interest2);
+//     });
+//     const interest3 = screen.getByText('Baking');
+//     act( () => {
+//         fireEvent.click(interest3);
+//     });
+//     const interest4 = screen.getByText('Comedy');
+//     act( () => {
+//         fireEvent.click(interest4);
+//     });
+//     const interest5 = screen.getByText('Cooking');
+//     act( () => {
+//         fireEvent.click(interest5);
+//     });
+
+//     const close = screen.getByText('Close')
+//     act( () => {
+//         fireEvent.click(close);
+//     });
+
+//     const UpdateBtn = screen.getByText('Update');
+//     act( () => {
+//         fireEvent.click(UpdateBtn);
+//     });
+//     await waitFor(() => { 
+//         expect(UpdateBtn).toBeTruthy();
+
+//     });
+// });
+
 
 
 
