@@ -133,6 +133,11 @@ function Message({ text, isMe, url, time}) {
 
     return (
         <div className="chat-incomming">
+            {url !== "" &&
+                <img src={url}></img>
+                
+                
+                }
             <p className="chat-message">{text}</p>
             <p className="chat-time">{timestamp}</p> 
         </div>
