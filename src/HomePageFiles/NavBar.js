@@ -11,25 +11,15 @@ export default function NavBar({ setUser, user}) {
     let history = useHistory();
     const [search, setSearch] = useState('');
 
-    const stateSetter = () =>{
-        sessionStorage.setItem("Interest", document.getElementById("search").value);
-    }
+    // const stateSetter = () =>{
+    //     sessionStorage.setItem("Location", document.getElementById("search").value);
+    // }
 
-    const stateSet = () => {
-        sessionStorage.setItem("Location", document.getElementById("searchbyLocation").value);
-    }
-
-    const handleKey=(e)=>{
-        console.log(e.target.value);
-        console.log("Enter button clicked");
-        stateSetter();
-    }
-
-    const handlelocation=(e)=>{
-        console.log(e.target.value);
-        console.log("Enter button clicked");
-        stateSet();
-    }
+    // const handleKey=(e)=>{
+    //     console.log(e.target.value);
+    //     console.log("Enter button clicked");
+    //     // stateSetter();
+    // }
 
     // handles user logout
     const handleLogout = () => {
@@ -51,19 +41,7 @@ export default function NavBar({ setUser, user}) {
                 <Link to="/feed" id="navFeed" ><IoHomeSharp /> <b>Feed</b> </Link>
                 <Link to="/chat"  id="navChat"> <BsFillChatFill/><b>Chat</b> </Link>
                 <Link to="/" onClick={handleLogout} id="navLogout"><RiLogoutBoxRFill/> <b>Logout</b> </Link>
-                <div onKeyDown={handleKey}/>
-            <div>
-                <input type="text" placeholder="Search" value={search.SearchInterest} id="search"/>
-                <Link to="/Search">
-                    <button onClick={handleKey}><img src="./search_icon.png" alt="Search"/></button>
-                </Link>
-            </div>
-            <div>
-                <input type="text" placeholder="SearchbyLocation" value={search.SearchLocation} id="searchbyLocation"/>
-                <Link to="/SearchbyLocation">
-                    <button onClick={handlelocation}><img src="./search_icon.png" alt="Search"/></button>
-                </Link>
-            </div>
+                {/* <div onKeyDown={handleKey}/> */}
             </div>
             
         </div>

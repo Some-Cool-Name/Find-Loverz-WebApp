@@ -182,7 +182,7 @@ function Registration({ setUser }) {
           
           const result = await fetch(
             "https://lamp.ms.wits.ac.za/home/s1851427/WDAReg.php?" +
-              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${"braam"}&profile_picture=${te}&bio="yo"`
+              `username=${username}&password=${password}&name=${name}&gender=${gender}&birthday=${userBirthday}&sexuality=${sexuality}&location=${location}&profile_picture=${te}&bio="yo"`
           ).then(async (res) =>{
             const temp = await res.json()
             console.log(temp)
@@ -363,6 +363,7 @@ function Registration({ setUser }) {
               placeholder = "Location"
               style = {globalStyles.inputStyle}
               onChange={(e) => setLocation(e.target.value)}
+              
             ></input>
           </div>
 

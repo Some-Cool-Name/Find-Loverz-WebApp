@@ -2,29 +2,45 @@ import React, {useEffect, useState} from "react";
 import Modal from "./Modal";
 import HorizontalScroll from 'react-scroll-horizontal';
 import NavBar from './NavBar';
+import FeedRight from "./FeedRight";
+import { Link, useHistory } from 'react-router-dom';
 
 
-export default function SearchbyLocation({user, setUser}){
+export default function Search({user, setUser}){
 
 
-    const [users,setUsers] = useState(
-        {length:0}
-      );
-      const fetchUsers = async (e) =>{
-        const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
-        `username=${user[0].username}`
-        )
-        console.log(user[0].username)
-        const data = await result.json();
-        setUsers(data.feedProfiles);
-        
-        console.log(data.feedProfiles)
-        }
-        useEffect(()=>{
-          fetchUsers();
-          
-          },[])
+const [users, setUsers] = useState(
+  {length:0}
+);
+const [search, setSearch] = useState('');
+
+let location = sessionStorage.getItem("Location");
+console.log(location);
+
+const handleKey=(e)=>{
+  console.log(e.target.value);
+  console.log("Enter button clicked");
+  stateSetter();
+}
+
+const stateSetter = () =>{
+  sessionStorage.setItem("Location", document.getElementById("searchbyLocation").value);
+}
+
+const fetchUsers = async (e) =>{
+  const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
+  `username=${user[0].username}`
+  )
+  console.log(user[0].username)
+  const data = await result.json();
+  setUsers(data.feedProfiles);
+  
+  console.log(data.feedProfiles);
+  }
+  useEffect(()=>{
+    fetchUsers();
     
+    },[])
 
 
  function swipeRight(likedUser){
@@ -96,106 +112,72 @@ export default function SearchbyLocation({user, setUser}){
 
 
 
-   var usersAvailable = users.length;
-   console.log(usersAvailable);
-
-   let location = sessionStorage.getItem("Location");
-
-   function filterLocation(){
-       let filted = [];
-       if(usersAvailable >= 1){
-           for(let i = 0; i < usersAvailable;i++){
-               var userAccount = users[i];
-               if(userAccount.Location === location){
-                   filted.push(
-                    <div className="card-container" id="card">
-                    <img className="card-image" src={users.length ===0 ? 'no user': userAccount.Profile_Picture} ></img>
-                      <div className="card-id">
-                        <p id="feed-name">{users.length ===0 ? 'no user': userAccount.Full_Name }</p>
-                    
-                        <Modal></Modal>
-                    
-                      </div>
-                    <div className="card-interests">
-                    {userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
-                    </div>
-                 
-                    <div className="card-bio">
-                      <div>
-                        {users.length ===0 ? 'no user': userAccount.Bio }
-                      </div>
-                    </div>
-                    <div className="button-container">
-                      <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
-                      <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
-                    </div>
-                  </div>
-                   );
-               }
-               else{
-                   continue;
-               }
-           }
-       }
-       else if(usersAvailable === undefined){
-           filted.push(
+    var usersAvailable = users.length;
+    console.log(usersAvailable);
+    function showUsers(){
+      let list = [];
+      if(usersAvailable>= 1){
+        for(let i = 0; i<usersAvailable;i++){
+          var userAccount = users[i];
+          if(userAccount.Location === location){
+            console.log(userAccount);
+            list.push(
             <div className="card-container" id="card">
-            <img className="card-image" src={users.length ===undefined ? 'no user returned': userAccount.Profile_Picture} ></img>
+              <img className="card-image" src={users.length ===0 ? 'no user': userAccount.Profile_Picture} ></img>
               <div className="card-id">
-                <p id="feed-name">{users.length ===undefined ? 'no user returned': userAccount.Full_Name }</p>
-            
-                <Modal></Modal>
+                <p id="feed-name">{users.length ===0 ? 'no user': userAccount.Full_Name }</p>
+              
+                  <Modal></Modal>
             
               </div>
-            <div className="card-interests">
-            {users.length === undefined?'no user returned' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
-            </div>
-         
-            <div className="card-bio">
+              <div className="card-interests">
+              {userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
+              </div>
+        
+              <div className="card-bio">
               <div>
-                {users.length ===undefined ? 'no user returned': userAccount.Bio }
+                  {users.length ===0 ? 'no user': userAccount.Bio }
               </div>
             </div>
-            <div className="button-container">
-              <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
-              <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
-            </div>
-          </div>
-           );
-       }
-       else{
-          filted.push(
-            <div className="card-container" id="card">
-            <img className="card-image" src={users.length ===0 ? 'no user available': userAccount.Profile_Picture} ></img>
-              <div className="card-id">
-                <p id="feed-name">{users.length ===0 ? 'no user available': userAccount.Full_Name }</p>
-            
-                <Modal></Modal>
-            
+              <div className="button-container">
+                <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
+                <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
               </div>
-            <div className="card-interests">
-            {users.length === 0 ?'no user available' : userAccount.Interest_1 +", "+ userAccount.Interest_2 +", "+ userAccount.Interest_3 +", "+ userAccount.Interest_4 +", "+ userAccount.Interest_5}
-            </div>
-         
-            <div className="card-bio">
-              <div>
-                {users.length ===0 ? 'no user available': userAccount.Bio }
-              </div>
-            </div>
-            <div className="button-container">
-              <div onClick={ users.length===0 ? '':swipeRight(userAccount)} id="yes-button"><i class="uil uil-check"></i></div>
-              <div onClick={ users.length===0 ? '':swipeLeft(userAccount)} id="no-button" ><i class="uil uil-times"></i></div>
-            </div>
-          </div>
-          ); 
-       }
-   } 
+            </div>);
+          }
+        }
+      }
+      setUsers(list);
+      return list;
+    }
+
+    if(users.length === 0){
+      return (
+        <div>
+        <div className = 'nav'></div>
+        <div className = 'feedcontainer'>
+        {/* <NavBar user={user} setUser={setUser}/> */}
+        <div style={{marginTop: 10}} className = 'searchArea'>
+          <div onKeyDown={handleKey}/>
+          <input style={{marginRight: 5}} className = 'searchBar' type="text" placeholder="Search by Location" value={search.SearchLocation} id="searchbyLocation"/>
+          <Link to="/SearchbyLocation" >
+            <button onClick={handleKey}>search</button>
+          </Link>
+        </div>
+        <h2>
+          No results.
+        </h2>
+        </div>
+        
+      </div>
+      )
+    }
    
    return (
     <div className = 'feedcontainer'>
       <NavBar user={user} setUser={setUser}/>
       <HorizontalScroll>
-        {filterLocation()}
+        {showUsers()}
       </HorizontalScroll>
     </div>
   );
