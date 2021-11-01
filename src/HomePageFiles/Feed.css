@@ -53,8 +53,8 @@ div.User-Info {
   
 }
 .feedcontainer {
-  width: 75vw;
-  height: 750px;
+  width: 1440px;
+  height: 925px;
   background: rgb(238, 237, 237);
   overflow-x: scroll;
   overflow-y: hidden;
@@ -100,10 +100,11 @@ div.User-Info {
 .card-container {
   width: 300px;
   height: 450px;
-
+  padding: auto;
   border: 1px solid #cccccc;
   border-radius: 20px;
-  margin-right: 30px;
+  margin-left: 10px;
+  margin-right: 20px;
   display: inline-block;
   align-self: center;
   overflow: hidden;
@@ -359,7 +360,7 @@ div.User-Info {
 
 /* Matches Display */
 .match-container-1 {
-  width: 23vw;
+  width: inherit;
   height: 100%;
 
   overflow-y: auto;
@@ -371,7 +372,7 @@ div.User-Info {
   min-height: 50px;
 
   box-sizing: border-box;
-  padding: 8px;
+  padding: 10px;
   border-bottom: 1px solid #cccccc;
   position: relative;
 
@@ -596,3 +597,18 @@ div.User-Info {
   cursor: pointer;
 }
 /* modal style end*/
+/* interest & location search btn */
+button.btnSearch{
+  margin-top: 5px;
+  border: none;
+}
+
+/* scroll view */
+
+.scroll-view{
+  transform: translate3d(0px, 0px, 0px);
+  display: inline-flex;
+  height: 100%;
+  position: absolute;
+  will-change: transform;
+}

@@ -2,6 +2,7 @@ import React,{useState, useEffect} from "react";
 import HorizontalScroll from 'react-scroll-horizontal';
 import { Link, useHistory } from 'react-router-dom';
 import { search } from '../HelperClasses/search';
+import { VscSearch } from "react-icons/vsc";
 import FeedCard from './FeedCard';
 
 export default function FeedRight({user, setUser}) {
@@ -59,7 +60,8 @@ export default function FeedRight({user, setUser}) {
           value={searchText}
           id="searchbyLocation"
         />
-        <button onClick={handleSearch}>search</button>
+        {/* <VscSearch onClick={handleSearch}/> */}
+        <button onClick={handleSearch}><VscSearch/></button>
       </div>
         <h2 style={{color:'gray', marginTop:50}} >
           No results, please try again later.
@@ -71,31 +73,36 @@ export default function FeedRight({user, setUser}) {
   }
 
   return (
-    <div>
+   <body>
+      
       <div className = 'nav'></div>
       <div className = 'feedcontainer'>
-      {/* <NavBar user={user} setUser={setUser}/> */}
-      <div style={{marginTop: 10}} className = 'searchArea'>
-        <div />
-        <input style={{marginRight: 5}} 
-          className = 'searchBar' 
-          type="text" 
-          placeholder="Search..." 
-          onChange={(e) => setSearchText(e.target.value)}
-          value={searchText}
-          id="searchbyLocation"
-        />
-        <button onClick={handleSearch}>search</button>
+          {/* <NavBar user={user} setUser={setUser}/> */}
+          <div style={{marginTop: 10}} className = 'searchArea'>
+            <div />
+            <input style={{marginRight: 5}} 
+              className = 'searchBar' 
+              type="text" 
+              placeholder="Search..." 
+              onChange={(e) => setSearchText(e.target.value)}
+              value={searchText}
+              id="searchbyLocation"
+            />
+            
+            <button className="btnSearch" onClick={handleSearch}><VscSearch/></button>
+          </div>
+         
+          <HorizontalScroll className="scroll-view">
+            {users.map((otherUser) => {
+              return <FeedCard userAccount={otherUser} fetchUsers={fetchUsers} user={user} />
+            })}
+          </HorizontalScroll>
+        
+          
+            
       </div>
-        <HorizontalScroll>
-          {users.map((otherUser) => {
-            return <FeedCard userAccount={otherUser} fetchUsers={fetchUsers} user={user} />
-          })}
-        </HorizontalScroll>
-      </div>
-      
-    </div>
     
+   </body>
   );
 }
 
