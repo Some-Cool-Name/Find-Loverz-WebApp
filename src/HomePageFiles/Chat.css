@@ -178,8 +178,8 @@
 /* Chat Messages */
 .chat-body {
   width: 100%;
-  height: fit-content;
-  max-height: 1000px;
+  height: 900px;
+  max-height: 900px;
   background-color: #eeeeee;
   display: block;
 

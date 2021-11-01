@@ -99,7 +99,7 @@ div.User-Info {
 
 .card-container {
   width: 300px;
-  height: 450px;
+  height: 510px;
   padding: auto;
   border: 1px solid #cccccc;
   border-radius: 20px;
@@ -137,18 +137,18 @@ div.User-Info {
 .card-id {
   width: fit-content;
   height: fit-content;
-
-  max-width: 350px;
-  max-height: 40px;
-
+ 
   box-sizing: border-box;
-  padding: 10px 20px;
+  padding: 0px 0px;
 
   display: inline-block;
-  align-items: center;
+  align-items: start;
 
   overflow: hidden;
   background-color: transparent;
+
+  
+  
 }
 
 .card-interests {
@@ -210,7 +210,7 @@ div.User-Info {
   width: fit-content;
   height: fit-content;
 
-  margin: 15px;
+  margin: auto;
 
   display: flex;
   justify-content: center;
@@ -607,7 +607,7 @@ button.btnSearch{
 .scroll-view{
   /* transform: translate3d(0px, 0px, 0px); */
   /* display: inline-flex; */
-  margin-top: 50px;
+  margin-top: 100px;
   height: 100%;
   overflow: auto;
   white-space: nowrap;
