@@ -307,17 +307,9 @@ const EditProfile = ({ setUser, user }) => {
     return (  
         <div>
            <div className="panel-container-1">
-                <div className="panel-container-2">
-                    <div className="profile-container">
-                            <div className="profile-name">
-                                <p id="feed-username">PROFILE</p>                          
-                            </div>
-                        </div>
-                        <div id="logout"><i className="uil uil-sign-out-alt" onClick={handleLogout}></i></div>
-                </div>
                 <br />
                 <div>
-                  <br /><br /><br /><br />
+                  <br /><br />
                 <img id="register-pic"  src={curr === null? "no user": curr[0].profile_picture}></img>
                 <br />        
                 <input
@@ -390,8 +382,9 @@ const EditProfile = ({ setUser, user }) => {
                                 </button> 
                                 <br />
                                 <hr className="line2" size="2" style={{Color: "#6e6e6e"}}/>
-                             <div className="btnUpdate">
-                                <Link className='button' to="/profile" style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
+                             <div className="btnUpdate">  
+                              <Link className='button' to="/profile" style={globalStyles.button}  onClick={ () => handleUpdate(file.files)} ><b>Update</b> </Link>
+                              <br />
                              </div>
                              
                         </div>

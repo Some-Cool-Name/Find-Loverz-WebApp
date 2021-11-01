@@ -163,13 +163,19 @@ function Chat({ user, setUser, db, otherUser, setOtherUser, isTest }) {
                     {
                         messages && messages.map((obj) => {
                             return (
+                                
                                 <Message text={obj.message} isMe={obj.user === user[0].username} time={obj.time} url={obj.image_url} />
+                                
                             );
+                            
                         })
+                        
                     }
+                    <br /><br /><br /><br /><br /><br /><br /><br /><br />
                     <span ref={dummy}></span>
+                    
                 </div>
-
+                
                 <div className="chat-bottom">
                     <input
                         id="message-box"
