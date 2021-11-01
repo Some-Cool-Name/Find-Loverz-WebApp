@@ -569,7 +569,18 @@
 <a name='L510'></a><a href='#L510'>510</a>
 <a name='L511'></a><a href='#L511'>511</a>
 <a name='L512'></a><a href='#L512'>512</a>
-<a name='L513'></a><a href='#L513'>513</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L513'></a><a href='#L513'>513</a>
+<a name='L514'></a><a href='#L514'>514</a>
+<a name='L515'></a><a href='#L515'>515</a>
+<a name='L516'></a><a href='#L516'>516</a>
+<a name='L517'></a><a href='#L517'>517</a>
+<a name='L518'></a><a href='#L518'>518</a>
+<a name='L519'></a><a href='#L519'>519</a>
+<a name='L520'></a><a href='#L520'>520</a>
+<a name='L521'></a><a href='#L521'>521</a>
+<a name='L522'></a><a href='#L522'>522</a>
+<a name='L523'></a><a href='#L523'>523</a>
+<a name='L524'></a><a href='#L524'>524</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -580,6 +591,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -830,9 +842,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -852,6 +861,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -933,6 +944,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -941,7 +953,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1090,6 +1112,7 @@ import DatePicker from "./DatePicker";
 import { getFromStorage, saveToStorage } from '../HelperClasses/StorageHandler';
 import { loginRequest } from "../BackendRequests/Authentication";
 import ReactJsAlert from "reactjs-alert";
+import '../default.png';
 &nbsp;
 function <span class="fstat-no" title="function not covered" >Registration(</span>{ setUser }) {
   let history = <span class="cstat-no" title="statement not covered" >useHistory();</span>
@@ -1264,7 +1287,7 @@ function <span class="fstat-no" title="function not covered" >Registration(</spa
           
           const result = <span class="cstat-no" title="statement not covered" >await fetch(</span>
             "https://lamp.ms.wits.ac.za/home/s1851427/WDAReg.php?" +
-              `username=${username}&amp;password=${password}&amp;name=${name}&amp;gender=${gender}&amp;birthday=${userBirthday}&amp;sexuality=${sexuality}&amp;location=${"braam"}&amp;profile_picture=${te}&amp;bio="yo"`
+              `username=${username}&amp;password=${password}&amp;name=${name}&amp;gender=${gender}&amp;birthday=${userBirthday}&amp;sexuality=${sexuality}&amp;location=${location}&amp;profile_picture=${te}&amp;bio="yo"`
           ).then(<span class="fstat-no" title="function not covered" >as</span>ync (res) =&gt;{
             const temp = <span class="cstat-no" title="statement not covered" >await res.json()</span>
 <span class="cstat-no" title="statement not covered" >            console.log(temp)</span>
@@ -1321,270 +1344,281 @@ function <span class="fstat-no" title="function not covered" >Registration(</spa
   };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
-    &lt;div className = "container"&gt;
-        &lt;ReactJsAlert
-      status={alerts.status}   // true or false
-    type={alerts.type}   // success, warning, error, info
-    title={alerts.title}   // title you want to display
-    color ="blue"
-    Close={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setAlerts({</span>
-      type: "error",
-      status: false,
-      
-      title: "",
-      
-    }
-  
-    )}   // callback method for hide
-/&gt;
-       &lt;div className='header'&gt;
-                &lt;h3 className='appName'&gt;find loverz&lt;/h3&gt;
-             &lt;/div&gt;
-      &lt;div className="registration"&gt;
-      &lt;form className="form" onSubmit={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >registerUser(e, file.files)}</span>&gt;
-      &lt;h1&gt;Register&lt;/h1&gt;
-      &lt;br /&gt;
-      &lt;hr width="100px;"  size="8"&gt;&lt;/hr&gt;
-        &lt;div className="form-element"&gt;
+    &lt;div className = "containerRegistration" id="ContainerRegistration"&gt;
+          &lt;ReactJsAlert
+        status={alerts.status}   // true or false
+      type={alerts.type}   // success, warning, error, info
+      title={alerts.title}   // title you want to display
+      color ="blue"
+      Close={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >setAlerts({</span>
+        type: "error",
+        status: false,
         
-        &lt;label className = "fieldDescription" htmlFor="username"&gt; Profile Picture&lt;/label&gt;
-        &lt;img id="register-pic"&gt;&lt;/img&gt;
-          &lt;input
-            type="file"
-            id="fileupload"
-            accept="image/*"
-            ref={<span class="fstat-no" title="function not covered" >fi</span>leInputEl =&gt; <span class="cstat-no" title="statement not covered" >setFile(fileInputEl)}</span>
-            onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) </span>}
-          /&gt;
-          &lt;label className = "fieldDescription" htmlFor="username"&gt; Username&lt;/label&gt;
-          &lt;input
-            className = 'inputBox'
-            id="username"
-            required
-            type ="text"
-            placeholder = "Username..."
-            style = {globalStyles.inputStyle}
-            onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setUsername(e.target.value)}</span>
-          &gt;&lt;/input&gt;
-        &lt;/div&gt;
-&nbsp;
+        title: "",
         
-&nbsp;
-        &lt;div className="form-element"&gt;
-          &lt;label className = "fieldDescription" htmlFor="password"&gt; Password&lt;/label&gt;
-          &lt;input
-          className = 'inputBox'
-            id="password"
-            required
-            type="password"
-            placeholder = "Password..."
-            style = {globalStyles.inputStyle}
-            onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setPassword(e.target.value)}</span>
-          &gt;&lt;/input&gt;
+      }
+    
+      )}   // callback method for hide
+  /&gt;
+        &lt;div className='header'&gt;
+                  &lt;h3 className='appName'&gt;find loverz&lt;/h3&gt;
+              &lt;/div&gt;
+        &lt;div className="registration"&gt;
+        &lt;form className="form" onSubmit={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >registerUser(e, file.files)}</span>&gt;
+        &lt;h1&gt;Register&lt;/h1&gt;
+        &lt;hr width="100px;"  size="8"&gt;&lt;/hr&gt;
+        &lt;div&gt;
+          &lt;img id="register-pic"&gt;&lt;/img&gt;
+            &lt;input
+              type="file"
+              id="fileupload"
+              accept="image/*"
+              ref={<span class="fstat-no" title="function not covered" >fi</span>leInputEl =&gt; <span class="cstat-no" title="statement not covered" >setFile(fileInputEl)}</span>
+              onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >document.getElementById('register-pic').src = URL.createObjectURL(e.target.files[0]) </span>}
+            /&gt;
         &lt;/div&gt;
-&nbsp;
-        &lt;div className="form-element"&gt;
-          &lt;label className = "fieldDescription" htmlFor="confirmPassword"&gt; Confirm password&lt;/label&gt;
-          &lt;input
-          className = 'inputBox'
-            id="confirmPassword"
-            required
-            placeholder = "Confirm Password"
-            style = {globalStyles.inputStyle}
-            type="password"
-            onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setConfirm(e.target.value)}</span>
-          &gt;&lt;/input&gt;
-        &lt;/div&gt;
-&nbsp;
-        &lt;div className="form-element"&gt;
-          &lt;label className = "fieldDescription" htmlFor="name"&gt; Name&lt;/label&gt;
-          &lt;input className = 'inputBox' 
-          id="name" 
-          required
-          type = "text"
-          placeholder ="Name"
-          style = {globalStyles.inputStyle}
-          onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setName(e.target.value)}</span>
-          &gt;&lt;/input&gt;
-        &lt;/div&gt;
-&nbsp;
-        &lt;div className="form-element"&gt;
-          &lt;label className = "fieldDescription" htmlFor="gender"&gt; Gender&lt;/label&gt;
-          &lt;select id="gender" onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setGender(e.target.value)}</span>&gt;
-            &lt;option&gt;Select an Option&lt;/option&gt;
-            &lt;option&gt;Male&lt;/option&gt;
-            &lt;option&gt;Female&lt;/option&gt;
-            &lt;option&gt;Other&lt;/option&gt;
-          &lt;/select&gt;
-        &lt;/div&gt;
-&nbsp;
-        &lt;div className="form-element"&gt;
-          &lt;label className = "fieldDescription" htmlFor="birthday"&gt; Birthday&lt;/label&gt;
-          
-        
-          &lt;DatePicker id="birthday" date={date} setDate={setDate}&gt;&lt;/DatePicker&gt;
-        &lt;/div&gt;
-        &lt;div className= "form-element"&gt;{ageError}&lt;/div&gt;
-&nbsp;
-        &lt;div className="form-element"&gt;
-          &lt;label className = "fieldDescription" htmlFor="sexuality"&gt; Sexuality&lt;/label&gt;
-          &lt;select id="sexuality" onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setSexuality(e.target.value)}</span>&gt;
-            &lt;option&gt;Select an Option&lt;/option&gt;
-            &lt;option&gt;Male&lt;/option&gt;
-            &lt;option&gt;Female&lt;/option&gt;
-            &lt;option&gt;Other&lt;/option&gt;
-          &lt;/select&gt;
-        &lt;/div&gt;
-&nbsp;
-        &lt;div className="form-element"&gt;
-          
-          
-          &lt;button className='intrestbutton' onClick={interestsDisplay} id="interests-button"&gt;
-            Choose Interests
-          &lt;/button&gt;
-        &lt;/div&gt;
-&nbsp;
-        &lt;div className="form-element"&gt;
-        &lt;label className = "fieldDescription" htmlFor="location"&gt; Location&lt;/label&gt;
-          &lt;input
-          className = 'inputBox'
-            id="location"
-            required
-            type = "text"
-            placeholder = "Location"
-            style = {globalStyles.inputStyle}
-            onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setLocation(e.target.value)}</span>
-          &gt;&lt;/input&gt;
-        &lt;/div&gt;
-        &lt;br /&gt;
-        &lt;div className = "form-element"&gt;
-        &lt;input className = "button" id="register-button" type="submit" value="Register" /&gt;
-        &lt;/div&gt;
-      
-      &lt;/form&gt;
-    &lt;/div&gt;
-&nbsp;
-      &lt;div id="interests-background"&gt;
-        &lt;div id="interests-interface"&gt;
-          &lt;h1&gt;Choose Five Interests&lt;/h1&gt;
-&nbsp;
-          &lt;div className="interests-container"&gt;
-            &lt;div className="interest-element" id="i1"&gt;
-              Art
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i2"&gt;
-              Baking
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i3"&gt;
-              Board Games
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i4"&gt;
-              Comedy
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i5"&gt;
-              Cooking
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i6"&gt;
-              Cycling
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i7"&gt;
-              Dancing
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i8"&gt;
-              Fashion
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i9"&gt;
-              Fishing
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i10"&gt;
-              Foodie
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i11"&gt;
-              Football
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i12"&gt;
-              Gamer
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i13"&gt;
-              Gardening
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i14"&gt;
-              Golf
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i15"&gt;
-              Gym
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i16"&gt;
-              Hiking
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i17"&gt;
-              Karaoke
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i18"&gt;
-              Movies
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i19"&gt;
-              Music
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i20"&gt;
-              Netflix
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i21"&gt;
-              Pet Lover
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i22"&gt;
-              Photography
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i23"&gt;
-              Picnicking
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i24"&gt;
-              Politics
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i25"&gt;
-              Reading
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i26"&gt;
-              Shopping
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i27"&gt;
-              Spirituality
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i28"&gt;
-              Social Media
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i29"&gt;
-              Sport
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i30"&gt;
-              Surfing
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i31"&gt;
-              Swimming
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i32"&gt;
-              Travel
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i33"&gt;
-              Vlogging
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i34"&gt;
-              Wine
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i35"&gt;
-              Writing
-            &lt;/div&gt;
-            &lt;div className="interest-element" id="i36"&gt;
-              Yoga
-            &lt;/div&gt;
+          &lt;div className="form-element"&gt;
+            &lt;label className = "fieldDescription" htmlFor="username"&gt; Username&lt;/label&gt;
+            &lt;input
+              className = 'inputBox'
+              id="username"
+              required
+              type ="text"
+              placeholder = "Username..."
+              style = {globalStyles.inputStyle}
+              onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setUsername(e.target.value)}</span>
+            &gt;&lt;/input&gt;
           &lt;/div&gt;
 &nbsp;
-          &lt;button onClick={interestsClose} id="interests-close"&gt;
-            Close
-          &lt;/button&gt;
+          
 &nbsp;
-        &lt;/div&gt;
+          &lt;div className="form-element"&gt;
+            &lt;label className = "fieldDescription" htmlFor="password"&gt; Password&lt;/label&gt;
+            &lt;input
+            className = 'inputBox'
+              id="password"
+              required
+              type="password"
+              placeholder = "Password..."
+              style = {globalStyles.inputStyle}
+              onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setPassword(e.target.value)}</span>
+            &gt;&lt;/input&gt;
+          &lt;/div&gt;
+&nbsp;
+          &lt;div className="form-element"&gt;
+            &lt;label className = "fieldDescription" htmlFor="confirmPassword"&gt; Confirm password&lt;/label&gt;
+            &lt;input
+            className = 'inputBox'
+              id="confirmPassword"
+              required
+              placeholder = "Confirm Password"
+              style = {globalStyles.inputStyle}
+              type="password"
+              onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setConfirm(e.target.value)}</span>
+            &gt;&lt;/input&gt;
+          &lt;/div&gt;
+&nbsp;
+          &lt;div className="form-element"&gt;
+            &lt;label className = "fieldDescription" htmlFor="name"&gt; Name&lt;/label&gt;
+            &lt;input className = 'inputBox' 
+            id="name" 
+            required
+            type = "text"
+            placeholder ="Name"
+            style = {globalStyles.inputStyle}
+            onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setName(e.target.value)}</span>
+            &gt;&lt;/input&gt;
+          &lt;/div&gt;
+&nbsp;
+          &lt;div className="form-element"&gt;
+            &lt;label className = "fieldDescription" htmlFor="gender"&gt; Gender&lt;/label&gt;
+            &lt;select id="gender" onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setGender(e.target.value)}</span>&gt;
+              &lt;option&gt;Select an Option&lt;/option&gt;
+              &lt;option&gt;Male&lt;/option&gt;
+              &lt;option&gt;Female&lt;/option&gt;
+              &lt;option&gt;Other&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+&nbsp;
+          &lt;div className="form-element"&gt;
+            &lt;label className = "fieldDescription" htmlFor="birthday"&gt; Birthday&lt;/label&gt;
+            
+          
+            &lt;DatePicker id="birthday" date={date} setDate={setDate}&gt;&lt;/DatePicker&gt;
+          &lt;/div&gt;
+          &lt;div className= "form-element"&gt;{ageError}&lt;/div&gt;
+&nbsp;
+          &lt;div className="form-element"&gt;
+            &lt;label className = "fieldDescription" htmlFor="sexuality"&gt; Sexuality&lt;/label&gt;
+            &lt;select id="sexuality" onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setSexuality(e.target.value)}</span>&gt;
+              &lt;option&gt;Select an Option&lt;/option&gt;
+              &lt;option&gt;Male&lt;/option&gt;
+              &lt;option&gt;Female&lt;/option&gt;
+              &lt;option&gt;Other&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+&nbsp;
+          &lt;div className="form-element"&gt;
+          &lt;label className = "fieldDescription" htmlFor="location"&gt; Location&lt;/label&gt;
+            &lt;input
+            className = 'inputBox'
+              id="location"
+              required
+              type = "text"
+              placeholder = "Location"
+              style = {globalStyles.inputStyle}
+              onChange={<span class="fstat-no" title="function not covered" >(e</span>) =&gt; <span class="cstat-no" title="statement not covered" >setLocation(e.target.value)}</span>
+              
+            &gt;&lt;/input&gt;
+          &lt;/div&gt;
+&nbsp;
+          
+          
+          &lt;div className="form-element"&gt;
+            
+            
+            &lt;button className='intrestbutton' onClick={interestsDisplay} id="interests-button"&gt;
+              Choose Interests
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;br /&gt;
+          &lt;textarea  
+              type="text"
+              className="bio"
+              rows="1"cols="52"
+              placeholder="Bio"&gt;
+              
+            &lt;/textarea&gt;
+            &lt;br/&gt;
+          &lt;div className = "form-element"&gt;
+          &lt;input className = "button" id="register-button" type="submit" value="Register" /&gt;
+          &lt;/div&gt;
+        
+        &lt;/form&gt;
       &lt;/div&gt;
+&nbsp;
+        &lt;div id="interests-background"&gt;
+          &lt;div id="interests-interface"&gt;
+            &lt;h1&gt;Choose Five Interests&lt;/h1&gt;
+&nbsp;
+            &lt;div className="interests-container"&gt;
+              &lt;div className="interest-element" id="i1"&gt;
+                Art
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i2"&gt;
+                Baking
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i3"&gt;
+                Board Games
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i4"&gt;
+                Comedy
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i5"&gt;
+                Cooking
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i6"&gt;
+                Cycling
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i7"&gt;
+                Dancing
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i8"&gt;
+                Fashion
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i9"&gt;
+                Fishing
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i10"&gt;
+                Foodie
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i11"&gt;
+                Football
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i12"&gt;
+                Gamer
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i13"&gt;
+                Gardening
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i14"&gt;
+                Golf
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i15"&gt;
+                Gym
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i16"&gt;
+                Hiking
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i17"&gt;
+                Karaoke
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i18"&gt;
+                Movies
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i19"&gt;
+                Music
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i20"&gt;
+                Netflix
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i21"&gt;
+                Pet Lover
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i22"&gt;
+                Photography
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i23"&gt;
+                Picnicking
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i24"&gt;
+                Politics
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i25"&gt;
+                Reading
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i26"&gt;
+                Shopping
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i27"&gt;
+                Spirituality
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i28"&gt;
+                Social Media
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i29"&gt;
+                Sport
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i30"&gt;
+                Surfing
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i31"&gt;
+                Swimming
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i32"&gt;
+                Travel
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i33"&gt;
+                Vlogging
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i34"&gt;
+                Wine
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i35"&gt;
+                Writing
+              &lt;/div&gt;
+              &lt;div className="interest-element" id="i36"&gt;
+                Yoga
+              &lt;/div&gt;
+            &lt;/div&gt;
+&nbsp;
+            &lt;button onClick={interestsClose} id="interests-close"&gt;
+              Close
+            &lt;/button&gt;
+&nbsp;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      
     &lt;/div&gt;
     
   );
@@ -1592,15 +1626,14 @@ function <span class="fstat-no" title="function not covered" >Registration(</spa
 }
 &nbsp;
 &nbsp;
-export default Registration;
-&nbsp;</pre></td></tr></table></pre>
+export default Registration;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Oct 26 2021 10:27:03 GMT+0200 (South Africa Standard Time)
+                at Mon Nov 01 2021 18:36:21 GMT+0200 (South Africa Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

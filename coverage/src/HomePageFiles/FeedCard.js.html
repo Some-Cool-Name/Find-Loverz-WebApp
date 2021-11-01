@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/HomePageFiles/ChatWindow.js</title>
+    <title>Code coverage report for src/HomePageFiles/FeedCard.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/HomePageFiles</a> ChatWindow.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/HomePageFiles</a> FeedCard.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/15</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>0/15</span>
             </div>
         
             
@@ -113,25 +113,40 @@
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
 <a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -160,71 +175,65 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from 'react';
-import { useLocation } from "react-router-dom";
-import FeedLeft from './FeedLeft';
-import Message from './Message';
-import './Chat.css';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+import { ImLocation2 } from "react-icons/im";
 &nbsp;
-function <span class="fstat-no" title="function not covered" >Chat(</span>{ user }) {
-    const location = <span class="cstat-no" title="statement not covered" >useLocation();</span>
-    const [otherPersonUserName, setOtherPersonUserName] = <span class="cstat-no" title="statement not covered" >useState('Loading..');</span>
-    const [messages, setMessages] = <span class="cstat-no" title="statement not covered" >useState([</span>
-        {message: 'hey\n', time: '2021-08-21T19:02:33', user: 'mudau'}, 
-        {message: 'hello, how are you?\n', time: '2021-08-21T19:02:40', user: 'begin'}
-    ]);
+function <span class="fstat-no" title="function not covered" >FeedCard(</span>{ userAccount, fetchUsers, user }) {
 &nbsp;
-    /*useEffect(() =&gt; {
-        setOtherPersonUserName(location.state.otherPersonUserName);
-    }, [])*/
+    const swipeRight = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(l</span>ikedUser) =&gt; {</span>
+        const like = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (e)=&gt;{</span>
+<span class="cstat-no" title="statement not covered" >            e.preventDefault()</span>
+            const results = <span class="cstat-no" title="statement not covered" >await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDALikeUser.php?"+</span>
+            `likerUsername=${user[0].username}&amp;likeeUsername=${likedUser.E_mail}`
+            )
+<span class="cstat-no" title="statement not covered" >            fetchUsers();</span>
+        }
+        const temp = <span class="cstat-no" title="statement not covered" >like;</span>
+<span class="cstat-no" title="statement not covered" >        return temp;</span>
+    }
+    
+    const swipeLeft = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(l</span>ikedUser) =&gt; {</span>
+        const reject = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (e)=&gt;{</span>
+<span class="cstat-no" title="statement not covered" >            e.preventDefault()</span>
+            const results = <span class="cstat-no" title="statement not covered" >await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDARejectUser.php?"+</span>
+            `rejectorUsername=${user[0].username}&amp;rejecteeUsername=${likedUser.E_mail}`
+            )
+<span class="cstat-no" title="statement not covered" >            fetchUsers();</span>
+        } 
+        const temp = <span class="cstat-no" title="statement not covered" >reject;</span>
+<span class="cstat-no" title="statement not covered" >        return temp;</span>
+    }
+&nbsp;
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return (</span>
-        &lt;div className="chat-window"&gt;
-            &lt;div className="chat-top"&gt;
-                &lt;div className="chat-details"&gt;
-                    &lt;div className = "chat-profile-picture"&gt;&lt;img src = {user[0].profile_picture} alt="" /&gt; &lt;/div&gt;
-                
-                    &lt;div className="chat-profile-name"&gt;
-                        &lt;p id="chat-username"&gt;{user[0].username}&lt;/p&gt;                          
-                    &lt;/div&gt;
+        &lt;div className="card-container" id="card"&gt;
+        &lt;img className="card-image" src={userAccount.Profile_Picture} &gt;&lt;/img&gt;
+          &lt;div className="card-id"&gt;
+            &lt;h2 className="usernameAge2"&gt;{userAccount.Full_Name }&lt;/h2&gt;
+          &lt;/div&gt;
+          &lt;p title="location" className="location"&gt;&lt;ImLocation2 style={{ color:"#808080", marginRight:"10px" }} /&gt;{userAccount.Location}&lt;/p&gt;
+          &lt;div className="interest2"&gt;
+                    &lt;div className="interest-element2" title="intOne" style={{borderColor: "#12c2e9", color:"#12c2e9" }} &gt;{userAccount.Interest_1}&lt;/div&gt;
+                    &lt;div className="interest-element2" title="intTwo" style={{borderColor: "#c471ed", color:"#c471ed" }} &gt;{userAccount.Interest_2}&lt;/div&gt;
+                    &lt;div className="interest-element2" title="intThree" style={{borderColor: "#fc32e8", color:"#fc32e8" }}&gt;{userAccount.Interest_3}&lt;/div&gt;
+                    &lt;br /&gt;
+                    &lt;div className="interest-element2" title="intFour" style={{borderColor: "#fc32e8", color:"#fc32e8" }}&gt;{userAccount.Interest_4}&lt;/div&gt;
+                    &lt;div className="interest-element2" title="intFive" &gt;{userAccount.Interest_5}&lt;/div&gt;
                 &lt;/div&gt;
-&nbsp;
-                &lt;div className="chat-buttons-container"&gt;
-                    &lt;button className="chat-buttons" id="chat-search-button"&gt;&lt;i class="uil uil-search"&gt;&lt;/i&gt;&lt;/button&gt;
-                    &lt;button className="chat-buttons" id="chat-options-button"&gt;&lt;i class="uil uil-ellipsis-h"&gt;&lt;/i&gt;&lt;/button&gt;          
-                &lt;/div&gt;
-            &lt;/div&gt;
-&nbsp;
-            &lt;div className="chat-body"&gt;
-                &lt;div className="chat-incomming"&gt;
-                    &lt;p className="chat-message"&gt;Chat bubble me&lt;/p&gt;
-                    &lt;p className="chat-time"&gt;20:25&lt;/p&gt;
-                &lt;/div&gt;
-&nbsp;
-                &lt;div className="chat-outgoing"&gt;
-                    &lt;p className="chat-message"&gt;Chat bubble not me&lt;/p&gt;
-                    &lt;p className="chat-time"&gt;20:25&lt;/p&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-&nbsp;
-            &lt;div className="chat-bottom"&gt;
-                &lt;input id="message-box" type="text" placeholder="Type a message"&gt;&lt;/input&gt;
-                &lt;div id="message-send" type="button"&gt;&lt;i class="uil uil-message"&gt;&lt;/i&gt;&lt;/div&gt;
-            &lt;/div&gt;
+        &lt;div className="card-bio"&gt;
+          &lt;div&gt;
+            {userAccount.Bio }
+          &lt;/div&gt;
         &lt;/div&gt;
+        &lt;div className="button-container"&gt;
+          &lt;div onClick={swipeRight(userAccount)} id="yes-button"&gt;&lt;i className="uil uil-check"&gt;&lt;/i&gt;&lt;/div&gt;
+          &lt;div onClick={swipeLeft(userAccount)} id="no-button" &gt;&lt;i className="uil uil-times"&gt;&lt;/i&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
     )
 }
 &nbsp;
-export default Chat
+export default FeedCard
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

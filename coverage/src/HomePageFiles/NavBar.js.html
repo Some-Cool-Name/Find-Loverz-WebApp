@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.86% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>4/8</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,17 +113,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -142,28 +157,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { deleteFromStorage } from '../HelperClasses/StorageHandler';
+import {IoHomeSharp } from "react-icons/io5";
+import { BsFillChatFill } from "react-icons/bs";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 import './Navbar.css';
 &nbsp;
 export default function NavBar({ setUser, user}) {
+&nbsp;
     let history = useHistory();
+    const [search, setSearch] = useState('');
+&nbsp;
+    // const stateSetter = () =&gt;{
+    //     sessionStorage.setItem("Location", document.getElementById("search").value);
+    // }
+&nbsp;
+    // const handleKey=(e)=&gt;{
+    //     console.log(e.target.value);
+    //     console.log("Enter button clicked");
+    //     // stateSetter();
+    // }
 &nbsp;
     // handles user logout
     const handleLogout = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
@@ -181,30 +196,15 @@ export default function NavBar({ setUser, user}) {
                 user &amp;&amp;
                 &lt;Link to="/profile" &gt;&lt;img src ={user[0].profile_picture} id="NavBarImage"  /&gt;&lt;/Link&gt;
             }
-            &lt;Link to="/feed" id="navFeed" &gt; &lt;b&gt;Feed&lt;/b&gt; &lt;/Link&gt;
-            &lt;Link to="/chat"  id="navChat"&gt; &lt;b&gt;Chat&lt;/b&gt; &lt;/Link&gt;
-            &lt;Link to="/" onClick={handleLogout} id="navLogout"&gt; &lt;b&gt;Logout&lt;/b&gt; &lt;/Link&gt;
+            &lt;div className="NavIcons"&gt;
+                &lt;Link to="/feed" id="navFeed" &gt;&lt;IoHomeSharp /&gt; &lt;b&gt;Feed&lt;/b&gt; &lt;/Link&gt;
+                &lt;Link to="/chat"  id="navChat"&gt; &lt;BsFillChatFill/&gt;&lt;b&gt;Chat&lt;/b&gt; &lt;/Link&gt;
+                &lt;Link to="/" onClick={handleLogout} id="navLogout"&gt;&lt;RiLogoutBoxRFill/&gt; &lt;b&gt;Logout&lt;/b&gt; &lt;/Link&gt;
+                {/* &lt;div onKeyDown={handleKey}/&gt; */}
+            &lt;/div&gt;
+            
         &lt;/div&gt;
 &nbsp;
-        // &lt;navbar&gt;
-        //     &lt;div className="left-nav"&gt;
-        //         &lt;h1 id="nav-app-name"&gt;Find Loverz&lt;/h1&gt;
-        //         &lt;div className="profile-container"&gt;
-        //             &lt;div className = "match-profile-picture"&gt;&lt;img src = {user[0].profile_picture} alt="" /&gt; &lt;/div&gt;
-        //                 &lt;div className="profile-name"&gt;
-        //                     &lt;p id="feed-username"&gt;{user[0].username}&lt;/p&gt;                          
-        //                 &lt;/div&gt;
-        //         &lt;/div&gt;
-        //     &lt;/div&gt;
-&nbsp;
-        //     &lt;div className="right-nav"&gt;
-        //         &lt;Link to="/feed" style={{marginRight: 5}} &gt;&lt;p&gt;Home&lt;/p&gt;&lt;/Link&gt;
-        //         &lt;Link to="/matches" style={{marginRight: 5}} &gt;&lt;p&gt;Chats&lt;/p&gt;&lt;/Link&gt;
-        //         &lt;input type="text" className="nav-search-bar" id="nav-search-bar" placeholder="Search"&gt;&lt;/input&gt;
-        //         &lt;div className="search-button"&gt;&lt;i class="uil uil-search"&gt;&lt;/i&gt;&lt;/div&gt;
-        //         &lt;Link to="/" onClick={handleLogout} &gt;&lt;p&gt;Logout&lt;/p&gt;&lt;/Link&gt;
-        //     &lt;/div&gt;
-        // &lt;/navbar&gt;
     )
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -214,7 +214,7 @@ export default function NavBar({ setUser, user}) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Tue Oct 26 2021 10:27:03 GMT+0200 (South Africa Standard Time)
+                at Mon Nov 01 2021 18:36:21 GMT+0200 (South Africa Standard Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>
