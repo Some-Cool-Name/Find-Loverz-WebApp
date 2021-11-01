@@ -16,33 +16,33 @@ export default function FeedRight({user, setUser}) {
     const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
     `username=${user[0].username}`
     );
-    // console.log(user[0].username);
     const data = await result.json();
     setUsers(data.feedProfiles);
   }
 
-  const fetchAndSearch = async (e) =>{
+  const fetchAndSearch = async () =>{
     const result = await fetch("https://lamp.ms.wits.ac.za/home/s1851427/WDAgetFeed.php?"+
     `username=${user[0].username}`
     );
-    // console.log(user[0].username);
     const data = await result.json();
-    search(data.feedProfiles, searchText.toLowerCase(), setUsers);
+    setUsers( search(data.feedProfiles, searchText.toLowerCase()) );
   }
   
   useEffect(()=>{
       fetchUsers();
   },[]);
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
+    // console.log("searching");
+    setSearchText("");
     if(searchText===""){
       fetchUsers();
       return;
     }
     fetchAndSearch();
-    setSearchText("");
   }
 
+  // console.log("page loading");
    
   if(users.length === 0){
     return (
@@ -92,11 +92,11 @@ export default function FeedRight({user, setUser}) {
             <button className="btnSearch" onClick={handleSearch}><VscSearch/></button>
           </div>
          
-          <HorizontalScroll className="scroll-view">
+          <div className="scroll-view">
             {users.map((otherUser) => {
               return <FeedCard userAccount={otherUser} fetchUsers={fetchUsers} user={user} />
             })}
-          </HorizontalScroll>
+          </div>
         
           
             

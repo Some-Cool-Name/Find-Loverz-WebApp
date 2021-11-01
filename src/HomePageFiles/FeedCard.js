@@ -26,7 +26,7 @@ function FeedCard({ userAccount, fetchUsers, user }) {
 
 
     return (
-        <div className="card-container" id="card">
+        <div className="card-container">
         <img className="card-image" src={userAccount.Profile_Picture} ></img>
           <div className="card-id">
             <p id="feed-name">{userAccount.Full_Name }</p>

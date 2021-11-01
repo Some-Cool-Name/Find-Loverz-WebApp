@@ -106,7 +106,6 @@ div.User-Info {
   margin-left: 10px;
   margin-right: 20px;
   display: inline-block;
-  align-self: center;
   overflow: hidden;
   background-color: #ffffff;
 }
@@ -145,7 +144,7 @@ div.User-Info {
   box-sizing: border-box;
   padding: 10px 20px;
 
-  display: flex;
+  display: inline-block;
   align-items: center;
 
   overflow: hidden;
@@ -606,9 +605,12 @@ button.btnSearch{
 /* scroll view */
 
 .scroll-view{
-  transform: translate3d(0px, 0px, 0px);
-  display: inline-flex;
+  /* transform: translate3d(0px, 0px, 0px); */
+  /* display: inline-flex; */
+  margin-top: 50px;
   height: 100%;
-  position: absolute;
-  will-change: transform;
+  overflow: auto;
+  white-space: nowrap;
+  width: 100%;
+  /* will-change: transform; */
 }

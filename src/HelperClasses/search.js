@@ -1,7 +1,7 @@
-export const search = (users, input, setUsers) => {
+export const search = (users, input) => {
     let list = [];
     for(let i = 0; i<users.length;i++){
-        var userAccount = users[i];
+        let userAccount = users[i];
         if(userAccount.Location.toLowerCase()===input){
             list.push(userAccount);
         }
@@ -13,5 +13,5 @@ export const search = (users, input, setUsers) => {
         }
     }
     
-    setUsers(list);
+    return list;
 }
